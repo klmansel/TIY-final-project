@@ -1,4 +1,5 @@
-
+$jetsgreen: #00a954;
+$jetsyellow: #ffd700;
 // Bootstrap Variables
 $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
@@ -14,4 +15,23 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
 img {
   max-width: 100%;
+}
+
+.homepage-links {
+  a {
+    color: $jetsyellow;
+    font-family: fantasy;
+    text-decoration: none;
+
+    &:hover {
+      color: $jetsgreen;
+    }
+  }
+}
+
+.homepage-title {
+  color: $jetsgreen;
+  font-family: fantasy;
+  text-decoration: none;
+
 }
