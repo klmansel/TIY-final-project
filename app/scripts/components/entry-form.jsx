@@ -2,10 +2,15 @@ var React = require('react');
 var User = require('../models/User').User;
 
 var AthleteEntry = React.createClass({
+  handleSubmit: function(){
+    return (
+      alert('form submitted!')
+    )
+  },
   render: function(){
     return (
       <div>
-        <form className="col-md-6">
+        <form onSubmit={this.handleSubmit} className="col-md-6">
           <h1>Coach Stat Tracker</h1>
             <h3>Enter New Athlete Information</h3>
               <fieldset className="form-group">
@@ -42,7 +47,7 @@ var AthleteEntry = React.createClass({
                  <option>17-19 Years Old</option>
                </select>
              </fieldset>
-             <button type="button" className="btn btn-primary submit">Submit</button>
+             <button type="submit" className="btn btn-primary submit">Submit</button>
             </form>
         </div>
     );
@@ -52,7 +57,10 @@ var AthleteEntry = React.createClass({
 var Results = React.createClass({
   render: function(){
     return (
-      <div>Test Results</div>
+      <div>
+
+
+      </div>
 
     );
   }

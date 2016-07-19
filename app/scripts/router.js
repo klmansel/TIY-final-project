@@ -7,6 +7,7 @@ var SignInComponent = require('./components/login.jsx').SignInComponent;
 var AthleteEntry = require('./components/entry-form.jsx').AthleteEntry;
 var Results = require('./components/entry-form.jsx').Results;
 var Homepage = require('./components/homepage.jsx').Homepage;
+var JetsPage = require('./components/jets-site.jsx').JetsPage;
 
 
 var Router = Backbone.Router.extend({
@@ -15,13 +16,14 @@ var Router = Backbone.Router.extend({
   'signup' : 'signup',
   'signin' : 'signin',
   'athleteEntry' : 'athleteEntry',
-  'results' : 'results'
+  'results' : 'results',
+  'coachesOnly' : 'coachesOnly'
 },
 
 index: function(){
   var self = this;
   ReactDOM.render(
-    React.createElement(Homepage, {router: self}),
+    React.createElement(JetsPage, {router: self}),
       document.getElementById('container')
     );
 },
@@ -55,6 +57,13 @@ results: function(){
     React.createElement(Results, {router: self}),
       document.getElementById('container')
     );
+  },
+
+coachesOnly: function(){
+  ReactDOM.render(
+    React.createElement(Homepage, {router: self}),
+    document.getElementById('container')
+  )
 }
 });
 

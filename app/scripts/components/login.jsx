@@ -17,7 +17,7 @@ var SignUpComponent = React.createClass({
     signup.set('password', this.state.password );
     signup.save().done(function(){
       alert('Saved the form');
-      router.navigate('myrecipes', {trigger: true});
+      router.navigate('signin', {trigger: true});
     });
   },
   handleNameChange: function(e){
@@ -64,8 +64,8 @@ var SignUpComponent = React.createClass({
 var SignInComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
-    var username = $('#inputUsername').val();
-    var password = $('#inputPassword').val();
+    var username = $('#username').val();
+    var password = $('#password').val();
     var router = this.props.router;
     console.log(this.props);
     User.login(username, password, {
