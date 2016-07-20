@@ -1,5 +1,5 @@
 var React = require('react');
-var Athlete = require('../models/Athlete').Athlete;
+var Athlete = require('../models/athlete').Athlete;
 var $ = require('jquery');
 require('backbone-react-component');
 
@@ -92,19 +92,6 @@ var AthleteEntry = React.createClass({
   }
 });
 
-var Results = React.createClass({
-  render: function(){
-    return (
-      <div>
-
-
-      </div>
-
-    );
-  }
-
-});
 module.exports = {
-  'AthleteEntry' : AthleteEntry,
-  'Results' : Results
+  'AthleteEntry' : AthleteEntry
 };
