@@ -4,7 +4,7 @@ var $ = window.jQuery = require('jQuery');
 
 var SignUpComponent = React.createClass({
   getInitialState: function(){
-    return {'name': '', 'username': '', 'password': ''
+    return {'name': '', 'team': '','username': '', 'password': ''
     };
   },
   handleSubmit: function(e){
@@ -13,15 +13,19 @@ var SignUpComponent = React.createClass({
     var router = this.props.router;
 
     signup.set('name', this.state.name );
+    signup.set('team', this.state.team);
     signup.set('username', this.state.email );
     signup.set('password', this.state.password );
     signup.save().done(function(){
-      alert('Saved the form');
+      alert('Added New Coach');
       router.navigate('signin', {trigger: true});
     });
   },
   handleNameChange: function(e){
     this.setState({'name': e.target.value})
+  },
+  handleTeamChange: function(e){
+    this.setState({'team': e.target.value})
   },
   handleEmailChange: function(e){
     this.setState({'email': e.target.value})
@@ -43,6 +47,12 @@ var SignUpComponent = React.createClass({
                 placeholder="Coach Name"/>
               </fieldset>
               <fieldset className="form-group">
+                <label htmlFor="team">Team Name</label>
+                <input onChange={this.handleTeamChange} type="text"
+                  className="form-control" id="team-name"
+                placeholder="Team Name"/>
+              </fieldset>
+              <fieldset className="form-group">
                 <label htmlFor="username">Username</label>
                 <input onChange={this.handleEmailChange} type="text" className="form-control" id="username"
                 placeholder="Username"/>
@@ -54,6 +64,7 @@ var SignUpComponent = React.createClass({
               </fieldset>
               <button type="submit" className="btn btn-primary submit">Submit</button>
           </form>
+            <button type="button"><a href="#">Home</a></button>
         </div>
       </div>
 
@@ -96,6 +107,7 @@ var SignInComponent = React.createClass({
             </fieldset>
             <button type="submit" className="btn btn-primary submit">Sign In</button>
         </form>
+          <button type="button"><a href="#">Home</a></button>
       </div>
 
     );
