@@ -35,7 +35,7 @@ var AthleteEntry = React.createClass({
     newAthlete.save().done(function(){
       alert('Athlete Created');
       console.log('athlete-team');
-      router.navigate('athleteEntry', {trigger: true});
+      router.navigate('results', {trigger: true});
     });
   },
   render: function(){
