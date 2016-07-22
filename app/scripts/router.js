@@ -9,6 +9,7 @@ var Homepage = require('./components/homepage.jsx').Homepage;
 var JetsPage = require('./components/jets-site.jsx').JetsPage;
 var ResultsForm = require('./components/results.jsx').ResultsForm;
 var ContactInfo = require('./components/contactus.jsx');
+var Schedule = require('./components/schedule.jsx');
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -18,7 +19,8 @@ var Router = Backbone.Router.extend({
   'athleteEntry' : 'athleteEntry',
   'results' : 'results',
   'coachesOnly' : 'coachesOnly',
-  'contactInfo' : 'contactInfo'
+  'contactInfo' : 'contactInfo',
+  'schedule' : 'schedule'
 },
 
 index: function(){
@@ -70,6 +72,13 @@ coachesOnly: function(){
 contactInfo: function(){
   ReactDOM.render(
     React.createElement(ContactInfo, {router: self}),
+    document.getElementById('container')
+  );
+},
+
+schedule: function(){
+  ReactDOM.render(
+    React.createElement(Schedule, {router: self}),
     document.getElementById('container')
   );
 }

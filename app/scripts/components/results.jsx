@@ -9,6 +9,7 @@ var ResultsForm = React.createClass({
 
     newResult.set('minutes', this.state.minutes);
     newResult.set('seconds', this.state.seconds);
+    newResult.set('event', this.state.event);
     newResult.save().done(function(){
       alert('Entry Created');
       console.log('results logged');
@@ -21,6 +22,12 @@ var ResultsForm = React.createClass({
   enterSeconds: function(e){
     this.setState({'seconds': e.target.value})
   },
+  chooseAthlete: function(e){
+    this.setState({'athlete': e.target.value})
+  },
+  addEvent: function(e){
+    this.setState({'event' : e.target.value})
+  },
   render: function(){
     return (
       <div className="container">
@@ -28,8 +35,24 @@ var ResultsForm = React.createClass({
           <div className="col-md-6">
             <form onSubmit={this.handleSubmit}>
               <h1 className="coach-headings">Results Form</h1>
+
               <fieldset className="form-group">
-                <label htmlFor="minutes">Minutes</label>
+                <label htmlFor="athlete">Athlete Name</label>
+                <select onChange={this.chooseAthlete} type="text" className="form-control" id="athlete" placeholder="Choose Athlete">
+                  <option>NEED DROPDOWN TO POPULATE ATHLETE ARRAY</option>
+                </select>
+
+                  <label htmlFor="event">Event</label>
+                  <select onChange={this.addEvent} className="form-control" id="event">
+                    <option>100</option>
+                    <option>200</option>
+                    <option>400</option>
+                    <option>800</option>
+                    <option>1500</option>
+                    <option>Long Jump</option>
+                  </select>
+
+              <label htmlFor="minutes">Minutes</label>
                 <input onChange={this.enterMinutes} type="text" className="form-control" id="minutes" placeholder="Enter minutes"/>
                   <label htmlFor="seconds">Seconds</label>
                   <input onChange={this.enterSeconds} type="text" className="form-control" id="seconds" placeholder="Enter seconds"/>

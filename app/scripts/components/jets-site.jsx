@@ -1,4 +1,5 @@
 var React = require('react');
+var $ = require('jquery');
 
 var JetsPage = React.createClass({
   render: function(){
@@ -26,7 +27,7 @@ var JetsPage = React.createClass({
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle jets-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Our Team <span className="caret"></span></a>
                   <ul className="dropdown-menu">
-                    <li><a className="jets-brand" href="#">Schedule</a></li>
+                    <li><a className="jets-brand" href="#schedule">Schedule</a></li>
                     <li><a className="jets-brand" href="#">Successes</a></li>
                     <li role="separator" className="divider"></li>
                     <li><a className="jets-brand" href="#coachesOnly">Coaches Area</a></li>
@@ -42,18 +43,22 @@ var JetsPage = React.createClass({
           </nav>
         </div>
         <div className="row col-md-12">
-
-
           <div className="new-nav col-xs-12 col-md-10 col-md-offset-1">
               <a className="col-xs-12 col-md-3 new-navlist" href="#">Photos</a>
               <a className="col-xs-12 col-md-3 new-navlist" href="#">Events</a>
               <a className="col-xs-12 col-md-3 new-navlist" href="#">About Our Team</a>
               <a className="col-xs-12 col-md-3 new-navlist" href="#">Contact Us</a>
           </div>
-
+        </div>
+        <div className="row col-md-12">
+          <h1 className="coach-headings">SLIDESHOW HERE</h1>
+            <div className="jetspics">
+              <div>PIC1</div>
+              <div>PIC2</div>
+              <div>PIC3</div>
+            </div>
 
         </div>
-          SLIDESHOW HERE
       </div>
 
     );

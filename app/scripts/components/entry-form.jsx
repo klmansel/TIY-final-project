@@ -5,10 +5,11 @@ require('backbone-react-component');
 
 var AthleteEntry = React.createClass({
   getInitialState: function(){
-    return {'athleteTeam': 'Greenville Jets','name': '', 'gender': 'M', 'event': '100', 'ageGroup': '8 and Under'};
+    return {'athleteTeam': 'Greenville Jets','name': '', 'gender': 'Male', 'event': '100', 'ageGroup': '8 and Under'};
   },
   addTeam: function(e){
     this.setState({'athleteTeam': e.target.value})
+    console.log();
   },
   addAthlete: function(e){
     this.setState({'athleteName': e.target.value})
@@ -26,12 +27,15 @@ var AthleteEntry = React.createClass({
     e.preventDefault();
     var newAthlete = new Athlete();
     var router = this.props.router;
+    var coach = localStorage.getItem('user');
+    var coachPointer = {"__type":"Pointer","className":"_User","objectId":coach.objectId}
+
 
     newAthlete.set('athleteTeam', this.state.athleteTeam);
     newAthlete.set('athleteName', this.state.athleteName );
     newAthlete.set('gender', this.state.gender);
-    newAthlete.set('event', this.state.event);
     newAthlete.set('ageGroup', this.state.ageGroup);
+    newAthlete.set('coach', coachPointer);
     newAthlete.save().done(function(){
       alert('Athlete Created');
       console.log('athlete-team');
@@ -56,25 +60,15 @@ var AthleteEntry = React.createClass({
               </fieldset>
               <fieldset className="form-group">
                <label htmlFor="gender">Gender</label>
-               <select onChange={this.addGender} value={this.state.selectValue}  className="form-control" id="gender">
+               <select onChange={this.addGender} className="form-control" id="gender">
                  <option>Male</option>
                  <option>Female</option>
                </select>
              </fieldset>
-             <fieldset className="form-group">
-               <label htmlFor="event">Event</label>
-               <select onChange={this.addEvent} value={this.state.selectValue} className="form-control" id="event">
-                 <option value="100">100</option>
-                 <option value="200">200</option>
-                 <option value="400">400</option>
-                 <option value="800">800</option>
-                 <option value="1500">1500</option>
-                 <option value="LJ">Long Jump</option>
-               </select>
-             </fieldset>
+
              <fieldset className="form-group">
                <label htmlFor="age-group">Age Group</label>
-               <select onChange={this.addAge} value={this.state.selectValue} className="form-control" id="ageGroup">
+               <select onChange={this.addAge} className="form-control" id="ageGroup">
                  <option>8 and Under</option>
                  <option>9-10 Years Old</option>
                  <option>11-12 Years Old</option>

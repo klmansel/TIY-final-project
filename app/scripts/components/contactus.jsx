@@ -14,7 +14,9 @@ var ContactInfo = React.createClass({
               Practices are held Monday,Tuesday, and Thursday at 6:00pm.
               In June practices are 4-5 days a week and continue this way until
               the end of the season in late July.</p>
+            <button type="button"><a href="#">Home</a></button>
           </div>
+
         </div>
       </div>
     )

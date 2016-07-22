@@ -1,6 +1,7 @@
 var React = require('react');
 var User = require('../models/User').User;
 var $ = window.jQuery = require('jQuery');
+var Session = require('../models/user').Session;
 
 var SignUpComponent = React.createClass({
   getInitialState: function(){
@@ -80,6 +81,7 @@ var SignInComponent = React.createClass({
     var router = this.props.router;
     console.log(this.props);
     User.login(username, password, {
+      
       success: function(user){
         console.log('User logged in!: ', user);
         router.navigate('athleteEntry', {trigger: true})
