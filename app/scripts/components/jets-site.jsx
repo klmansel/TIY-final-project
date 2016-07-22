@@ -41,7 +41,21 @@ var JetsPage = React.createClass({
             </div>
           </nav>
         </div>
+        <div className="row col-md-12">
+
+
+          <div className="new-nav col-xs-12 col-md-10 col-md-offset-1">
+              <a className="col-xs-12 col-md-3 new-navlist" href="#">Photos</a>
+              <a className="col-xs-12 col-md-3 new-navlist" href="#">Events</a>
+              <a className="col-xs-12 col-md-3 new-navlist" href="#">About Our Team</a>
+              <a className="col-xs-12 col-md-3 new-navlist" href="#">Contact Us</a>
+          </div>
+
+
+        </div>
+          SLIDESHOW HERE
       </div>
+
     );
 
   }

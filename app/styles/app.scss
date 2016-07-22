@@ -30,6 +30,37 @@ img {
   font-family: 'Permanent Marker', cursive;
 }
 
+.new-navlist {
+  background-image: linear-gradient($jetsyellow, yellow);
+  border-radius: 5px;
+  color: $jetsgreen;
+  display: inline-block;
+  float: left;
+  font-family: Impact,sans-serif;
+  font-size: 25px;
+  height: 50px;
+  list-style-type: none;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 8px;
+  text-align: center;
+  text-decoration: none;
+  width: 200px;
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $backgroundgray;
+    list-style-type: none;
+    text-decoration: none;
+    text-overflow: none;
+  }
+
+}
+
 .glyphicon-plane {
   color: $jetsgreen;
 }
