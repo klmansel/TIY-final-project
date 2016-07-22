@@ -40,10 +40,10 @@ var AthleteEntry = React.createClass({
   },
   render: function(){
     return (
-      <div>
+      <div className="col-md-12 col-md-offset-3">
         <form onSubmit={this.handleSubmit} className="col-md-6">
-          <h1>Coach Stat Tracker</h1>
-            <h3>Enter New Athlete Information</h3>
+          <h1 className="coach-headings">Coach Stat Tracker</h1>
+            <h3 className="coach-headings">Enter New Athlete Information</h3>
               <fieldset className="form-group">
                 <label htmlFor="team">Team</label>
                 <input onChange={this.addTeam} type="text" className="form-control" id="athleteTeam"

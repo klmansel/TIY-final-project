@@ -6,7 +6,7 @@ var ContactInfo = React.createClass({
       <div className="container">
         <div className="row">
           <div className="col-md-4 col-md-offset-4">
-            <h3>Contact Us</h3>
+            <h3 className="coach-headings">Contact Us</h3>
             <p>Would you like to become a Greenville Jet?
               Call Willie Goolsby (864)901-1869 or Adrique Heyward (864)561-5134 or
 

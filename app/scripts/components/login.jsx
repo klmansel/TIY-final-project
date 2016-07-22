@@ -37,9 +37,9 @@ var SignUpComponent = React.createClass({
   render: function(){
     return (
       <div className="container">
-        <div className="row">
+        <div className="row col-md-12 col-md-offset-3">
           <form onSubmit={this.handleSubmit} className="col-md-6">
-            <h1>Coach Sign Up</h1>
+            <h1 className="coach-headings">Coach Sign Up</h1>
               <fieldset className="form-group">
                 <label htmlFor="name">Coach Name</label>
                 <input onChange={this.handleNameChange} type="text"
@@ -92,9 +92,9 @@ var SignInComponent = React.createClass({
 
   render: function(){
     return (
-      <div>
+      <div className="col-md-6 col-md-offset-4">
         <form onSubmit={this.handleSubmit} className="col-md-6">
-          <h1>Coach Login</h1>
+          <h1 className="coach-headings">Coach Login</h1>
             <fieldset className="form-group">
               <label htmlFor="inputUsername" className="sr-only">Username</label>
               <input name="username" type="text" className="form-control" id="username"

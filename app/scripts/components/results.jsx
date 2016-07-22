@@ -24,10 +24,10 @@ var ResultsForm = React.createClass({
   render: function(){
     return (
       <div className="container">
-        <div className="row">
+        <div className="row col-md-12 col-md-offset-3">
           <div className="col-md-6">
             <form onSubmit={this.handleSubmit}>
-              <h1><a href="#results">Results Form</a></h1>
+              <h1 className="coach-headings">Results Form</h1>
               <fieldset className="form-group">
                 <label htmlFor="minutes">Minutes</label>
                 <input onChange={this.enterMinutes} type="text" className="form-control" id="minutes" placeholder="Enter minutes"/>
