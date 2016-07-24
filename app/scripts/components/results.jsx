@@ -68,6 +68,16 @@ var ResultsForm = React.createClass({
   }
 });
 
+var ResultsList = React.createClass({
+  render: function(){
+    return (
+      <div>Test</div>
+    );
+  }
+
+
+});
+
 module.exports = {
   'ResultsForm' : ResultsForm
 };

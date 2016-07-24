@@ -27,7 +27,7 @@ var JetsPage = React.createClass({
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle jets-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Our Team <span className="caret"></span></a>
                   <ul className="dropdown-menu">
-                    <li><a className="jets-brand" href="#schedule">Schedule</a></li>
+                    <li><a className="jets-brand" href="#schedule">Schedule/Results</a></li>
                     <li><a className="jets-brand" href="#">Successes</a></li>
                     <li role="separator" className="divider"></li>
                     <li><a className="jets-brand" href="#coachesOnly">Coaches Area</a></li>

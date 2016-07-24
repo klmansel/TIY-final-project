@@ -3,6 +3,7 @@ $jetsyellow: #ffd700;
 $gradyellow: #ff0;
 $backgroundgray: #777;
 $black: #000;
+$white: #fff;
 // Bootstrap Variables
 $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
@@ -88,4 +89,21 @@ img {
   color: $jetsyellow;
   font-family: 'Permanent Marker', cursive;
   text-align: center;
+}
+
+.schedule-event {
+  color: $white;
+  font-size: 16px;
+  line-height: 30px;
+  list-style: disc;
+
+  a {
+    color: $jetsgreen;
+    text-decoration: none;
+
+    &:hover {
+      color: $jetsyellow;
+    }
+
+  }
 }
