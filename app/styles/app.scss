@@ -4,6 +4,19 @@ $gradyellow: #ff0;
 $backgroundgray: #777;
 $black: #000;
 $white: #fff;
+$break-small: 320px;
+$break-mid: 750px;
+$break-large: 1200px;
+
+%visuallyhidden {
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+}
 // Bootstrap Variables
 $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
@@ -29,6 +42,12 @@ img {
 .jets-brand {
   color: $jetsyellow;
   font-family: 'Permanent Marker', cursive;
+}
+
+.mobile-nav {
+  @media (max width:$break-mid) {
+    display: none;
+    }
 }
 
 .new-navlist {
