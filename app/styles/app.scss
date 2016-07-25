@@ -1,6 +1,9 @@
 $jetsgreen: #00a954;
-$jetsyellow: #ffd700;
+// $jetsyellow: #ffd700;
+$jetsyellow: #fff77d;
 $gradyellow: #ff0;
+$newlightgreen: #66bb6a;
+$newdarkgreen: #2e7d32;
 $backgroundgray: #777;
 $black: #000;
 $white: #fff;
@@ -40,33 +43,31 @@ img {
 }
 
 .jets-brand {
-  color: $jetsyellow;
-  font-family: 'Permanent Marker', cursive;
-}
-
-.mobile-nav {
-  @media (max width:$break-mid) {
-    display: none;
-    }
+  color: $backgroundgray;
+  // font-family: 'Permanent Marker', cursive;
+  font-family: 'Coda', cursive;
 }
 
 .new-navlist {
-  background-image: linear-gradient($jetsyellow, $gradyellow);
-  border-radius: 5px;
-  color: $jetsgreen;
+  background-image: linear-gradient($newlightgreen, $newdarkgreen);
+  border: 1px solid $jetsgreen;
+  border-radius: 1px;
+  color: $jetsyellow;
   display: inline-block;
   float: left;
-  font-family: Impact,sans-serif;
-  font-size: 25px;
-  height: 50px;
+  font-family: 'Coda', cursive;
+  font-size: 20px;
+  font-weight: bold;
+  height: 45px;
+  line-height: 18px;
   list-style-type: none;
   margin-left: 8px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 8px;
+  padding-top: 12px;
   text-align: center;
   text-decoration: none;
-  width: 200px;
+  width: 250px;
 
   a {
     text-decoration: none;
@@ -79,6 +80,10 @@ img {
     text-overflow: none;
   }
 
+  &:click {
+    text-decoration: none;
+  }
+
 }
 
 .glyphicon-plane {
@@ -88,7 +93,7 @@ img {
 .homepage-links {
   a {
     color: $jetsyellow;
-    font-family: fantasy;
+    font-family: 'Coda', cursive;
     text-decoration: none;
 
     &:hover {
@@ -99,15 +104,25 @@ img {
 
 .homepage-title {
   color: $jetsgreen;
-  font-family: fantasy;
+  font-family: 'Coda', cursive;
   text-decoration: none;
 
 }
 
 .coach-headings {
   color: $jetsyellow;
-  font-family: 'Permanent Marker', cursive;
+  // font-family: 'Permanent Marker', cursive;
+  font-family: 'Coda', cursive;
   text-align: center;
+}
+
+.jetspics {
+  padding-top: 40px;
+
+  img {
+    height: 600px;
+    width: 1075px;
+  }
 }
 
 .schedule-event {

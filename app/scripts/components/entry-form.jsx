@@ -1,6 +1,5 @@
 var React = require('react');
 var Athlete = require('../models/athlete').Athlete;
-var $ = require('jquery');
 require('backbone-react-component');
 
 var AthleteEntry = React.createClass({
@@ -27,17 +26,15 @@ var AthleteEntry = React.createClass({
     e.preventDefault();
     var newAthlete = new Athlete();
     var router = this.props.router;
-    var coach = localStorage.getItem('user');
-    var coachPointer = {"__type":"Pointer","className":"_User","objectId":coach.objectId}
-
+    var coach = JSON.parse(localStorage.getItem('user'));
+    // var coachPointer = {"__type":"Pointer","className":"_User","objectId":coach.objectId};
 
     newAthlete.set('athleteTeam', this.state.athleteTeam);
     newAthlete.set('athleteName', this.state.athleteName );
     newAthlete.set('gender', this.state.gender);
     newAthlete.set('ageGroup', this.state.ageGroup);
-    newAthlete.set('coach', coachPointer);
+    newAthlete.setPointer('coach', coach, '_User');
     newAthlete.save().done(function(){
-      alert('Athlete Created');
       console.log('athlete-team');
       router.navigate('results', {trigger: true});
     });

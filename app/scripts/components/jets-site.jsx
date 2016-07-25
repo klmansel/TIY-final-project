@@ -1,7 +1,23 @@
 var React = require('react');
-var $ = require('jquery');
+var slick = require('slick-carousel');
 
 var JetsPage = React.createClass({
+  componentDidMount: function(){
+
+      jQuery('.your-class').slick({
+        'setting-name': 'setting-value'
+      });
+
+
+    jQuery('.jetspics').slick({
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      adaptiveHeight: true
+    });
+
+  },
   render: function(){
     return (
       <div className="container-fluid">
@@ -42,8 +58,8 @@ var JetsPage = React.createClass({
             </div>
           </nav>
         </div>
-        <div className="row col-md-12 mobile-nav">
-          <div className="new-nav col-xs-12 col-md-10 col-md-offset-1">
+        <div className="row col-md-12 mobile-nav .hidden-md .hidden-lg">
+          <div className="new-nav col-xs-12 col-md-12">
               <a className="col-xs-12 col-md-3 new-navlist" href="#">Photos</a>
               <a className="col-xs-12 col-md-3 new-navlist" href="#">Events</a>
               <a className="col-xs-12 col-md-3 new-navlist" href="#">About Our Team</a>
@@ -51,11 +67,11 @@ var JetsPage = React.createClass({
           </div>
         </div>
         <div className="row col-md-12">
-          <h1 className="coach-headings">SLIDESHOW HERE</h1>
+
             <div className="jetspics">
-              <div>PIC1</div>
-              <div>PIC2</div>
-              <div>PIC3</div>
+              <div><img src="images/jets2015.jpg" alt="jets2015"></img></div>
+              <div><img src="images/jetspic2.jpg" alt="jetspic2"></img></div>
+              <div><img src="images/jets2016.jpg" alt="jets2016"></img></div>
             </div>
 
         </div>

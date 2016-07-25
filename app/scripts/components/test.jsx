@@ -1,1 +1,2 @@
 
+  newAthlete.set('coach', coachPointer);
