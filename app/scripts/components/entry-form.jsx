@@ -27,7 +27,7 @@ var AthleteEntry = React.createClass({
     var newAthlete = new Athlete();
     var router = this.props.router;
     var coach = JSON.parse(localStorage.getItem('user'));
-    // var coachPointer = {"__type":"Pointer","className":"_User","objectId":coach.objectId};
+
 
     newAthlete.set('athleteTeam', this.state.athleteTeam);
     newAthlete.set('athleteName', this.state.athleteName );
@@ -76,6 +76,12 @@ var AthleteEntry = React.createClass({
              </fieldset>
              <button type="submit" className="btn btn-primary submit">Submit</button>
             </form>
+
+            <div>
+              <ul>
+                {this.allAthletes}
+              </ul>
+            </div>
 
             <button type="button"><a href="#">Home</a></button>
         </div>

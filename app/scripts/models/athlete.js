@@ -11,15 +11,9 @@ var Athlete = PointerFieldModel.extend({
   urlRoot: 'http://kmcakes.herokuapp.com/classes/athletes',
 });
 
-var athlete = new Athlete();
-var coach = JSON.parse(localStorage.getItem('user'));
-athlete.setPointer('coach', coach, '_User');
-
-
-
 var AthleteCollection = Backbone.Collection.extend({
   model: Athlete,
-  urlRoot: 'http://kmcakes.herokuapp.com/classes/NewClass',
+  urlRoot: 'http://kmcakes.herokuapp.com/classes/athletes',
   parse: function(serverResponse){
    return serverResponse.results;
  }
