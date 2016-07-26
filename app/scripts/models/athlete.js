@@ -5,7 +5,7 @@ var PointerFieldModel = Backbone.Model.extend({
     this.set(field, {'__type': 'Pointer', 'className': className, 'objectId': obj.objectId});
   }
 });
-
+ 
 var Athlete = PointerFieldModel.extend({
   idAttribute: 'objectId',
   urlRoot: 'http://kmcakes.herokuapp.com/classes/athletes',

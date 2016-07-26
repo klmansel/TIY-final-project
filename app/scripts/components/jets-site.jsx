@@ -36,10 +36,10 @@ var JetsPage = React.createClass({
                 <span className="glyphicon glyphicon-plane"></span>
               </a>
             </div>
-            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div className="collapse navbar-collapse top-navbar" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
                 <li className="jets-brand"><a href="#">Photos <span className="sr-only">(current)</span></a></li>
-                <li><a className="jets-brand" href="#">Events</a></li>
+                <li><a className="jets-brand " href="#">Events</a></li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle jets-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Our Team <span className="caret"></span></a>
                   <ul className="dropdown-menu">
@@ -58,7 +58,7 @@ var JetsPage = React.createClass({
             </div>
           </nav>
         </div>
-        <div className="row col-md-12 mobile-nav .hidden-md .hidden-lg">
+        <div className="row col-md-12 mobile-nav hidden-md hidden-lg">
           <div className="new-nav col-xs-12 col-md-12">
               <a className="col-xs-12 col-md-3 new-navlist" href="#">Photos</a>
               <a className="col-xs-12 col-md-3 new-navlist" href="#">Events</a>

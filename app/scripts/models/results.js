@@ -1,6 +1,12 @@
 var Backbone = require('backbone');
 
-var Results = Backbone.Model.extend({
+var PointerFieldModel = Backbone.Model.extend({
+setPointer: function(field, obj, className){
+  this.set(field, {'__type': 'Pointer', 'className': className, 'objectId': obj.objectId});
+  }
+});
+
+var Results = PointerFieldModel.extend({
   idAttribute: 'objectId',
   urlRoot: 'http://kmcakes.herokuapp.com/classes/results'
 });

@@ -2,6 +2,18 @@ var React = require('react');
 var Athlete = require('../models/athlete').Athlete;
 require('backbone-react-component');
 
+var AthleteList = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <ul>
+
+        </ul>
+      </div>
+    )
+  }
+});
+
 var AthleteEntry = React.createClass({
   getInitialState: function(){
     return {'athleteTeam': 'Greenville Jets','name': '', 'gender': 'Male', 'event': '100', 'ageGroup': '8 and Under'};
@@ -22,6 +34,7 @@ var AthleteEntry = React.createClass({
   addAge: function(e){
     this.setState({'ageGroup': e.target.value})
   },
+
   handleSubmit: function(e){
     e.preventDefault();
     var newAthlete = new Athlete();
@@ -77,9 +90,9 @@ var AthleteEntry = React.createClass({
              <button type="submit" className="btn btn-primary submit">Submit</button>
             </form>
 
-            <div>
+            <div className="athlete-list">
               <ul>
-                {this.allAthletes}
+                {AthleteList}
               </ul>
             </div>
 

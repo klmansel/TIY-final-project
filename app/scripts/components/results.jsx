@@ -6,14 +6,17 @@ var ResultsForm = React.createClass({
     e.preventDefault();
     var newResult = new Results();
     var router = this.props.router;
+    var coach = JSON.parse(localStorage.getItem('user'));
 
     newResult.set('minutes', this.state.minutes);
     newResult.set('seconds', this.state.seconds);
     newResult.set('event', this.state.event);
+    newResult.setPointer('coach', coach, '_User');
     newResult.save().done(function(){
       alert('Entry Created');
       console.log('results logged');
       router.navigate('coachesOnly', {trigger: true});
+  
       });
   },
   enterMinutes: function(e){
