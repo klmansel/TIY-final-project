@@ -1,6 +1,10 @@
 var React = require('react');
 
 var Homepage = React.createClass({
+  handleSignout: function(){
+    window.localStorage.removeItem("user");
+    router.navigate('coachesOnly', {trigger: true});
+  },
   render: function(){
     return (
       <div className="container col-md-12 col-md-offset-4 homepage-links">
@@ -12,6 +16,7 @@ var Homepage = React.createClass({
         <h3><a href="#athleteEntry">Athlete Entry</a></h3>
         <h3><a href="#results">Event Results Entry</a></h3>
         <h3><a href="#">Jets Homepage</a></h3>
+        <button onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
         </div>
       </div>
 

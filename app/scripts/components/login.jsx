@@ -64,8 +64,8 @@ var SignUpComponent = React.createClass({
                 placeholder="Password"/>
               </fieldset>
               <button type="submit" className="btn btn-primary submit">Submit</button>
+              <button type="button"><a href="#">Home</a></button>
           </form>
-            <button type="button"><a href="#">Home</a></button>
         </div>
       </div>
 
@@ -81,7 +81,7 @@ var SignInComponent = React.createClass({
     var router = this.props.router;
     console.log(this.props);
     User.login(username, password, {
-      
+
       success: function(user){
         console.log('User logged in!: ', user);
         router.navigate('athleteEntry', {trigger: true})

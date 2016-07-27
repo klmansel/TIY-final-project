@@ -39,7 +39,7 @@ var JetsPage = React.createClass({
             <div className="collapse navbar-collapse top-navbar" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
                 <li className="jets-brand"><a href="#">Photos <span className="sr-only">(current)</span></a></li>
-                <li><a className="jets-brand " href="#">Events</a></li>
+                <li><a className="jets-brand" href="#">Events</a></li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle jets-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Our Team <span className="caret"></span></a>
                   <ul className="dropdown-menu">

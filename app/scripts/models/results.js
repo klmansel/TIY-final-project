@@ -1,10 +1,5 @@
 var Backbone = require('backbone');
-
-var PointerFieldModel = Backbone.Model.extend({
-setPointer: function(field, obj, className){
-  this.set(field, {'__type': 'Pointer', 'className': className, 'objectId': obj.objectId});
-  }
-});
+var PointerFieldModel = require('./utilities.js');
 
 var Results = PointerFieldModel.extend({
   idAttribute: 'objectId',

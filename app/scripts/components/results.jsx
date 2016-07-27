@@ -1,5 +1,6 @@
 var React = require('react');
 var Results = require('../models/results').Results;
+var AthleteCollection = require('../models/athlete').AthleteCollection;
 
 var ResultsForm = React.createClass({
   handleSubmit: function(e){
@@ -11,12 +12,15 @@ var ResultsForm = React.createClass({
     newResult.set('minutes', this.state.minutes);
     newResult.set('seconds', this.state.seconds);
     newResult.set('event', this.state.event);
+    console.log(this.state.athlete);
+    newResult.setPointer('athlete', this.state.athlete, 'athletes');
     newResult.setPointer('coach', coach, '_User');
+
     newResult.save().done(function(){
       alert('Entry Created');
       console.log('results logged');
       router.navigate('coachesOnly', {trigger: true});
-  
+
       });
   },
   enterMinutes: function(e){
@@ -26,6 +30,7 @@ var ResultsForm = React.createClass({
     this.setState({'seconds': e.target.value})
   },
   chooseAthlete: function(e){
+    console.warn('chooseAthlete');
     this.setState({'athlete': e.target.value})
   },
   addEvent: function(e){
@@ -40,10 +45,8 @@ var ResultsForm = React.createClass({
               <h1 className="coach-headings">Results Form</h1>
 
               <fieldset className="form-group">
-                <label htmlFor="athlete">Athlete Name</label>
-                <select onChange={this.chooseAthlete} type="text" className="form-control" id="athlete" placeholder="Choose Athlete">
-                  <option>NEED DROPDOWN TO POPULATE ATHLETE ARRAY</option>
-                </select>
+
+                  <SelectAthlete chooseAthlete={this.chooseAthlete}/>
 
                   <label htmlFor="event">Event</label>
                   <select onChange={this.addEvent} className="form-control" id="event">
@@ -71,10 +74,36 @@ var ResultsForm = React.createClass({
   }
 });
 
-var ResultsList = React.createClass({
+
+
+var SelectAthlete = React.createClass({
+  getInitialState: function(){
+    return {
+      athleteCollection: new AthleteCollection()
+    }
+  },
+  componentWillMount: function(){
+    var self = this;
+    var athleteCollection = this.state.athleteCollection;
+    athleteCollection.fetch().done(function(){
+      self.setState({athleteCollection: athleteCollection});
+    });
+  },
   render: function(){
+    var athletes = this.state.athleteCollection.map(function(athlete){
+      return <option key={athlete.get('objectId')} value={athlete.get('objectId')}>{athlete.get('athleteName')}</option>
+    });
+
+    console.log(this.state.athleteCollection);
+
     return (
-      <div>Test</div>
+      <div>
+      <label htmlFor="athlete">Athlete Name</label>
+      <select onChange={this.props.chooseAthlete} type="text" className="form-control" id="athlete" placeholder="Choose Athlete">
+        <option value="">-- Select Athlete --</option>
+        {athletes}
+      </select>
+      </div>
     );
   }
 

@@ -1,26 +1,31 @@
 var React = require('react');
-var Athlete = require('../models/athlete').Athlete;
+var Athlete = require('../models/athlete.js').Athlete;
+var AthleteCollection = require('../models/athlete.js').AthleteCollection;
 require('backbone-react-component');
 
 var AthleteList = React.createClass({
   render: function(){
-    return (
-      <div>
-        <ul>
+    var user = JSON.parse(localStorage.getItem('user'));
 
+    var athletes = this.props.athleteCollection.map(function(athlete){
+      return <li key={athlete.get('objectId')}>{athlete.get('athleteName')}</li>
+    });
+
+    return (
+      <div className="col-md-6">
+        <h2 className="coach-headings">Hi {user.name}!</h2>
+        <h3 className="coach-headings">You are adding athletes to the team: <br/>{user.team}</h3>
+        <ul className="athlete-list">
+          {athletes}
         </ul>
       </div>
-    )
+    );
   }
 });
 
 var AthleteEntry = React.createClass({
   getInitialState: function(){
     return {'athleteTeam': 'Greenville Jets','name': '', 'gender': 'Male', 'event': '100', 'ageGroup': '8 and Under'};
-  },
-  addTeam: function(e){
-    this.setState({'athleteTeam': e.target.value})
-    console.log();
   },
   addAthlete: function(e){
     this.setState({'athleteName': e.target.value})
@@ -34,7 +39,10 @@ var AthleteEntry = React.createClass({
   addAge: function(e){
     this.setState({'ageGroup': e.target.value})
   },
-
+  handleSignout: function(){
+    window.localStorage.removeItem("user");
+    router.navigate('signin', {trigger: true});
+  },
   handleSubmit: function(e){
     e.preventDefault();
     var newAthlete = new Athlete();
@@ -42,27 +50,21 @@ var AthleteEntry = React.createClass({
     var coach = JSON.parse(localStorage.getItem('user'));
 
 
-    newAthlete.set('athleteTeam', this.state.athleteTeam);
+
     newAthlete.set('athleteName', this.state.athleteName );
     newAthlete.set('gender', this.state.gender);
     newAthlete.set('ageGroup', this.state.ageGroup);
     newAthlete.setPointer('coach', coach, '_User');
     newAthlete.save().done(function(){
-      console.log('athlete-team');
-      router.navigate('results', {trigger: true});
+      router.navigate('athleteEntry', {trigger: true});
     });
   },
   render: function(){
     return (
-      <div className="col-md-12 col-md-offset-3">
+      <div className="col-md-12">
         <form onSubmit={this.handleSubmit} className="col-md-6">
-          <h1 className="coach-headings">Coach Stat Tracker</h1>
+          <h1 className="coach-headings">Add New Athlete</h1>
             <h3 className="coach-headings">Enter New Athlete Information</h3>
-              <fieldset className="form-group">
-                <label htmlFor="team">Team</label>
-                <input onChange={this.addTeam} type="text" className="form-control" id="athleteTeam"
-                placeholder="Enter Athlete's Team"/>
-              </fieldset>
               <fieldset className="form-group">
                 <label htmlFor="name">Name</label>
                 <input onChange={this.addAthlete} type="text" className="form-control" id="athleteName"
@@ -75,7 +77,6 @@ var AthleteEntry = React.createClass({
                  <option>Female</option>
                </select>
              </fieldset>
-
              <fieldset className="form-group">
                <label htmlFor="age-group">Age Group</label>
                <select onChange={this.addAge} className="form-control" id="ageGroup">
@@ -88,20 +89,24 @@ var AthleteEntry = React.createClass({
                </select>
              </fieldset>
              <button type="submit" className="btn btn-primary submit">Submit</button>
+             <button type="button"><a href="#">Home</a></button>
+             <button onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
+             <button onClick={this.editProfile} type="button">Edit Profile</button>
             </form>
 
             <div className="athlete-list">
               <ul>
-                {AthleteList}
+                <AthleteList athleteCollection={[]}/>
               </ul>
             </div>
 
-            <button type="button"><a href="#">Home</a></button>
+
         </div>
     );
   }
 });
 
 module.exports = {
-  'AthleteEntry' : AthleteEntry
+  'AthleteEntry' : AthleteEntry,
+  'AthleteList' : AthleteList
 };

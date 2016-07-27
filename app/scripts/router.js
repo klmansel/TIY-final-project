@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var $ = window.jQuery = require('jquery'); //get backbone models into app
+var User = require('./models/user.js').User;
 var SignUpComponent = require('./components/login.jsx').SignUpComponent;
 var SignInComponent = require('./components/login.jsx').SignInComponent;
 var AthleteEntry = require('./components/entry-form.jsx').AthleteEntry;
@@ -21,6 +22,15 @@ var Router = Backbone.Router.extend({
   'coachesOnly' : 'coachesOnly',
   'contactInfo' : 'contactInfo',
   'schedule' : 'schedule'
+},
+initialize: function(){
+  User._setHeaders();
+
+  if (User.isLoggedIn()){
+    User.refresh();
+  }else{
+    this.navigate('coachesOnly', {trigger: true});
+  }
 },
 
 index: function(){
@@ -57,28 +67,28 @@ athleteEntry: function(){
 
 results: function(){
   ReactDOM.render(
-    React.createElement(ResultsForm, {router: self}),
+    React.createElement(ResultsForm, {router: this}),
       document.getElementById('container')
     );
   },
 
 coachesOnly: function(){
   ReactDOM.render(
-    React.createElement(Homepage, {router: self}),
+    React.createElement(Homepage, {router: this}),
     document.getElementById('container')
   );
 },
 
 contactInfo: function(){
   ReactDOM.render(
-    React.createElement(ContactInfo, {router: self}),
+    React.createElement(ContactInfo, {router: this}),
     document.getElementById('container')
   );
 },
 
 schedule: function(){
   ReactDOM.render(
-    React.createElement(Schedule, {router: self}),
+    React.createElement(Schedule, {router: this}),
     document.getElementById('container')
   );
 }
