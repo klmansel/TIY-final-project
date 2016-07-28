@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('underscore');
 var Athlete = require('../models/athlete.js').Athlete;
 var AthleteCollection = require('../models/athlete.js').AthleteCollection;
 require('backbone-react-component');
@@ -6,7 +7,8 @@ require('backbone-react-component');
 var AthleteList = React.createClass({
   render: function(){
     var user = JSON.parse(localStorage.getItem('user'));
-
+    var athleteCollection = new AthleteCollection();
+    console.log(athleteCollection);
     var athletes = this.props.athleteCollection.map(function(athlete){
       return <li key={athlete.get('objectId')}>{athlete.get('athleteName')}</li>
     });
@@ -17,15 +19,23 @@ var AthleteList = React.createClass({
         <h3 className="coach-headings">You are adding athletes to the team: <br/>{user.team}</h3>
         <ul className="athlete-list">
           {athletes}
+          DOES THIS WORK?
+
         </ul>
       </div>
     );
-  }
+    }
 });
 
 var AthleteEntry = React.createClass({
   getInitialState: function(){
-    return {'athleteTeam': 'Greenville Jets','name': '', 'gender': 'Male', 'event': '100', 'ageGroup': '8 and Under'};
+    return {
+      'athleteTeam': 'Greenville Jets',
+      'name': '',
+      'gender': 'Male',
+      'event': '100',
+      'ageGroup': '8 and Under',
+      'athleteCollection': []};
   },
   addAthlete: function(e){
     this.setState({'athleteName': e.target.value})
@@ -41,23 +51,18 @@ var AthleteEntry = React.createClass({
   },
   handleSignout: function(){
     window.localStorage.removeItem("user");
-    router.navigate('signin', {trigger: true});
   },
-  handleSubmit: function(e){
+  handleSubmit: function(){
     e.preventDefault();
     var newAthlete = new Athlete();
-    var router = this.props.router;
     var coach = JSON.parse(localStorage.getItem('user'));
-
-
 
     newAthlete.set('athleteName', this.state.athleteName );
     newAthlete.set('gender', this.state.gender);
     newAthlete.set('ageGroup', this.state.ageGroup);
     newAthlete.setPointer('coach', coach, '_User');
-    newAthlete.save().done(function(){
-      router.navigate('athleteEntry', {trigger: true});
-    });
+
+    this.props.handleSubmit(newAthlete);
   },
   render: function(){
     return (
@@ -93,20 +98,34 @@ var AthleteEntry = React.createClass({
              <button onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
              <button onClick={this.editProfile} type="button">Edit Profile</button>
             </form>
-
-            <div className="athlete-list">
-              <ul>
-                <AthleteList athleteCollection={[]}/>
-              </ul>
-            </div>
-
-
         </div>
     );
   }
 });
 
+var AthleteView = React.createClass({
+  handleSubmit: function(newAthlete){
+    var router = this.props.router;
+    var athleteCollection =
+    this.state.athleteCollection.create(newAthlete).done();
+
+    newAthlete.save().done(function(){
+      router.navigate('athleteEntry', {trigger: true});
+    });
+  },
+  render: function(){
+    return (
+      <div className="athlete-list">
+        <AthleteEntry />
+        <ul>
+          <AthleteList athleteCollection={this.props.athleteCollection}/>
+        </ul>
+      </div>
+    )
+  }
+});
 module.exports = {
   'AthleteEntry' : AthleteEntry,
-  'AthleteList' : AthleteList
+  'AthleteList' : AthleteList,
+  'AthleteView' : AthleteView
 };

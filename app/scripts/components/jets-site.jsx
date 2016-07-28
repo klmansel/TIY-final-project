@@ -1,26 +1,10 @@
 var React = require('react');
-var slick = require('slick-carousel');
+
 
 var JetsPage = React.createClass({
-  componentDidMount: function(){
-
-      jQuery('.your-class').slick({
-        'setting-name': 'setting-value'
-      });
-
-
-    jQuery('.jetspics').slick({
-      dots: true,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1,
-      adaptiveHeight: true
-    });
-
-  },
   render: function(){
     return (
-      <div className="container-fluid">
+      <div>
         <div className="row">
           <nav className= "navbar navbar-default">
             <div className="navbar-header">
@@ -38,7 +22,7 @@ var JetsPage = React.createClass({
             </div>
             <div className="collapse navbar-collapse top-navbar" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li className="jets-brand"><a href="#">Photos <span className="sr-only">(current)</span></a></li>
+                <li className="jets-brand"><a href="#photos">Photos <span className="sr-only">(current)</span></a></li>
                 <li><a className="jets-brand" href="#">Events</a></li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle jets-brand" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Our Team <span className="caret"></span></a>
@@ -66,21 +50,16 @@ var JetsPage = React.createClass({
               <a className="col-xs-12 col-md-3 new-navlist" href="#">Contact Us</a>
           </div>
         </div>
-        <div className="row col-md-12">
-
-            <div className="jetspics">
-              <div><img src="images/jets2015.jpg" alt="jets2015"></img></div>
-              <div><img src="images/jetspic2.jpg" alt="jetspic2"></img></div>
-              <div><img src="images/jets2016.jpg" alt="jets2016"></img></div>
-            </div>
-
-        </div>
+        <header className="header">
+          <p>The Greenville Jets Track Club exists for the mental and physical development of
+          youth ages 6-18 from the Greater Greenville and surrounding areas. The primary
+          goal of the club is to develop each member's skills in leadership and sportsmanship
+          through mentoring, self discipline and educational support in a non violent,
+          drug free environment.</p>
+        </header>
       </div>
-
     );
-
   }
-
 });
 
 module.exports = {

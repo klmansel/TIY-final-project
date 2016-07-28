@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('underscore');
 var Results = require('../models/results').Results;
 var AthleteCollection = require('../models/athlete').AthleteCollection;
 
@@ -18,7 +19,6 @@ var ResultsForm = React.createClass({
 
     newResult.save().done(function(){
       alert('Entry Created');
-      console.log('results logged');
       router.navigate('coachesOnly', {trigger: true});
 
       });
@@ -30,7 +30,6 @@ var ResultsForm = React.createClass({
     this.setState({'seconds': e.target.value})
   },
   chooseAthlete: function(e){
-    console.warn('chooseAthlete');
     this.setState({'athlete': e.target.value})
   },
   addEvent: function(e){
@@ -74,8 +73,6 @@ var ResultsForm = React.createClass({
   }
 });
 
-
-
 var SelectAthlete = React.createClass({
   getInitialState: function(){
     return {
@@ -107,9 +104,29 @@ var SelectAthlete = React.createClass({
     );
   }
 
-
 });
 
+var ResultsAverages = React.createClass({
+  componentWillMount: function(){
+    console.log(this.props);
+  },
+  render: function(){
+    return (
+      <div>RESULTS WILL GO HERE</div>
+    )
+  }
+});
+var ResultsView = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <ResultsForm />
+        <ResultsAverages />
+      </div>
+    );
+  }
+});
 module.exports = {
-  'ResultsForm' : ResultsForm
+  'ResultsForm' : ResultsForm,
+  'ResultsView' : ResultsView
 };

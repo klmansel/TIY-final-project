@@ -8,7 +8,7 @@ var Homepage = React.createClass({
   render: function(){
     return (
       <div className="container col-md-12 col-md-offset-4 homepage-links">
-        <div className="row">
+        <div className="row coaches-menu">
         <h1 className="homepage-title">Coaches Area</h1>
         <h3><a href="#signup">SignUp Here</a></h3>
         <h3><a href="#signin">Sign In</a></h3>

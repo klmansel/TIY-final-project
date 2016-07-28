@@ -5,12 +5,14 @@ var $ = window.jQuery = require('jquery'); //get backbone models into app
 var User = require('./models/user.js').User;
 var SignUpComponent = require('./components/login.jsx').SignUpComponent;
 var SignInComponent = require('./components/login.jsx').SignInComponent;
-var AthleteEntry = require('./components/entry-form.jsx').AthleteEntry;
+var AthleteView = require('./components/entry-form.jsx').AthleteView;
 var Homepage = require('./components/homepage.jsx').Homepage;
 var JetsPage = require('./components/jets-site.jsx').JetsPage;
 var ResultsForm = require('./components/results.jsx').ResultsForm;
+var ResultsView = require('./components/results.jsx').ResultsView;
 var ContactInfo = require('./components/contactus.jsx');
 var Schedule = require('./components/schedule.jsx');
+var SlideshowView = require('./components/photos.jsx');
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -21,10 +23,11 @@ var Router = Backbone.Router.extend({
   'results' : 'results',
   'coachesOnly' : 'coachesOnly',
   'contactInfo' : 'contactInfo',
-  'schedule' : 'schedule'
+  'schedule' : 'schedule',
+  'photos' : 'photos'
 },
 initialize: function(){
-  User._setHeaders();
+  User.setHeaders();
 
   if (User.isLoggedIn()){
     User.refresh();
@@ -60,14 +63,15 @@ signin: function(){
 athleteEntry: function(){
   var self = this;
   ReactDOM.render(
-    React.createElement(AthleteEntry, {router: self}),
+    React.createElement(AthleteView, {router: self}),
       document.getElementById('container')
     );
   },
 
 results: function(){
+  var self = this;
   ReactDOM.render(
-    React.createElement(ResultsForm, {router: this}),
+    React.createElement(ResultsView, {router: self}),
       document.getElementById('container')
     );
   },
@@ -89,6 +93,12 @@ contactInfo: function(){
 schedule: function(){
   ReactDOM.render(
     React.createElement(Schedule, {router: this}),
+    document.getElementById('container')
+  );
+},
+photos: function(){
+  ReactDOM.render(
+    React.createElement(SlideshowView, {router:this}),
     document.getElementById('container')
   );
 }

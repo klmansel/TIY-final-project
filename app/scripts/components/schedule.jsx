@@ -5,7 +5,7 @@ var Schedule = React.createClass({
     return (
       <div className="row col-md-10 col-md-offset-1">
         <h1 className="coach-headings">2016 Schedule and Results</h1>
-          <ul className="schedule-list">
+          <ul className="schedule-list well">
             <li className="schedule-event">April 2 Runnin on Faith Eastside High School Taylors, SC<a> Canceled</a></li>
             <li className="schedule-event">April 23 Stan Staggs Invitational Spartanburg Elite Chapman High School Inman, SC<a href="#"> Results</a></li>
             <li className="schedule-event">April 30 Bring The Heat Invitational Charlotte Heat Track Club Rocky River High School Charlotte, NC<a href="#">Results</a></li>

@@ -84,7 +84,7 @@ var SignInComponent = React.createClass({
 
       success: function(user){
         console.log('User logged in!: ', user);
-        router.navigate('athleteEntry', {trigger: true})
+        router.navigate('coachesOnly', {trigger: true})
       },
       error: function(user, error){
         console.log('error: ', error);

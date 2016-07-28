@@ -12,19 +12,21 @@ var User = Backbone.Model.extend({
 
     loggedInUser.fetch().done(function(data){
       localStorage.setItem('user', JSON.stringify(loggedInUser.toJSON()));
-      self._setHeaders(data.sessionToken);
+      self.setHeaders(data.sessionToken);
       callbacks.success(loggedInUser);
     }).fail(function(error){
       callbacks.error(loggedInUser, error);
     });
 
   },
-  _setHeaders: function(sessionToken){
+  setHeaders: function(sessionToken){
     jQuery.ajaxSetup({
       beforeSend: function(xhr){
         xhr.setRequestHeader("X-Parse-Application-Id", "kmcakes");
         xhr.setRequestHeader("X-Parse-REST-API-Key", "greenvillejets");
-        xhr.setRequestHeader("X-Parse-Session-Token", sessionToken);
+        if(sessionToken){
+          xhr.setRequestHeader("X-Parse-Session-Token", sessionToken);
+        }
       }
     });
   },
@@ -33,7 +35,7 @@ var User = Backbone.Model.extend({
   },
   refresh: function(){
     var currentUser = new User(JSON.parse(localStorage.getItem('user')));
-    this._setHeaders(currentUser.get('sessionToken'));
+    this.setHeaders(currentUser.get('sessionToken'));
     return currentUser;
   }
 

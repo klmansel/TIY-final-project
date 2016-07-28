@@ -29,12 +29,13 @@ img {
 .wrapper {
   background-image: linear-gradient($backgroundgray, $black);
   background-size: cover;
-  height: 1000px;
+  height: 1500px;
 }
 
 .navbar {
   background-color: $jetsyellow;
   border: 0;
+  margin-bottom: 0;
 }
 
 .jets-brand {
@@ -45,6 +46,43 @@ img {
   &:hover {
     color: $jetsyellow;
   }
+}
+
+.header::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  background-image: url('../images/trackpic.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  width: 1200px;
+  height: 800px;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+.header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    p {
+      color: $jetsyellow;
+      font-family: 'Coda', sans-serif;
+      font-size: 25px;
+      padding-top: 30px;
+      text-align: left;
+    }
 }
 
 .new-navlist {
@@ -115,6 +153,14 @@ img {
   text-align: center;
 }
 
+.coaches-menu {
+  a {
+    background-color: $black;
+    border: 1px solid $jetsgreen;
+    border-radius: 20%;
+  }
+}
+
 .jetspics {
   padding-top: 40px;
 
@@ -124,9 +170,15 @@ img {
   }
 }
 
+.well {
+  background: $jetsyellow;
+}
+
 .schedule-event {
-  color: $white;
+  color: $black;
+  font-family: 'Coda', sans-serif;
   font-size: 16px;
+  font-weight: lighter;
   line-height: 30px;
   list-style: disc;
 
@@ -135,7 +187,7 @@ img {
     text-decoration: none;
 
     &:hover {
-      color: $jetsyellow;
+      font-size: 18px;
     }
 
   }
