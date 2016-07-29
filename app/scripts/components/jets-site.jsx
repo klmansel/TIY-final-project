@@ -36,15 +36,16 @@ var JetsPage = React.createClass({
             </div>
           </nav>
         </div>
-        <div className="row col-md-12 mobile-nav hidden-md hidden-lg">
-          <div className="new-nav col-xs-12 col-md-12">
-              <a className="col-xs-12 col-md-3 new-navlist" href="#">Photos</a>
-              <a className="col-xs-12 col-md-3 new-navlist" href="#">Events</a>
-              <a className="col-xs-12 col-md-3 new-navlist" href="#">About Our Team</a>
-              <a className="col-xs-12 col-md-3 new-navlist" href="#">Contact Us</a>
-          </div>
-        </div>
+
         <header className="header">
+          <div className="row col-md-12 mobile-nav hidden-md hidden-lg">
+            <div className="new-nav col-xs-12 col-md-12">
+                <a className="col-xs-12 col-md-3 new-navlist" href="#photos">Photos</a>
+                <a className="col-xs-12 col-md-3 new-navlist" href="#results">Schedule/Results</a>
+                <a className="col-xs-12 col-md-3 new-navlist" href="#">About Our Team</a>
+                <a className="col-xs-12 col-md-3 new-navlist" href="#contactInfo">Contact Us</a>
+            </div>
+          </div>
           <p>The Greenville Jets Track Club exists for the mental and physical development of
           youth ages 6-18 from the Greater Greenville and surrounding areas. The primary
           goal of the club is to develop each member's skills in leadership and sportsmanship
