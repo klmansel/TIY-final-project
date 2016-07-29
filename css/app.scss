@@ -1,0 +1,226 @@
+$jetsgreen: #00a954;
+// $jetsyellow: #ffd700;
+$jetsyellow: #fff77d;
+$gradyellow: #ff0;
+$newlightgreen: #66bb6a;
+$newdarkgreen: #2e7d32;
+$backgroundgray: #777;
+$black: #000;
+$white: #fff;
+
+
+// Bootstrap Variables
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+
+// Import Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  background-image: linear-gradient($backgroundgray, $black);
+  background-size: cover;
+  height: 1500px;
+  width: 100%;
+}
+
+.navbar {
+  background-color: $jetsyellow;
+  border: 0;
+  margin-bottom: 0;
+}
+
+.jets-brand,
+.footer-text {
+  color: $backgroundgray;
+  // font-family: 'Permanent Marker', cursive;
+  font-family: 'Coda', cursive;
+
+  &:hover {
+    color: $jetsyellow;
+  }
+}
+
+.header::before {
+  content: '';
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: -1;
+
+  background-image: url('../images/trackpic.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 800px;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.header {
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 0;
+
+  p {
+    color: $jetsyellow;
+    font-family: 'Coda', sans-serif;
+    font-size: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 50px;
+    text-align: left;
+  }
+}
+
+.new-navlist {
+  background-image: linear-gradient($newlightgreen, $newdarkgreen);
+  border: 1px solid $jetsgreen;
+  border-radius: 1px;
+  color: $jetsyellow;
+  display: inline-block;
+  float: left;
+  font-family: 'Coda', cursive;
+  font-size: 20px;
+  font-weight: bold;
+  height: 45px;
+  line-height: 18px;
+  list-style-type: none;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 12px;
+  text-align: center;
+  text-decoration: none;
+  width: 250px;
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $backgroundgray;
+    list-style-type: none;
+    text-decoration: none;
+    text-overflow: none;
+  }
+
+  &:click {
+    text-decoration: none;
+  }
+
+}
+
+.glyphicon-plane {
+  color: $jetsgreen;
+}
+
+.homepage-links {
+  a {
+    color: $jetsyellow;
+    font-family: 'Coda', cursive;
+    text-decoration: none;
+
+    &:hover {
+      color: $jetsgreen;
+    }
+  }
+}
+
+.homepage-title {
+  color: $jetsgreen;
+  font-family: 'Coda', cursive;
+  text-decoration: none;
+
+}
+
+.coach-headings {
+  color: $jetsyellow;
+  // font-family: 'Permanent Marker', cursive;
+  font-family: 'Coda', cursive;
+  text-align: center;
+}
+
+.coaches-menu {
+  a {
+    background-color: $black;
+    border: 1px solid $jetsgreen;
+  }
+}
+//Photos
+.jetspics {
+  padding-top: 40px;
+
+  img {
+    height: 600px;
+    width: 1075px;
+  }
+}
+//Schedule
+.well {
+  background: $jetsyellow;
+}
+
+.schedule-event {
+  color: $black;
+  font-family: 'Coda', sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  line-height: 30px;
+  list-style: disc;
+
+  a {
+    color: $jetsgreen;
+    text-decoration: none;
+
+    &:hover {
+      font-size: 18px;
+    }
+
+  }
+}
+
+//Athletes
+
+.athlete-list,
+.results-list {
+  li {
+    color: $white;
+    list-style: none;
+    text-align: center;
+  }
+}
+
+//Footer
+
+.footer {
+  background-color: $jetsyellow;
+  border: 0;
+  bottom: 0;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+}
+
+.footer-text {
+  padding-left: 10px;
+  padding-top: 10px;
+
+  &:hover {
+    color: currentColor;
+  }
+}
