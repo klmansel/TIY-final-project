@@ -8,10 +8,10 @@ var Results = PointerFieldModel.extend({
 
 var ResultsCollection = Backbone.Collection.extend({
   model: Results,
-  urlRoot: 'http://kmcakes.herokuapp.com/classes/results',
+  url: 'http://kmcakes.herokuapp.com/classes/results',
   parse: function(serverResponse){
    return serverResponse.results;
- }
+ },
 
 });
 

@@ -30,6 +30,7 @@ img {
   background-image: linear-gradient($backgroundgray, $black);
   background-size: cover;
   height: 1500px;
+  width: 100%;
 }
 
 .navbar {
@@ -158,9 +159,10 @@ img {
     background-color: $black;
     border: 1px solid $jetsgreen;
     border-radius: 20%;
+    padding: 5px;
   }
 }
-
+//Photos
 .jetspics {
   padding-top: 40px;
 
@@ -169,7 +171,7 @@ img {
     width: 1075px;
   }
 }
-
+//Schedule
 .well {
   background: $jetsyellow;
 }
@@ -190,5 +192,16 @@ img {
       font-size: 18px;
     }
 
+  }
+}
+
+//Athletes
+
+.athlete-list,
+.results-list {
+  li {
+    color: $white;
+    list-style: none;
+    text-align: center;
   }
 }

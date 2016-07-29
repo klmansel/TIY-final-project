@@ -1,47 +1,39 @@
+Sorted by event: .where
+actualExpenseCollection.where({
+     "type": "Mortgage/Rent"
+   }).fetch().done(function(){
+     console.log(actualExpenseCollection);
+     self.setState({actualExpenseCollection: actualExpenseCollection});
+     console.log(self.state.actualExpenseCollection);
+   });
+
+   var timeInSeconds = this.state.resultscollection.map(function(result){
+     result.get('minutes')/60 + result.get('seconds')
+     return <li key={result.get('objectId')} value={result.get('objectId')}>
+       {timeInSeconds}
+     </li>
+
+   });
+   var entrees=this.props.menuItems.where({
+         foodType: 'Entree'
+       }).map(function(model){
+         return (
+         <li key={model.cid}>{model.get('title')} {model.displayPrice()} <button onClick={function(){self.props.addToCart(model)}} className="btn btn-xs add-button">Add</button></li>
+         );
 
 
 
-var SelectAthlete = React.createClass({
-  getInitialState: function(){
-    return {
-      athleteCollection: new AthleteCollection()
-    }
-  },
-  componentWillMount: function(){
-    var self = this;
-    var athleteCollection = this.state.athleteCollection;
-    athleteCollection.fetch().done(function(){
-      self.setState({athleteCollection: athleteCollection});
-    });
-  },
-  render: function(){
-    var athletes = this.state.athleteCollection.map(function(athlete){
-      return <option key={athlete.get('objectId')} value={athlete.get('objectId')}>{athlete.get('athleteName')}</option>
-    });
+         <button onClick={self.handleRemoveAthlete}>Delete</button>
 
-    console.log(this.state.athleteCollection);
-
-    return (
-      <div>
-      <label htmlFor="athlete">Athlete Name</label>
-      <select onChange={this.props.chooseAthlete} type="text" className="form-control" id="athlete" placeholder="Choose Athlete">
-        <option value="">-- Select Athlete --</option>
-        {athletes}
-      </select>
-      </div>
-    );
-  }
-
-});
-
+           handleRemoveAthlete: function(model){
+             this.state.athlete.remove(model);
+             this.forceUpdate();
+           },
 navbar-fixed-top to help navbar's stay at top, but changed other things
 
-
-
-<div className="row col-md-12">
-  <div className="jetspics">
-    <div><img src="images/jets2015.jpg" alt="jets2015"></img></div>
-    <div><img src="images/jetspic2.jpg" alt="jetspic2"></img></div>
-    <div><img src="images/jets2016.jpg" alt="jets2016"></img></div>
-  </div>
-</div>
+function convert(input) {
+    var parts = input.split(':'),
+        minutes = +parts[0],
+        seconds = +parts[1];
+    return (minutes * 60 + seconds).toFixed(3);
+}

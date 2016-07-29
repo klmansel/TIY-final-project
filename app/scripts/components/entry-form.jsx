@@ -5,38 +5,40 @@ var AthleteCollection = require('../models/athlete.js').AthleteCollection;
 require('backbone-react-component');
 
 var AthleteList = React.createClass({
+  getInitialState: function(){
+    return {
+      athleteCollection: new AthleteCollection()
+    }
+  },
+  componentWillMount: function(){
+    var self = this;
+    var athleteCollection = this.state.athleteCollection;
+    athleteCollection.fetch().done(function(){
+      self.setState({athleteCollection: athleteCollection});
+    });
+  },
   render: function(){
     var user = JSON.parse(localStorage.getItem('user'));
-    var athleteCollection = new AthleteCollection();
-    console.log(athleteCollection);
-    var athletes = this.props.athleteCollection.map(function(athlete){
-      return <li key={athlete.get('objectId')}>{athlete.get('athleteName')}</li>
+    var athletes = this.state.athleteCollection.map(function(athlete){
+      return (
+          <li className="col-md-6" key={athlete.get('objectId')}>
+            {athlete.get('athleteName')}</li>
+      )
     });
 
     return (
-      <div className="col-md-6">
-        <h2 className="coach-headings">Hi {user.name}!</h2>
-        <h3 className="coach-headings">You are adding athletes to the team: <br/>{user.team}</h3>
-        <ul className="athlete-list">
-          {athletes}
-          DOES THIS WORK?
-
-        </ul>
-      </div>
-    );
-    }
+    <div className="col-md-6">
+      <h2 className="coach-headings">Hi {user.name}!</h2>
+      <h3 className="coach-headings">You are adding athletes to the team: <br/>{user.team}</h3>
+      <ul className="athlete-list">
+        {athletes}
+      </ul>
+    </div>
+  );
+}
 });
 
 var AthleteEntry = React.createClass({
-  getInitialState: function(){
-    return {
-      'athleteTeam': 'Greenville Jets',
-      'name': '',
-      'gender': 'Male',
-      'event': '100',
-      'ageGroup': '8 and Under',
-      'athleteCollection': []};
-  },
   addAthlete: function(e){
     this.setState({'athleteName': e.target.value})
   },
@@ -52,7 +54,7 @@ var AthleteEntry = React.createClass({
   handleSignout: function(){
     window.localStorage.removeItem("user");
   },
-  handleSubmit: function(){
+  handleSubmit: function(e){
     e.preventDefault();
     var newAthlete = new Athlete();
     var coach = JSON.parse(localStorage.getItem('user'));
@@ -61,13 +63,14 @@ var AthleteEntry = React.createClass({
     newAthlete.set('gender', this.state.gender);
     newAthlete.set('ageGroup', this.state.ageGroup);
     newAthlete.setPointer('coach', coach, '_User');
-
-    this.props.handleSubmit(newAthlete);
+    newAthlete.save().done(function(){
+      console.log(newAthlete.get('athleteName'));
+    });
   },
   render: function(){
     return (
-      <div className="col-md-12">
-        <form onSubmit={this.handleSubmit} className="col-md-6">
+      <div className="col-md-6">
+        <form id="enter-athlete" onSubmit={this.handleSubmit} className="col-md-12">
           <h1 className="coach-headings">Add New Athlete</h1>
             <h3 className="coach-headings">Enter New Athlete Information</h3>
               <fieldset className="form-group">
@@ -78,6 +81,7 @@ var AthleteEntry = React.createClass({
               <fieldset className="form-group">
                <label htmlFor="gender">Gender</label>
                <select onChange={this.addGender} className="form-control" id="gender">
+                 <option>--SELECT--</option>
                  <option>Male</option>
                  <option>Female</option>
                </select>
@@ -85,6 +89,7 @@ var AthleteEntry = React.createClass({
              <fieldset className="form-group">
                <label htmlFor="age-group">Age Group</label>
                <select onChange={this.addAge} className="form-control" id="ageGroup">
+                 <option>--SELECT--</option>
                  <option>8 and Under</option>
                  <option>9-10 Years Old</option>
                  <option>11-12 Years Old</option>
@@ -104,28 +109,39 @@ var AthleteEntry = React.createClass({
 });
 
 var AthleteView = React.createClass({
-  handleSubmit: function(newAthlete){
-    var router = this.props.router;
-    var athleteCollection =
-    this.state.athleteCollection.create(newAthlete).done();
-
-    newAthlete.save().done(function(){
-      router.navigate('athleteEntry', {trigger: true});
-    });
+  getInitialState: function(){
+    return {
+      'athleteTeam': 'Greenville Jets',
+      'name': '',
+      'gender': 'Male',
+      'event': '100',
+      'ageGroup': '8 and Under',
+      'athleteCollection': []
+    };
   },
-  render: function(){
-    return (
-      <div className="athlete-list">
-        <AthleteEntry />
-        <ul>
-          <AthleteList athleteCollection={this.props.athleteCollection}/>
-        </ul>
-      </div>
-    )
-  }
+  componentWillMount: function(){
+    var self = this;
+       var athleteCollection = new AthleteCollection();
+       athleteCollection.fetch().done(function(){
+         self.setState({athleteCollection: athleteCollection});
+  });
+},
+ handleSubmit: function(){
+    var router = this.props.router;
+   router.navigate('athleteEntry', {trigger: true});
+   this.forceUpdate();
+ },
+render: function(){
+  return (
+    <div>
+      <AthleteEntry />
+      <AthleteList athleteCollection={this.state.athleteCollection}/>
+    </div>
+  );
+}
 });
+
 module.exports = {
   'AthleteEntry' : AthleteEntry,
-  'AthleteList' : AthleteList,
   'AthleteView' : AthleteView
 };

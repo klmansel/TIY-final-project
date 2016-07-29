@@ -1,7 +1,9 @@
+
 var React = require('react');
 var _ = require('underscore');
 var Results = require('../models/results').Results;
 var AthleteCollection = require('../models/athlete').AthleteCollection;
+var ResultsCollection = require('../models/results').ResultsCollection;
 
 var ResultsForm = React.createClass({
   handleSubmit: function(e){
@@ -13,7 +15,6 @@ var ResultsForm = React.createClass({
     newResult.set('minutes', this.state.minutes);
     newResult.set('seconds', this.state.seconds);
     newResult.set('event', this.state.event);
-    console.log(this.state.athlete);
     newResult.setPointer('athlete', this.state.athlete, 'athletes');
     newResult.setPointer('coach', coach, '_User');
 
@@ -37,9 +38,9 @@ var ResultsForm = React.createClass({
   },
   render: function(){
     return (
-      <div className="container">
-        <div className="row col-md-12 col-md-offset-3">
-          <div className="col-md-6">
+
+        <div className="col-md-6">
+
             <form onSubmit={this.handleSubmit}>
               <h1 className="coach-headings">Results Form</h1>
 
@@ -49,12 +50,12 @@ var ResultsForm = React.createClass({
 
                   <label htmlFor="event">Event</label>
                   <select onChange={this.addEvent} className="form-control" id="event">
+                    <option>-- Select --</option>
                     <option>100</option>
                     <option>200</option>
                     <option>400</option>
                     <option>800</option>
                     <option>1500</option>
-                    <option>Long Jump</option>
                   </select>
 
               <label htmlFor="minutes">Minutes</label>
@@ -65,9 +66,8 @@ var ResultsForm = React.createClass({
                  <button type="submit" className="btn btn-primary submit">Submit</button>
             </form>
             <button type="button"><a href="#">Home</a></button>
-          </div>
         </div>
-      </div>
+    
     );
 
   }
@@ -91,7 +91,7 @@ var SelectAthlete = React.createClass({
       return <option key={athlete.get('objectId')} value={athlete.get('objectId')}>{athlete.get('athleteName')}</option>
     });
 
-    console.log(this.state.athleteCollection);
+    console.warn('Athletes:',this.state.athleteCollection);
 
     return (
       <div>
@@ -107,12 +107,34 @@ var SelectAthlete = React.createClass({
 });
 
 var ResultsAverages = React.createClass({
+  getInitialState: function(){
+    return {
+      resultscollection: new ResultsCollection()
+    }
+  },
   componentWillMount: function(){
-    console.log(this.props);
+    var self = this;
+    var resultscollection = this.state.resultscollection;
+    resultscollection.fetch().done(function(){
+      self.setState({resultscollection: resultscollection});
+  console.log('Results:',resultscollection.length);
+
+    });
   },
   render: function(){
+
+    var results = this.state.resultscollection.map(function(result){
+      return <li key={result.get('objectId')} value={result.get('objectId')}>
+        {result.get('minutes'), ':',result.get('seconds')}</li>
+    });
+
     return (
-      <div>RESULTS WILL GO HERE</div>
+      <div className="col-md-6">
+        <h3 className="coach-headings">Results:</h3>
+        <ul className="results-list ">
+          {results}
+        </ul>
+      </div>
     )
   }
 });
