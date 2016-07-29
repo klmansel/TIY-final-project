@@ -67,7 +67,7 @@ var ResultsForm = React.createClass({
             </form>
             <button type="button"><a href="#">Home</a></button>
         </div>
-    
+
     );
 
   }
@@ -125,9 +125,8 @@ var ResultsAverages = React.createClass({
 
     var results = this.state.resultscollection.map(function(result){
       return <li key={result.get('objectId')} value={result.get('objectId')}>
-        {result.get('minutes'), ':',result.get('seconds')}</li>
+        {result.get('event'),'   ', result.get('minutes'), ':',result.get('seconds')}</li>
     });
-
     return (
       <div className="col-md-6">
         <h3 className="coach-headings">Results:</h3>

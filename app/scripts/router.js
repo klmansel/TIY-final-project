@@ -7,7 +7,7 @@ var SignUpComponent = require('./components/login.jsx').SignUpComponent;
 var SignInComponent = require('./components/login.jsx').SignInComponent;
 var AthleteView = require('./components/entry-form.jsx').AthleteView;
 var Homepage = require('./components/homepage.jsx').Homepage;
-var JetsPage = require('./components/jets-site.jsx').JetsPage;
+var JetsPageView = require('./components/jets-site.jsx').JetsPageView;
 var ResultsForm = require('./components/results.jsx').ResultsForm;
 var ResultsView = require('./components/results.jsx').ResultsView;
 var ContactInfo = require('./components/contactus.jsx');
@@ -39,7 +39,7 @@ initialize: function(){
 index: function(){
   var self = this;
   ReactDOM.render(
-    React.createElement(JetsPage, {router: self}),
+    React.createElement(JetsPageView, {router: self}),
       document.getElementById('container')
     );
 },

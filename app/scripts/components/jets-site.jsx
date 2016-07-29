@@ -8,12 +8,6 @@ var JetsPage = React.createClass({
         <div className="row">
           <nav className= "navbar navbar-default">
             <div className="navbar-header">
-              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
               <a className="navbar-brand jets-brand" href="#">
                 <span className="glyphicon glyphicon-plane" ></span>
                 <span className="jets-brand">Greenville Jets Track Club</span>
@@ -57,11 +51,34 @@ var JetsPage = React.createClass({
           through mentoring, self discipline and educational support in a non violent,
           drug free environment.</p>
         </header>
+
       </div>
     );
   }
 });
 
+var JetsPageFooter = React.createClass({
+  render: function(){
+    return (
+      <div className="row">
+        <nav className="navbar footer">
+          <p className="footer-text">Crafted by KLM &#169;2016</p>
+        </nav>
+      </div>
+    );
+  }
+});
+
+var JetsPageView = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <JetsPage />
+        <JetsPageFooter />
+      </div>
+    )
+  }
+});
 module.exports = {
-  'JetsPage' : JetsPage
+  'JetsPageView' : JetsPageView
 }

@@ -5,16 +5,20 @@ var ContactInfo = React.createClass({
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-4 col-md-offset-4">
+          <div className="col-md-8 col-md-offset-2">
             <h3 className="coach-headings">Contact Us</h3>
-            <p>Would you like to become a Greenville Jet?
-              Call Willie Goolsby (864)901-1869 or Adrique Heyward (864)561-5134 or
+            <p className="well contact-us">Would you like to become a Greenville Jet?<br/>
+              Call Willie Goolsby (864)901-1869 or Adrique Heyward (864)561-5134<br/>
 
-              Contact us about our meets and training schedule.
-              Practices are held Monday,Tuesday, and Thursday at 6:00pm.
-              In June practices are 4-5 days a week and continue this way until
-              the end of the season in late July.</p>
+              Practices are held Monday,Tuesday, and Thursday at 6:00pm  at the JL Mann High School track.<br/>
+
+              In June practices are 4-5 days a week,
+              and continue this way until the end of the season in late July.</p>
             <button type="button"><a href="#">Home</a></button>
+
+          <iframe width="400" height="250" frameBorder="0"
+            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJP_X4XnovWIgR9MTYXuJZTp4&key=AIzaSyC1lJUsF_8rqOo5qc0IIlqspDyrvlUca4g"
+            allowFullScreen></iframe>
           </div>
 
         </div>
