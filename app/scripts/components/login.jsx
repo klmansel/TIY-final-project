@@ -37,7 +37,7 @@ var SignUpComponent = React.createClass({
 
   render: function(){
     return (
-      <div className="container">
+      <div className="container bkg-pages">
         <div className="row col-md-12 col-md-offset-3">
           <form onSubmit={this.handleSubmit} className="col-md-6">
             <h1 className="coach-headings">Coach Sign Up</h1>
@@ -45,26 +45,27 @@ var SignUpComponent = React.createClass({
                 <label htmlFor="name">Coach Name</label>
                 <input onChange={this.handleNameChange} type="text"
                   className="form-control" id="coach-name"
-                placeholder="Coach Name"/>
+                placeholder="Enter Full Name"/>
               </fieldset>
               <fieldset className="form-group">
                 <label htmlFor="team">Team Name</label>
                 <input onChange={this.handleTeamChange} type="text"
                   className="form-control" id="team-name"
-                placeholder="Team Name"/>
+                placeholder="Enter Team Name"/>
               </fieldset>
               <fieldset className="form-group">
                 <label htmlFor="username">Username</label>
                 <input onChange={this.handleEmailChange} type="text" className="form-control" id="username"
-                placeholder="Username"/>
+                placeholder="Create Username"/>
               </fieldset>
               <fieldset className="form-group">
                 <label htmlFor="password">Password</label>
                 <input onChange={this.handlePasswordChange} type="password" className="form-control" id="password"
-                placeholder="Password"/>
+                placeholder="Create Password"/>
               </fieldset>
-              <button type="submit" className="btn btn-primary submit">Submit</button>
-              <button type="button"><a href="#">Home</a></button>
+              <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
+              <button className="jets-button" type="button"><a href="#signin">Sign In</a></button>
+              <button className="jets-button" type="button"><a href="#">Home</a></button>
           </form>
         </div>
       </div>
@@ -84,7 +85,7 @@ var SignInComponent = React.createClass({
 
       success: function(user){
         console.log('User logged in!: ', user);
-        router.navigate('coachesOnly', {trigger: true})
+        router.navigate('athleteEntry', {trigger: true})
       },
       error: function(user, error){
         console.log('error: ', error);
@@ -94,7 +95,7 @@ var SignInComponent = React.createClass({
 
   render: function(){
     return (
-      <div className="col-md-6 col-md-offset-4">
+      <div className="col-md-6 col-md-offset-4 bkg-pages">
         <form onSubmit={this.handleSubmit} className="col-md-6">
           <h1 className="coach-headings">Coach Login</h1>
             <fieldset className="form-group">
@@ -107,9 +108,10 @@ var SignInComponent = React.createClass({
               <input name="password" type="password" className="form-control" id="password"
               placeholder="Password"/>
             </fieldset>
-            <button type="submit" className="btn btn-primary submit">Sign In</button>
+            <button type="submit" className="btn btn-primary submit jets-button">Sign In</button>
+            <button className="jets-button" type="button"><a href="#">Home</a></button>
         </form>
-          <button type="button"><a href="#">Home</a></button>
+
       </div>
 
     );

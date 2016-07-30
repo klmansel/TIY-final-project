@@ -98,11 +98,13 @@ var AthleteEntry = React.createClass({
                  <option>17-19 Years Old</option>
                </select>
              </fieldset>
-             <button type="submit" className="btn btn-primary submit">Submit</button>
-             <button type="button"><a href="#">Home</a></button>
-             <button onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
-             <button onClick={this.editProfile} type="button">Edit Profile</button>
-            </form>
+
+             <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
+             <button className="jets-button" type="button"><a href="#">Home</a></button>
+             <button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button>
+             <button className="jets-button" onClick={this.editProfile} type="button">Edit Profile</button>
+            <button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
+        </form>
         </div>
     );
   }
@@ -129,11 +131,11 @@ var AthleteView = React.createClass({
  handleSubmit: function(){
     var router = this.props.router;
    router.navigate('athleteEntry', {trigger: true});
-   this.forceUpdate();
+   this.clear();
  },
 render: function(){
   return (
-    <div>
+    <div className="bkg-pages">
       <AthleteEntry />
       <AthleteList athleteCollection={this.state.athleteCollection}/>
     </div>

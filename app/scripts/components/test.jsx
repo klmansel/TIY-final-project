@@ -21,7 +21,12 @@ actualExpenseCollection.where({
          <li key={model.cid}>{model.get('title')} {model.displayPrice()} <button onClick={function(){self.props.addToCart(model)}} className="btn btn-xs add-button">Add</button></li>
          );
 
-
+         <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+       -                <span className="sr-only">Toggle navigation</span>
+       -                <span className="icon-bar"></span>
+       -                <span className="icon-bar"></span>
+       -                <span className="icon-bar"></span>
+       -              </button>
 
          <button onClick={self.handleRemoveAthlete}>Delete</button>
 
@@ -37,3 +42,23 @@ function convert(input) {
         seconds = +parts[1];
     return (minutes * 60 + seconds).toFixed(3);
 }
+
+
+<nav>
+  <div className="navbar-header">
+    <a className="navbar-brand jets-brand" href="#">
+      <span className="glyphicon glyphicon-plane" ></span>
+      <span className="jets-brand">Greenville Jets Track Club</span>
+      <span className="glyphicon glyphicon-plane"></span>
+    </a>
+  </div>
+  <ul>
+    <li><a className="jets-brand" href="#schedule">Schedule/Results</a></li>
+    <li></li>
+    <li></li>
+    <li><a className="jets-brand" href="#coachesOnly">Coaches Area</a></li>
+    <li><a href="https://www.facebook.com/GreenvilleJets/?fref=ts"
+      target="_blank"><i className="fa fa-facebook-official"></i></a>
+    <a className="jets-brand" href="#contactInfo">Contact Us</a></li>
+  </ul>
+</nav>

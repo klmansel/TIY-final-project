@@ -1,0 +1,46 @@
+var React = require('react');
+
+var NavbarComponent = React.createClass({
+  render: function(){
+    return (
+      <div className="container-fluid new-jets-page">
+        <div className="new-nav">
+          <h1>
+            <span className="glyphicon glyphicon-plane" ></span>
+            Greenville Jets Track Club
+            <span className="glyphicon glyphicon-plane" ></span>
+          </h1>
+
+          <p className="hidden-sm">The Greenville Jets Track Club exists for the mental and physical development of
+          youth ages 6-18 from the Greater Greenville and surrounding areas. The primary
+          goal of the club is to develop each member's skills in leadership and sportsmanship
+          through mentoring, self discipline and educational support in a non violent,
+          drug free environment.</p>
+          <div className="nav-icons col-md-10">
+            <div className="icon-wrap"><a href="#schedule"><img src="images/running.png"
+              alt="running-icon"></img><p className="on-hover">Meet Schedule</p></a></div>
+            <div className="icon-wrap"><a href="#coachesOnly"><img src="images/whistle.png"
+              alt="whistle"></img><p className="on-hover">Coaches Area</p></a></div>
+            <div className="icon-wrap"><a href="#photos"><img src="images/camera.png"
+              alt="camera"></img><p className="on-hover">Photos</p></a></div>
+            <div className="icon-wrap"><a href="#contactInfo"><img src="images/iphone.png"
+              alt="iphone"></img><p className="on-hover">Contact Us</p></a></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+});
+
+var JetsHomepage = React.createClass({
+  render: function(){
+    return (
+      <NavbarComponent />
+    )
+  }
+});
+
+module.exports = {
+  'NavbarComponent' : NavbarComponent,
+  'JetsHomepage' : JetsHomepage
+}

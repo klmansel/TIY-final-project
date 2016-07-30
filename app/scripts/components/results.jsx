@@ -24,6 +24,10 @@ var ResultsForm = React.createClass({
 
       });
   },
+  handleSignout: function(){
+    window.localStorage.removeItem("user");
+    this.router.navigate('coachesOnly', {trigger: true});
+  },
   enterMinutes: function(e){
     this.setState({'minutes': e.target.value})
   },
@@ -63,9 +67,13 @@ var ResultsForm = React.createClass({
                   <label htmlFor="seconds">Seconds</label>
                   <input onChange={this.enterSeconds} type="text" className="form-control" id="seconds" placeholder="Enter seconds"/>
               </fieldset>
-                 <button type="submit" className="btn btn-primary submit">Submit</button>
+
+              <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
+              <button className="btn jets-button" type="button"><a href="#coachesOnly">Coaches Only</a></button>
+              <button className="btn jets-button" type="button"><a href="#results">Event Results Entry</a></button>
+              <button className="btn jets-button" type="button"><a href="#">Jets Homepage</a></button>
+              <button className="btn jets-button" onClick={this.handleSignout} type="button">Log Out</button>
             </form>
-            <button type="button"><a href="#">Home</a></button>
         </div>
 
     );
@@ -140,7 +148,7 @@ var ResultsAverages = React.createClass({
 var ResultsView = React.createClass({
   render: function(){
     return (
-      <div>
+      <div className="bkg-pages">
         <ResultsForm />
         <ResultsAverages />
       </div>

@@ -1,10 +1,11 @@
 var React = require('react');
 var JetsPage = require('../components/jets-site.jsx').JetsPage;
+
 var ContactInfo = React.createClass({
   render: function(){
     return (
       <div>
-      
+
         <div className="container">
           <div className="row">
             <div className="col-md-8 col-md-offset-2">
@@ -16,7 +17,7 @@ var ContactInfo = React.createClass({
 
                 In June practices are 4-5 days a week,
                 and continue this way until the end of the season in late July.</p>
-              <button type="button"><a href="#">Home</a></button>
+              <button className="jets-button" type="button"><a href="#">Home</a></button>
 
             <iframe width="400" height="250" frameBorder="0"
               src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJP_X4XnovWIgR9MTYXuJZTp4&key=AIzaSyC1lJUsF_8rqOo5qc0IIlqspDyrvlUca4g"
@@ -31,4 +32,14 @@ var ContactInfo = React.createClass({
 
 });
 
+var ContactInfoView = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <JetsPage />
+        <ContactInfo />
+     </div>
+   );
+ }
+});
 module.exports = ContactInfo;

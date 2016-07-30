@@ -13,6 +13,7 @@ var ResultsView = require('./components/results.jsx').ResultsView;
 var ContactInfo = require('./components/contactus.jsx');
 var Schedule = require('./components/schedule.jsx');
 var SlideshowView = require('./components/photos.jsx');
+var JetsHomepage = require('./components/newjetshomepage.jsx').JetsHomepage;
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -39,7 +40,7 @@ initialize: function(){
 index: function(){
   var self = this;
   ReactDOM.render(
-    React.createElement(JetsPageView, {router: self}),
+    React.createElement(JetsHomepage, {router: self}),
       document.getElementById('container')
     );
 },

@@ -26,12 +26,103 @@ img {
   max-width: 100%;
 }
 
-.wrapper {
-  background-image: linear-gradient($backgroundgray, $black);
-  background-size: cover;
-  height: 1500px;
-  width: 100%;
+.new-nav {
+  background-color: darken($jetsyellow, 10%);
+  border-radius: 10%;
+  font-family: 'Coda',sans-serif;
+  height: 600px;
+  margin-top: 30px;
+  opacity: .5;
+  width: 800px;
+
+  span {
+    color: $jetsgreen;
+  }
+
+  h1 {
+    left: 20px;
+    position: relative;
+    top: 10px;
+  }
+
+  p {
+    left: 20px;
+    padding-bottom: 30px;
+    position: relative;
+    text-align: left;
+    top: 30px;
+    width: 650px;
+  }
 }
+
+.on-hover {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+.icon-wrap {
+  position: relative;
+
+  img {
+    display: block;
+    float: left;
+    height: 100px;
+  }
+
+  a {
+    color: $backgroundgray;
+    display: inline;
+    font-size: 30px;
+    text-decoration: none;
+  }
+
+  p {
+    display: inline;
+    width: 350px;
+  }
+
+  &:hover .on-hover {
+    display: inline-block;
+    visibility: visible;
+  }
+}
+
+.new-jets-page::before {
+  content: '';
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: -1;
+
+  background-image: url('../images/cf1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 800px;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.new-jets-page{
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 0;
+}
+// .wrapper {
+//   background-image: linear-gradient($backgroundgray, $black);
+//   background-size: cover;
+//   height: 1500px;
+//   width: 100%;
+// }
 
 .navbar {
   background-color: $jetsyellow;
@@ -42,15 +133,16 @@ img {
 .jets-brand,
 .footer-text {
   color: $backgroundgray;
-  // font-family: 'Permanent Marker', cursive;
-  font-family: 'Coda', cursive;
+  font-family: 'Ubuntu', cursive;
+  font-size: 30px;
+
 
   &:hover {
     color: $jetsyellow;
   }
 }
 
-.header::before {
+.bkg-pages::before {
   content: '';
   left: 0;
   position: fixed;
@@ -70,7 +162,7 @@ img {
   filter: blur(5px);
 }
 
-.header {
+.bkg-pages{
   left: 0;
   position: fixed;
   right: 0;
@@ -78,29 +170,46 @@ img {
 
   p {
     color: $jetsyellow;
-    font-family: 'Coda', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 25px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 50px;
     text-align: left;
   }
+
+  label {
+    color: $jetsyellow;
+  }
+
+  button {
+    margin: auto;
+  }
 }
 
-.new-navlist {
+.navbar-right {
+  a {
+    display: inline-block;
+    float: right;
+  }
+}
+
+
+.new-navlist,
+.jets-button {
   background-image: linear-gradient($newlightgreen, $newdarkgreen);
   border: 1px solid $jetsgreen;
   border-radius: 1px;
   color: $jetsyellow;
   display: inline-block;
   float: left;
-  font-family: 'Coda', cursive;
+  font-family: 'Ubuntu', cursive;
   font-size: 20px;
   font-weight: bold;
   height: 45px;
   line-height: 18px;
-  list-style-type: none;
-  margin-left: 8px;
+  list-style: none;
+  margin-left: 25px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 12px;
@@ -109,7 +218,12 @@ img {
   width: 250px;
 
   a {
+    color: $jetsyellow;
     text-decoration: none;
+  }
+
+  li {
+    list-style: none;
   }
 
   &:hover {
@@ -125,6 +239,28 @@ img {
 
 }
 
+.coaches-menu {
+  h1 {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  button {
+    text-align: center;
+  }
+}
+
+.coach-homepage {
+  li {
+    list-style-type: none;
+    text-align: center;
+  }
+
+  button {
+    margin: auto;
+  }
+}
+
 .glyphicon-plane {
   color: $jetsgreen;
 }
@@ -132,7 +268,7 @@ img {
 .homepage-links {
   a {
     color: $jetsyellow;
-    font-family: 'Coda', cursive;
+    font-family: 'Ubuntu', cursive;
     text-decoration: none;
 
     &:hover {
@@ -143,32 +279,28 @@ img {
 
 .homepage-title {
   color: $jetsgreen;
-  font-family: 'Coda', cursive;
+  font-family: 'Ubuntu', cursive;
+  text-align: center;
   text-decoration: none;
-
 }
 
 .coach-headings {
   color: $jetsyellow;
   // font-family: 'Permanent Marker', cursive;
-  font-family: 'Coda', cursive;
+  font-family: 'Ubuntu', cursive;
   text-align: center;
 }
 
-.coaches-menu {
-  a {
-    background-color: $black;
-    border: 1px solid $jetsgreen;
-  }
-}
 //Photos
 .jetspics {
+  height: 400px;
   padding-top: 40px;
+  width: 1000px;
 
   img {
-    height: 600px;
-    width: 1075px;
+    margin: auto;
   }
+
 }
 //Schedule
 .well {
@@ -177,7 +309,7 @@ img {
 
 .schedule-event {
   color: $black;
-  font-family: 'Coda', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   line-height: 30px;
