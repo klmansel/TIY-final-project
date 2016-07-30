@@ -5769,12 +5769,76 @@ button.close {
 img {
   max-width: 100%; }
 
-.wrapper {
-  background-image: -webkit-linear-gradient(#777, #000);
-  background-image: linear-gradient(#777, #000);
+.new-nav {
+  background-color: #fff44a;
+  border-radius: 10%;
+  font-family: 'Coda',sans-serif;
+  height: 600px;
+  margin-top: 30px;
+  opacity: .5;
+  width: 800px; }
+  .new-nav span {
+    color: #00a954; }
+  .new-nav h1 {
+    left: 20px;
+    position: relative;
+    top: 10px; }
+  .new-nav p {
+    left: 20px;
+    padding-bottom: 30px;
+    position: relative;
+    text-align: left;
+    top: 30px;
+    width: 650px; }
+
+.on-hover {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility: hidden; }
+
+.icon-wrap {
+  position: relative; }
+  .icon-wrap img {
+    display: block;
+    float: left;
+    height: 100px; }
+  .icon-wrap a {
+    color: #777;
+    display: inline;
+    font-size: 30px;
+    text-decoration: none; }
+  .icon-wrap p {
+    display: inline;
+    width: 350px; }
+  .icon-wrap:hover .on-hover {
+    display: inline-block;
+    visibility: visible; }
+
+.new-jets-page::before {
+  content: '';
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: -1;
+  background-image: url("../images/cf1.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
-  height: 1500px;
-  width: 100%; }
+  display: block;
+  height: 800px;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px); }
+
+.new-jets-page {
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 0; }
 
 .navbar {
   background-color: #fff77d;
@@ -5784,12 +5848,13 @@ img {
 .jets-brand,
 .footer-text {
   color: #777;
-  font-family: 'Coda', cursive; }
+  font-family: 'Ubuntu', cursive;
+  font-size: 30px; }
   .jets-brand:hover,
   .footer-text:hover {
     color: #fff77d; }
 
-.header::before {
+.bkg-pages::before {
   content: '';
   left: 0;
   position: fixed;
@@ -5806,21 +5871,30 @@ img {
   -ms-filter: blur(5px);
   filter: blur(5px); }
 
-.header {
+.bkg-pages {
   left: 0;
   position: fixed;
   right: 0;
   z-index: 0; }
-  .header p {
+  .bkg-pages p {
     color: #fff77d;
-    font-family: 'Coda', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 25px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 50px;
     text-align: left; }
+  .bkg-pages label {
+    color: #fff77d; }
+  .bkg-pages button {
+    margin: auto; }
 
-.new-navlist {
+.navbar-right a {
+  display: inline-block;
+  float: right; }
+
+.new-navlist,
+.jets-button {
   background-image: -webkit-linear-gradient(#66bb6a, #2e7d32);
   background-image: linear-gradient(#66bb6a, #2e7d32);
   border: 1px solid #00a954;
@@ -5828,65 +5902,82 @@ img {
   color: #fff77d;
   display: inline-block;
   float: left;
-  font-family: 'Coda', cursive;
+  font-family: 'Ubuntu', cursive;
   font-size: 20px;
   font-weight: bold;
   height: 45px;
   line-height: 18px;
-  list-style-type: none;
-  margin-left: 8px;
+  list-style: none;
+  margin-left: 25px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 12px;
   text-align: center;
   text-decoration: none;
   width: 250px; }
-  .new-navlist a {
+  .new-navlist a,
+  .jets-button a {
+    color: #fff77d;
     text-decoration: none; }
-  .new-navlist:hover {
+  .new-navlist li,
+  .jets-button li {
+    list-style: none; }
+  .new-navlist:hover,
+  .jets-button:hover {
     color: #777;
     list-style-type: none;
     text-decoration: none;
     text-overflow: none; }
-  .new-navlist:click {
+  .new-navlist:click,
+  .jets-button:click {
     text-decoration: none; }
+
+.coaches-menu h1 {
+  margin-bottom: 20px;
+  text-align: left; }
+.coaches-menu button {
+  text-align: center; }
+
+.coach-homepage li {
+  list-style-type: none;
+  text-align: center; }
+.coach-homepage button {
+  margin: auto; }
 
 .glyphicon-plane {
   color: #00a954; }
 
 .homepage-links a {
   color: #fff77d;
-  font-family: 'Coda', cursive;
+  font-family: 'Ubuntu', cursive;
   text-decoration: none; }
   .homepage-links a:hover {
     color: #00a954; }
 
 .homepage-title {
   color: #00a954;
-  font-family: 'Coda', cursive;
+  font-family: 'Ubuntu', cursive;
+  text-align: center;
   text-decoration: none; }
 
 .coach-headings {
   color: #fff77d;
-  font-family: 'Coda', cursive;
+  font-family: 'Ubuntu', cursive;
   text-align: center; }
 
-.coaches-menu a {
-  background-color: #000;
-  border: 1px solid #00a954; }
-
 .jetspics {
-  padding-top: 40px; }
+  height: 400px;
+  padding-top: 40px;
+  width: 1000px; }
   .jetspics img {
-    height: 600px;
-    width: 1075px; }
+    margin: auto; }
 
 .well {
   background: #fff77d; }
 
 .schedule-event {
   color: #000;
-  font-family: 'Coda', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   line-height: 30px;
@@ -5916,4 +6007,5 @@ img {
   padding-top: 10px; }
   .footer-text:hover {
     color: currentColor; }
+
 /*# sourceMappingURL=app.css.map */
