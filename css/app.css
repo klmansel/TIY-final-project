@@ -5769,6 +5769,36 @@ button.close {
 img {
   max-width: 100%; }
 
+.hero-banner {
+  background-image: url("../images/trackpic3.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 800px; }
+
+.hero-headings, .hero-desc, .hero-btn {
+  color: #cf4b4b;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 50px;
+  font-weight: bold; }
+  .hero-headings h1, .hero-desc h1, .hero-btn h1 {
+    padding-top: 50px; }
+
+.hero-desc, .hero-btn {
+  font-size: 20px;
+  padding-top: 0; }
+
+.hero-btn {
+  background-color: #000;
+  width: 200px; }
+  .hero-btn a {
+    color: #cf4b4b;
+    font-size: 20px;
+    padding: 6px;
+    text-decoration: none; }
+  .hero-btn span {
+    color: #fff; }
+
 .new-nav {
   background-color: #fff44a;
   border-radius: 10%;
@@ -5873,7 +5903,7 @@ img {
 
 .bkg-pages {
   left: 0;
-  position: fixed;
+  position: relative;
   right: 0;
   z-index: 0; }
   .bkg-pages p {
@@ -5972,8 +6002,8 @@ img {
   .jetspics img {
     margin: auto; }
 
-.well {
-  background: #fff77d; }
+.jets-map {
+  padding: 60px; }
 
 .schedule-event {
   color: #000;

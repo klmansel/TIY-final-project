@@ -7,6 +7,7 @@ $newdarkgreen: #2e7d32;
 $backgroundgray: #777;
 $black: #000;
 $white: #fff;
+$machinered: #cf4b4b;
 
 
 // Bootstrap Variables
@@ -25,7 +26,48 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 img {
   max-width: 100%;
 }
+//Hero Banner
+.hero-banner {
+  background-image: url('../images/trackpic3.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 800px;
+}
 
+.hero-headings {
+  color: $machinered;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  
+  h1 {
+    padding-top: 50px;
+  }
+}
+
+.hero-desc {
+  @extend .hero-headings;
+  font-size: 20px;
+  padding-top: 0;
+}
+
+.hero-btn {
+  @extend .hero-desc;
+  background-color: $black;
+  width: 200px;
+
+  a {
+    color: $machinered;
+    font-size: 20px;
+    padding: 6px;
+    text-decoration: none;
+  }
+  span {
+    color: $white;
+  }
+}
+//Jets Page Nav and Hero
 .new-nav {
   background-color: darken($jetsyellow, 10%);
   border-radius: 10%;
@@ -142,6 +184,7 @@ img {
   }
 }
 
+//Track Background
 .bkg-pages::before {
   content: '';
   left: 0;
@@ -162,9 +205,10 @@ img {
   filter: blur(5px);
 }
 
+//Track background and TrackIt app design
 .bkg-pages{
   left: 0;
-  position: fixed;
+  position: relative;
   right: 0;
   z-index: 0;
 
@@ -239,6 +283,7 @@ img {
 
 }
 
+//Coaches Page
 .coaches-menu {
   h1 {
     margin-bottom: 20px;
@@ -303,8 +348,8 @@ img {
 
 }
 //Schedule
-.well {
-  background: $jetsyellow;
+.jets-map {
+  padding: 60px;
 }
 
 .schedule-event {
