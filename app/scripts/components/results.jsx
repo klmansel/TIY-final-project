@@ -46,7 +46,7 @@ var ResultsForm = React.createClass({
         <div className="col-md-6">
 
             <form onSubmit={this.handleSubmit}>
-              <h1 className="coach-headings">Results Form</h1>
+              <h1 className="coach-headings">Enter Meet Results</h1>
 
               <fieldset className="form-group">
 

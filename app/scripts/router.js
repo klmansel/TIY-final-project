@@ -14,6 +14,7 @@ var ContactInfo = require('./components/contactus.jsx');
 var Schedule = require('./components/schedule.jsx');
 var SlideshowView = require('./components/photos.jsx');
 var JetsHomepage = require('./components/newjetshomepage.jsx').JetsHomepage;
+var TrackItView = require('./components/trackit.jsx');
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -25,7 +26,8 @@ var Router = Backbone.Router.extend({
   'coachesOnly' : 'coachesOnly',
   'contactInfo' : 'contactInfo',
   'schedule' : 'schedule',
-  'photos' : 'photos'
+  'photos' : 'photos',
+  'jetspage' : 'jetspage'
 },
 initialize: function(){
   User.setHeaders();
@@ -40,7 +42,7 @@ initialize: function(){
 index: function(){
   var self = this;
   ReactDOM.render(
-    React.createElement(JetsHomepage, {router: self}),
+    React.createElement(TrackItView, {router: self}),
       document.getElementById('container')
     );
 },
@@ -102,7 +104,14 @@ photos: function(){
     React.createElement(SlideshowView, {router:this}),
     document.getElementById('container')
   );
-}
+},
+jetspage: function(){
+  var self = this;
+  ReactDOM.render(
+    React.createElement(JetsHomepage, {router: self}),
+      document.getElementById('container')
+    );
+  },
 
 });
 

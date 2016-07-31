@@ -1,14 +1,14 @@
 var Backbone = require('backbone');
 
 var User = Backbone.Model.extend({
-  urlRoot: 'http://kmcakes.herokuapp.com/users',
+  urlRoot: 'https://kmcakes.herokuapp.com/users',
 },{
   login: function(username, password, callbacks){
     var self = this;
     var loggedInUser = new User();
     var queryString = jQuery.param({'username': username, 'password': password});
 
-    loggedInUser.urlRoot = 'http://kmcakes.herokuapp.com/login?' + queryString;
+    loggedInUser.urlRoot = 'https://kmcakes.herokuapp.com/login?' + queryString;
 
     loggedInUser.fetch().done(function(data){
       localStorage.setItem('user', JSON.stringify(loggedInUser.toJSON()));

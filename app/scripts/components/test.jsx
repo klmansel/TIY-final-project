@@ -1,12 +1,10 @@
-Sorted by event: .where
-actualExpenseCollection.where({
-     "type": "Mortgage/Rent"
-   }).fetch().done(function(){
-     console.log(actualExpenseCollection);
-     self.setState({actualExpenseCollection: actualExpenseCollection});
-     console.log(self.state.actualExpenseCollection);
-   });
-
+Query('.jetspics').slick({
+  dots: true,
+  infinite: true,
+  speed: 500,
+  fade: true,
+  cssEase: 'linear'
+  
    var timeInSeconds = this.state.resultscollection.map(function(result){
      result.get('minutes')/60 + result.get('seconds')
      return <li key={result.get('objectId')} value={result.get('objectId')}>

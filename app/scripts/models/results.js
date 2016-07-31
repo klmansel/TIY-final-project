@@ -3,12 +3,12 @@ var PointerFieldModel = require('./utilities.js');
 
 var Results = PointerFieldModel.extend({
   idAttribute: 'objectId',
-  urlRoot: 'http://kmcakes.herokuapp.com/classes/results'
+  urlRoot: 'https://kmcakes.herokuapp.com/classes/results'
 });
 
 var ResultsCollection = Backbone.Collection.extend({
   model: Results,
-  url: 'http://kmcakes.herokuapp.com/classes/results',
+  url: 'https://kmcakes.herokuapp.com/classes/results',
   parse: function(serverResponse){
    return serverResponse.results;
  },
