@@ -69,11 +69,13 @@ var ResultsForm = React.createClass({
               </fieldset>
 
               <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
-              <button className="btn jets-button" type="button"><a href="#coachesOnly">Coaches Only</a></button>
-              <button className="btn jets-button" type="button"><a href="#results">Event Results Entry</a></button>
-              <button className="btn jets-button" type="button"><a href="#">Jets Homepage</a></button>
-              <button className="btn jets-button" onClick={this.handleSignout} type="button">Log Out</button>
+
             </form>
+
+            <button className="jets-button" type="button"><a href="#coachesOnly">Coaches Only</a></button>
+            <button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button>
+            <button className="jets-button" type="button"><a href="#jetspage">Jets Homepage</a></button>
+            <button className="jets-button" onClick={this.handleSignout} type="button">Log Out</button>
         </div>
 
     );

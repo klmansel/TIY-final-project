@@ -26,6 +26,7 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 img {
   max-width: 100%;
 }
+
 //Hero Banner
 .hero-banner {
   background-image: url('../images/trackpic3.jpeg');
@@ -40,7 +41,7 @@ img {
   font-family: 'Reem Kufi', sans-serif;
   font-size: 50px;
   font-weight: bold;
-  
+
   h1 {
     padding-top: 50px;
   }
@@ -52,7 +53,9 @@ img {
   padding-top: 0;
 }
 
-.hero-btn {
+.hero-btn,
+.new-navlist,
+.jets-button {
   @extend .hero-desc;
   background-color: $black;
   width: 200px;
@@ -223,7 +226,7 @@ img {
   }
 
   label {
-    color: $jetsyellow;
+    color: $white;
   }
 
   button {
@@ -239,49 +242,62 @@ img {
 }
 
 
-.new-navlist,
-.jets-button {
-  background-image: linear-gradient($newlightgreen, $newdarkgreen);
-  border: 1px solid $jetsgreen;
-  border-radius: 1px;
-  color: $jetsyellow;
-  display: inline-block;
-  float: left;
-  font-family: 'Ubuntu', cursive;
-  font-size: 20px;
-  font-weight: bold;
-  height: 45px;
-  line-height: 18px;
-  list-style: none;
-  margin-left: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 12px;
-  text-align: center;
-  text-decoration: none;
-  width: 250px;
-
-  a {
-    color: $jetsyellow;
-    text-decoration: none;
-  }
-
-  li {
-    list-style: none;
-  }
-
-  &:hover {
-    color: $backgroundgray;
-    list-style-type: none;
-    text-decoration: none;
-    text-overflow: none;
-  }
-
-  &:click {
-    text-decoration: none;
-  }
-
-}
+// .new-navlist,
+// .jets-button {
+//   background-image: linear-gradient($newlightgreen, $newdarkgreen);
+//   border: 1px solid $jetsgreen;
+//   border-radius: 1px;
+//   color: $jetsyellow;
+//   display: inline-block;
+//   float: left;
+//   font-family: 'Ubuntu', cursive;
+//   font-size: 20px;
+//   font-weight: bold;
+//   height: 45px;
+//   line-height: 18px;
+//   list-style: none;
+//   margin-left: 25px;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   padding-top: 12px;
+//   text-align: center;
+//   text-decoration: none;
+//   width: 250px;
+//
+//   a {
+//     color: $jetsyellow;
+//     text-decoration: none;
+//
+//     &:hover {
+//       color: $backgroundgray;
+//       list-style-type: none;
+//       text-decoration: none;
+//       text-overflow: none;
+//     }
+//
+//     &:click {
+//       color: $backgroundgray;
+//       text-decoration: none;
+//     }
+//   }
+//
+//   li {
+//     list-style: none;
+//   }
+//
+//   &:hover {
+//     color: $backgroundgray;
+//     list-style-type: none;
+//     text-decoration: none;
+//     text-overflow: none;
+//   }
+//
+//   &:click {
+//     color: $backgroundgray;
+//     text-decoration: none;
+//   }
+//
+// }
 
 //Coaches Page
 .coaches-menu {
@@ -312,27 +328,27 @@ img {
 
 .homepage-links {
   a {
-    color: $jetsyellow;
+    color: $machinered;
     font-family: 'Ubuntu', cursive;
     text-decoration: none;
 
     &:hover {
-      color: $jetsgreen;
+      color: $white;
     }
   }
 }
 
 .homepage-title {
-  color: $jetsgreen;
-  font-family: 'Ubuntu', cursive;
+  color: $machinered;
+  font-family: 'Reem Kufi', cursive;
   text-align: center;
   text-decoration: none;
 }
 
 .coach-headings {
-  color: $jetsyellow;
+  color: $machinered;
   // font-family: 'Permanent Marker', cursive;
-  font-family: 'Ubuntu', cursive;
+  font-family: 'Reem Kufi', sans-serif;
   text-align: center;
 }
 
