@@ -5776,27 +5776,39 @@ img {
   display: block;
   height: 800px; }
 
-.hero-headings, .hero-desc, .hero-btn {
+.hero-headings, .hero-desc, .hero-btn,
+.new-navlist,
+.jets-button {
   color: #cf4b4b;
   font-family: 'Reem Kufi', sans-serif;
   font-size: 50px;
   font-weight: bold; }
-  .hero-headings h1, .hero-desc h1, .hero-btn h1 {
+  .hero-headings h1, .hero-desc h1, .hero-btn h1,
+  .new-navlist h1,
+  .jets-button h1 {
     padding-top: 50px; }
 
-.hero-desc, .hero-btn {
+.hero-desc, .hero-btn,
+.new-navlist,
+.jets-button {
   font-size: 20px;
   padding-top: 0; }
 
-.hero-btn {
+.hero-btn,
+.new-navlist,
+.jets-button {
   background-color: #000;
   width: 200px; }
-  .hero-btn a {
+  .hero-btn a,
+  .new-navlist a,
+  .jets-button a {
     color: #cf4b4b;
     font-size: 20px;
     padding: 6px;
     text-decoration: none; }
-  .hero-btn span {
+  .hero-btn span,
+  .new-navlist span,
+  .jets-button span {
     color: #fff; }
 
 .new-nav {
@@ -5915,52 +5927,13 @@ img {
     padding-top: 50px;
     text-align: left; }
   .bkg-pages label {
-    color: #fff77d; }
+    color: #fff; }
   .bkg-pages button {
     margin: auto; }
 
 .navbar-right a {
   display: inline-block;
   float: right; }
-
-.new-navlist,
-.jets-button {
-  background-image: -webkit-linear-gradient(#66bb6a, #2e7d32);
-  background-image: linear-gradient(#66bb6a, #2e7d32);
-  border: 1px solid #00a954;
-  border-radius: 1px;
-  color: #fff77d;
-  display: inline-block;
-  float: left;
-  font-family: 'Ubuntu', cursive;
-  font-size: 20px;
-  font-weight: bold;
-  height: 45px;
-  line-height: 18px;
-  list-style: none;
-  margin-left: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 12px;
-  text-align: center;
-  text-decoration: none;
-  width: 250px; }
-  .new-navlist a,
-  .jets-button a {
-    color: #fff77d;
-    text-decoration: none; }
-  .new-navlist li,
-  .jets-button li {
-    list-style: none; }
-  .new-navlist:hover,
-  .jets-button:hover {
-    color: #777;
-    list-style-type: none;
-    text-decoration: none;
-    text-overflow: none; }
-  .new-navlist:click,
-  .jets-button:click {
-    text-decoration: none; }
 
 .coaches-menu h1 {
   margin-bottom: 20px;
@@ -5978,21 +5951,21 @@ img {
   color: #00a954; }
 
 .homepage-links a {
-  color: #fff77d;
+  color: #cf4b4b;
   font-family: 'Ubuntu', cursive;
   text-decoration: none; }
   .homepage-links a:hover {
-    color: #00a954; }
+    color: #fff; }
 
 .homepage-title {
-  color: #00a954;
-  font-family: 'Ubuntu', cursive;
+  color: #cf4b4b;
+  font-family: 'Reem Kufi', cursive;
   text-align: center;
   text-decoration: none; }
 
 .coach-headings {
-  color: #fff77d;
-  font-family: 'Ubuntu', cursive;
+  color: #cf4b4b;
+  font-family: 'Reem Kufi', sans-serif;
   text-align: center; }
 
 .jetspics {
