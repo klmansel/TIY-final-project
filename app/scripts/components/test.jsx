@@ -1,10 +1,6 @@
-Query('.jetspics').slick({
-  dots: true,
-  infinite: true,
-  speed: 500,
-  fade: true,
-  cssEase: 'linear'
-  
+    var savePhoto = this.setState({'profilePic'});
+
+    
    var timeInSeconds = this.state.resultscollection.map(function(result){
      result.get('minutes')/60 + result.get('seconds')
      return <li key={result.get('objectId')} value={result.get('objectId')}>

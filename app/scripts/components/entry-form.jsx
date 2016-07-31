@@ -1,5 +1,6 @@
 var React = require('react');
 var _ = require('underscore');
+var $ = require('jquery');
 var Athlete = require('../models/athlete.js').Athlete;
 var AthleteCollection = require('../models/athlete.js').AthleteCollection;
 require('backbone-react-component');
@@ -80,11 +81,11 @@ var AthleteEntry = React.createClass({
               </fieldset>
               <fieldset className="form-group">
                <label htmlFor="gender">Gender</label>
-               <select onChange={this.addGender} className="form-control" id="gender">
-                 <option>--SELECT--</option>
-                 <option>Male</option>
-                 <option>Female</option>
-               </select>
+                 <select onChange={this.addGender} className="form-control" id="gender">
+                   <option>--SELECT--</option>
+                   <option>Male</option>
+                   <option>Female</option>
+                 </select>
              </fieldset>
              <fieldset className="form-group">
                <label htmlFor="age-group">Age Group</label>
@@ -104,8 +105,61 @@ var AthleteEntry = React.createClass({
              <button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button>
              <button className="jets-button" onClick={this.editProfile} type="button">Edit Profile</button>
             <button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
+          </form>
+
+
+    </div>
+
+    );
+  }
+});
+
+var AthletePhoto = React.createClass({
+  handleUpload: function(e){
+    var file;
+    var files = e.target.files || e.dataTransfer.files;
+     file = files[0];
+
+
+   $('#uploadbutton').click(function() {
+     var serverUrl = 'https://kmcakes.herokuapp.com/files' +'/'+ file.name;
+
+   $.ajax({
+     type: "POST",
+     beforeSend: function(request) {
+       request.setRequestHeader("X-Parse-Application-Id", 'kmcakes');
+       request.setRequestHeader("X-Parse-REST-API-Key", 'greenvillejets');
+       request.setRequestHeader("Content-Type", file.type);
+     },
+     url: serverUrl,
+     data: file,
+     processData: false,
+     contentType: false,
+     success: function(data) {
+       alert("File available at: " + data.url);
+       var profilePic= data.url;
+       console.log(profilePic);
+           newAthlete.set('profilepic', profilePic);
+     },
+     error: function(data) {
+       var obj = jQuery.parseJSON(data);
+       alert(obj.error);
+     }
+
+   });
+ });
+  },
+
+  render: function(){
+    return (
+      <div className="upload-photo row col-md-12">
+        <form id="fileupload" name="fileupload" encType="multipart/form-data" method="post">
+          <fieldset>
+            <input onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
+            <input className="jets-button" id="uploadbutton" type="button" value="Upload Profile Photo"/>
+          </fieldset>
         </form>
-        </div>
+      </div>
     );
   }
 });
@@ -118,7 +172,8 @@ var AthleteView = React.createClass({
       'gender': 'Male',
       'event': '100',
       'ageGroup': '8 and Under',
-      'athleteCollection': []
+      'athleteCollection': [],
+      'profilepic': ''
     };
   },
   componentWillMount: function(){
@@ -138,6 +193,7 @@ render: function(){
     <div className="bkg-pages">
       <AthleteEntry />
       <AthleteList athleteCollection={this.state.athleteCollection}/>
+      <AthletePhoto />
     </div>
   );
 }

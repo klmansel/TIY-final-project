@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 var PointerFieldModel = require('./utilities.js');
 
 
+
 var Athlete = PointerFieldModel.extend({
   idAttribute: 'objectId',
   urlRoot: 'https://kmcakes.herokuapp.com/classes/athletes',
@@ -13,7 +14,6 @@ var AthleteCollection = Backbone.Collection.extend({
   parse: function(serverResponse){
    return serverResponse.results;
  }
-
 });
 
 
