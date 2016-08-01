@@ -161,5 +161,6 @@ var ResultsView = React.createClass({
 });
 module.exports = {
   'ResultsForm' : ResultsForm,
-  'ResultsView' : ResultsView
+  'ResultsView' : ResultsView,
+  'SelectAthlete': SelectAthlete
 };

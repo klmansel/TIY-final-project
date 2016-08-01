@@ -18,6 +18,7 @@ var AthleteList = React.createClass({
       self.setState({athleteCollection: athleteCollection});
     });
   },
+
   render: function(){
     var user = JSON.parse(localStorage.getItem('user'));
     var athletes = this.state.athleteCollection.map(function(athlete){
@@ -40,6 +41,15 @@ var AthleteList = React.createClass({
 });
 
 var AthleteEntry = React.createClass({
+  getInitialState: function(){
+    return {
+    'athleteName': '',
+    'gender': '',
+    'event': '',
+    'ageGroup' : '',
+    'profilePic': ''
+    };
+  },
   addAthlete: function(e){
     this.setState({'athleteName': e.target.value})
   },
@@ -55,33 +65,77 @@ var AthleteEntry = React.createClass({
   handleSignout: function(){
     window.localStorage.removeItem("user");
   },
+  handleUpload: function(e){
+    var self=this;
+    var file;
+    var files = e.target.files || e.dataTransfer.files;
+     file = files[0];
+
+     var serverUrl = 'https://kmcakes.herokuapp.com/files' +'/'+ file.name;
+
+   $.ajax({
+     type: "POST",
+     beforeSend: function(request) {
+       request.setRequestHeader("X-Parse-Application-Id", 'kmcakes');
+       request.setRequestHeader("X-Parse-REST-API-Key", 'greenvillejets');
+       request.setRequestHeader("Content-Type", file.type);
+     },
+     url: serverUrl,
+     data: file,
+     processData: false,
+     contentType: false,
+     success: function(data) {
+       console.log("File available at: " + data.url);
+       var profilePic= data.url;
+
+       self.setState({'profilePic': profilePic});
+
+     },
+     error: function(data) {
+       var obj = jQuery.parseJSON(data);
+       alert(obj.error);
+     }
+   });
+  },
+
   handleSubmit: function(e){
     e.preventDefault();
+    var self = this;
     var newAthlete = new Athlete();
     var coach = JSON.parse(localStorage.getItem('user'));
-
+    console.log(this.state);
     newAthlete.set('athleteName', this.state.athleteName );
     newAthlete.set('gender', this.state.gender);
     newAthlete.set('ageGroup', this.state.ageGroup);
+    newAthlete.set('profilePic', this.state.profilePic);
     newAthlete.setPointer('coach', coach, '_User');
     newAthlete.save().done(function(){
       console.log(newAthlete.get('athleteName'));
+      $('#fileselect').val = ""
+        self.setState({
+        'athleteName': '',
+        'gender': '',
+        'event': '',
+        'ageGroup' : '',
+        'profilePic': ''
+      });
     });
   },
   render: function(){
+    console.log(this.state);
     return (
       <div className="col-md-6">
-        <form id="enter-athlete" onSubmit={this.handleSubmit} className="col-md-12">
+        <form name="fileupload" encType="multipart/form-data" method="post" id="enter-athlete" onSubmit={this.handleSubmit} className="col-md-12">
           <h1 className="coach-headings">Add New Athlete</h1>
             <h3 className="coach-headings">Enter New Athlete Information</h3>
               <fieldset className="form-group">
                 <label htmlFor="name">Name</label>
-                <input onChange={this.addAthlete} type="text" className="form-control" id="athleteName"
+                <input value={this.state.athleteName} onChange={this.addAthlete} type="text" className="form-control" id="athleteName"
                 placeholder="Enter Athlete's Name"/>
               </fieldset>
               <fieldset className="form-group">
                <label htmlFor="gender">Gender</label>
-                 <select onChange={this.addGender} className="form-control" id="gender">
+                 <select value={this.state.gender} onChange={this.addGender} className="form-control" id="gender">
                    <option>--SELECT--</option>
                    <option>Male</option>
                    <option>Female</option>
@@ -89,7 +143,7 @@ var AthleteEntry = React.createClass({
              </fieldset>
              <fieldset className="form-group">
                <label htmlFor="age-group">Age Group</label>
-               <select onChange={this.addAge} className="form-control" id="ageGroup">
+               <select value={this.state.ageGroup} onChange={this.addAge} className="form-control" id="ageGroup">
                  <option>--SELECT--</option>
                  <option>8 and Under</option>
                  <option>9-10 Years Old</option>
@@ -99,12 +153,16 @@ var AthleteEntry = React.createClass({
                  <option>17-19 Years Old</option>
                </select>
              </fieldset>
-
-             <button type="submit" className="submit jets-button">Submit</button>
-             <button className="jets-button" type="button"><a href="#">Home</a></button>
-             <button className="jets-button" type="button"><a href="#athleteProfile">Athlete Profiles</a></button>
-             <button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button>
-             <button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
+             <ul className="btn-list">
+               <li><button type="submit" className="submit jets-button">Submit</button></li>
+               <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
+               <li><button className="jets-button" type="button"><a href="#athleteProfile">Athlete Profiles</a></button></li>
+               <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
+               <li><button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button></li>
+             </ul>
+             <fieldset>
+               <input onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
+             </fieldset>
 
         </form>
 
@@ -121,8 +179,6 @@ var AthletePhoto = React.createClass({
     var files = e.target.files || e.dataTransfer.files;
      file = files[0];
 
-
-   $('#uploadbutton').click(function() {
      var serverUrl = 'https://kmcakes.herokuapp.com/files' +'/'+ file.name;
 
    $.ajax({
@@ -140,17 +196,15 @@ var AthletePhoto = React.createClass({
        alert("File available at: " + data.url);
        var profilePic= data.url;
        console.log(profilePic);
-          //  newAthlete.set('profilepic', profilePic);
+       var formData = new FormData();
+           formData.append('profilePic', profilePic);
 
      },
      error: function(data) {
        var obj = jQuery.parseJSON(data);
        alert(obj.error);
      }
-
-
    });
- });
   },
 
   render: function(){
@@ -158,8 +212,7 @@ var AthletePhoto = React.createClass({
       <div className="upload-photo row col-md-12">
         <form id="fileupload" name="fileupload" encType="multipart/form-data" method="post">
           <fieldset>
-            <input onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
-            <input className="jets-button" id="uploadbutton" type="button" value="Upload Profile Photo"/>
+            <input onChange={this.handleUpload} type="file" name="profilePic" id="fileselect"></input>
           </fieldset>
         </form>
       </div>
@@ -167,64 +220,6 @@ var AthletePhoto = React.createClass({
   }
 });
 
-var ProfileView = React.createClass({
-  getInitialState: function(){
-    return {
-      athleteCollection: new AthleteCollection(),
-      'selectedAge': ''
-    }
-  },
-  componentWillMount: function(){
-    var self = this;
-    var athleteCollection = this.state.athleteCollection;
-    athleteCollection.fetch().done(function(){
-      self.setState({athleteCollection: athleteCollection});
-    });
-
-  },
-  selectAge: function(e){
-    var selectedAge = $('#filteredAgeGroup option:selected').val();
-    console.log(selectedAge);
-      this.setState({'selectedAge': e.target.value});
-  },
-  render: function(e){
-    var user = JSON.parse(localStorage.getItem('user'));
-    var selectedAge = $('#filteredAgeGroup option:selected').val();
-    var filterByAge= this.state.athleteCollection.where({
-     'ageGroup': '9-10 Years Old'
-   }).map(function(model){
-     return (
-     <li className="athlete-list" key={model.get('objectId')}>{model.get('athleteName')}</li>
-     );
-
-    });
-
-    return (
-      <div className="row">
-        <div className="col-md-6">
-          <h1 className="coach-headings">{user.team}</h1>
-            <fieldset className="form-group">
-              <label htmlFor="age-group">Age Group</label>
-              <select onChange={this.selectAge} className="form-control" id="filteredAgeGroup">
-                <option>--SELECT--</option>
-                <option>8 and Under</option>
-                <option>9-10 Years Old</option>
-                <option>11-12 Years Old</option>
-                <option>13-14 Years Old</option>
-                <option>15-16 Years Old</option>
-                <option>17-19 Years Old</option>
-              </select>
-            </fieldset>
-        </div>
-        <div className="col-md-6">
-          <p>Age Group {}</p>
-            <ul>{filterByAge}</ul>
-        </div>
-      </div>
-
-    )
-  }
-});
 var AthleteView = React.createClass({
   getInitialState: function(){
     return {
@@ -234,7 +229,7 @@ var AthleteView = React.createClass({
       'event': '100',
       'ageGroup': '8 and Under',
       'athleteCollection': [],
-      'profilepic': {}
+      'profilePic': ''
     };
   },
   componentWillMount: function(){
@@ -252,10 +247,8 @@ var AthleteView = React.createClass({
 render: function(){
   return (
     <div className="bkg-pages">
-      <AthleteEntry />
+      <AthleteEntry  />
       <AthleteList athleteCollection={this.state.athleteCollection}/>
-      <AthletePhoto />
-      <ProfileView />
     </div>
   );
 }

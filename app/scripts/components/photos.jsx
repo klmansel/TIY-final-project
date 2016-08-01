@@ -51,6 +51,10 @@ var SlideshowView = React.createClass({
           <div><img src="images/vandel.jpg" alt="jets2016"></img></div>
           <div><img src="images/smm1.jpg" alt="jets2016"></img></div>
         </div>
+
+        <div className="row">
+          <button className="jets-button" type="button"><a href="#">Home</a></button>
+        </div>
       </div>
     );
   }

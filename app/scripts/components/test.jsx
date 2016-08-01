@@ -1,5 +1,16 @@
-    var savePhoto = this.setState({'profilePic'});
 
+<li key={model.get('objectId')}>
+  {model.get('athleteName')}
+  <img src={model.get('profilePic')} />
+</li>
+//icon camera
+
+<i class="fa fa-camera" aria-hidden="true"></i>
+
+//Upload button
+    <input className="jets-button" id="uploadbutton" type="button" value="Upload Profile Photo"/>
+
+//delete athlete code
 
          <button onClick={self.handleRemoveAthlete}>Delete</button>
 

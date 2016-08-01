@@ -15,7 +15,7 @@ var Schedule = require('./components/schedule.jsx');
 var SlideshowView = require('./components/photos.jsx');
 var JetsHomepage = require('./components/newjetshomepage.jsx').JetsHomepage;
 var TrackItView = require('./components/trackit.jsx');
-var AthleteProfile = require('./components/profile.jsx');
+var AthleteProfileView = require('./components/profile.jsx');
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -117,7 +117,7 @@ jetspage: function(){
   athleteProfile: function(){
     var self = this;
     ReactDOM.render(
-      React.createElement(AthleteProfile, {router: self}),
+      React.createElement(AthleteProfileView, {router: self}),
         document.getElementById('container')
       );
     },
