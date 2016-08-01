@@ -159,6 +159,7 @@ img {
   border-radius: 10%;
   font-family: 'Coda',sans-serif;
   height: 600px;
+  margin-left: 15px;
   margin-top: 30px;
   opacity: .5;
   width: 800px;
@@ -169,7 +170,7 @@ img {
 
   h1 {
     left: 20px;
-    position: relative;
+    // position: relative;
     top: 10px;
   }
 
@@ -190,15 +191,20 @@ img {
   right: 0;
   top: 0;
   visibility: hidden;
+
+  @media screen and (max-width: 480px) {
+    visibility: visible;
+  }
 }
 
 .icon-wrap {
   position: relative;
 
   img {
-    display: block;
+    display: inline-block;
     float: left;
     height: 100px;
+    padding-bottom: 25px;
   }
 
   a {
@@ -209,13 +215,21 @@ img {
   }
 
   p {
+    color: $jetsgreen;
     display: inline;
     width: 350px;
   }
 
   &:hover .on-hover {
-    display: inline-block;
+    display: inline;
     visibility: visible;
+  }
+}
+
+.nav-icons {
+  li {
+    list-style-type: none;
+    padding-bottom: 25px;
   }
 }
 
@@ -297,16 +311,6 @@ img {
   position: relative;
   right: 0;
   z-index: 0;
-
-  p {
-    color: $jetsyellow;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 25px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 50px;
-    text-align: left;
-  }
 
   label {
     color: $white;
@@ -415,7 +419,7 @@ img {
 .homepage-title {
   color: $machinered;
   font-family: 'Reem Kufi', sans-serif;
-  text-align: center;;
+  text-align: center;
 }
 
 .coach-headings {
@@ -425,6 +429,12 @@ img {
   text-align: center;
 }
 
+.contact-us {
+  color: $jetsyellow;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 20px;
+  text-align: left;
+}
 //Photos
 .jetspics {
   height: 400px;
@@ -460,6 +470,9 @@ img {
   }
 }
 
+.well {
+  background-color: $jetsyellow;
+}
 //Athletes
 
 .athlete-list,

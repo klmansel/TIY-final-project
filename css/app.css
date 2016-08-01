@@ -5871,6 +5871,7 @@ img {
   border-radius: 10%;
   font-family: 'Coda',sans-serif;
   height: 600px;
+  margin-left: 15px;
   margin-top: 30px;
   opacity: .5;
   width: 800px; }
@@ -5878,7 +5879,6 @@ img {
     color: #00a954; }
   .new-nav h1 {
     left: 20px;
-    position: relative;
     top: 10px; }
   .new-nav p {
     left: 20px;
@@ -5895,24 +5895,33 @@ img {
   right: 0;
   top: 0;
   visibility: hidden; }
+  @media screen and (max-width: 480px) {
+    .on-hover {
+      visibility: visible; } }
 
 .icon-wrap {
   position: relative; }
   .icon-wrap img {
-    display: block;
+    display: inline-block;
     float: left;
-    height: 100px; }
+    height: 100px;
+    padding-bottom: 25px; }
   .icon-wrap a {
     color: #777;
     display: inline;
     font-size: 30px;
     text-decoration: none; }
   .icon-wrap p {
+    color: #00a954;
     display: inline;
     width: 350px; }
   .icon-wrap:hover .on-hover {
-    display: inline-block;
+    display: inline;
     visibility: visible; }
+
+.nav-icons li {
+  list-style-type: none;
+  padding-bottom: 25px; }
 
 .new-jets-page::before {
   content: '';
@@ -5973,14 +5982,6 @@ img {
   position: relative;
   right: 0;
   z-index: 0; }
-  .bkg-pages p {
-    color: #fff77d;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 25px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 50px;
-    text-align: left; }
   .bkg-pages label {
     color: #fff;
     font-family: 'Reem Kufi', sans-serif;
@@ -6017,6 +6018,12 @@ img {
   font-family: 'Reem Kufi', sans-serif;
   text-align: center; }
 
+.contact-us {
+  color: #fff77d;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 20px;
+  text-align: left; }
+
 .jetspics {
   height: 400px;
   padding-top: 40px;
@@ -6039,6 +6046,9 @@ img {
     text-decoration: none; }
     .schedule-event a:hover {
       font-size: 18px; }
+
+.well {
+  background-color: #fff77d; }
 
 .athlete-list li,
 .results-list li {
@@ -6066,4 +6076,5 @@ img {
   color: #fff;
   margin-left: 15px;
   padding-top: 20px; }
+
 /*# sourceMappingURL=app.css.map */
