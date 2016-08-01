@@ -8,6 +8,7 @@ $backgroundgray: #777;
 $black: #000;
 $white: #fff;
 $machinered: #cf4b4b;
+$trackitgray: #cccdc7;
 
 
 // Bootstrap Variables
@@ -39,7 +40,7 @@ img {
 .hero-headings {
   color: $machinered;
   font-family: 'Reem Kufi', sans-serif;
-  font-size: 50px;
+  font-size: 70px;
   font-weight: bold;
 
   h1 {
@@ -47,10 +48,45 @@ img {
   }
 }
 
+.hero-info {
+  color: $black;
+}
+
 .hero-desc {
   @extend .hero-headings;
-  font-size: 20px;
-  padding-top: 0;
+  color: $white;
+  font-size: 40px;
+  padding-top: 0px;
+}
+
+.trackit-logo {
+  color: $black;
+  font-style: italic;
+}
+
+.trackit-logo2 {
+  color: $trackitgray;
+  font-style: italic;
+
+  &:hover {
+   color: $machinered;
+   list-style-type: none;
+   text-decoration: none;
+   text-overflow: none;
+   transition: .5s;
+  }
+
+     &:click {
+       color: $backgroundgray;
+       text-decoration: none;
+  }
+}
+
+.hero-btn {
+  font-size: 30px;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .hero-btn,
@@ -58,16 +94,63 @@ img {
 .jets-button {
   @extend .hero-desc;
   background-color: $black;
+  border: 1px solid $machinered;
+  color: $machinered;
+  // box-shadow: 10px 5px 5px $black;
+  font-size: 20px;
   width: 200px;
+
+  &:hover {
+       color: $trackitgray;
+       list-style-type: none;
+       text-decoration: none;
+       text-overflow: none;
+       transition: .5s;
+     }
 
   a {
     color: $machinered;
     font-size: 20px;
-    padding: 6px;
     text-decoration: none;
+    vertical-align: middle;
+
+    &:hover {
+       color: $trackitgray;
+       list-style-type: none;
+       text-decoration: none;
+       text-overflow: none;
+       transition: .5s;
+    }
+
+       &:click {
+         color: $backgroundgray;
+         text-decoration: none;
+    }
   }
-  span {
-    color: $white;
+
+
+  //     color: $jetsyellow;
+  //     text-decoration: none;
+  //
+  //     &:hover {
+  //       color: $backgroundgray;
+  //       list-style-type: none;
+  //       text-decoration: none;
+  //       text-overflow: none;
+  //     }
+  //
+  //     &:click {
+  //       color: $backgroundgray;
+  //       text-decoration: none;
+  //     }
+  //   }
+}
+//Used to line up buttons on pages
+.btn-list {
+  li {
+    display: inline;
+    float: left;
+    list-style-type: none;
   }
 }
 //Jets Page Nav and Hero
@@ -227,6 +310,8 @@ img {
 
   label {
     color: $white;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 16px;
   }
 
   button {
@@ -241,7 +326,7 @@ img {
   }
 }
 
-
+//old jets buttons code
 // .new-navlist,
 // .jets-button {
 //   background-image: linear-gradient($newlightgreen, $newdarkgreen);
@@ -303,7 +388,7 @@ img {
 .coaches-menu {
   h1 {
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
   }
 
   button {
@@ -326,23 +411,11 @@ img {
   color: $jetsgreen;
 }
 
-.homepage-links {
-  a {
-    color: $machinered;
-    font-family: 'Ubuntu', cursive;
-    text-decoration: none;
-
-    &:hover {
-      color: $white;
-    }
-  }
-}
 
 .homepage-title {
   color: $machinered;
-  font-family: 'Reem Kufi', cursive;
-  text-align: center;
-  text-decoration: none;
+  font-family: 'Reem Kufi', sans-serif;
+  text-align: center;;
 }
 
 .coach-headings {
@@ -393,6 +466,8 @@ img {
 .results-list {
   li {
     color: $white;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 16px;
     list-style: none;
     text-align: center;
   }

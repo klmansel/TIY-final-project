@@ -19,9 +19,7 @@ var ResultsForm = React.createClass({
     newResult.setPointer('coach', coach, '_User');
 
     newResult.save().done(function(){
-      alert('Entry Created');
-      router.navigate('coachesOnly', {trigger: true});
-
+      console.log('Entry Created');
       });
   },
   handleSignout: function(){
@@ -66,17 +64,21 @@ var ResultsForm = React.createClass({
                 <input onChange={this.enterMinutes} type="text" className="form-control" id="minutes" placeholder="Enter minutes"/>
                   <label htmlFor="seconds">Seconds</label>
                   <input onChange={this.enterSeconds} type="text" className="form-control" id="seconds" placeholder="Enter seconds"/>
-              </fieldset>
-
-              <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
+                  <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
+            </fieldset>
 
             </form>
-
-            <button className="jets-button" type="button"><a href="#coachesOnly">Coaches Only</a></button>
-            <button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button>
-            <button className="jets-button" type="button"><a href="#jetspage">Jets Homepage</a></button>
-            <button className="jets-button" onClick={this.handleSignout} type="button">Log Out</button>
-        </div>
+            <ul className="row col-md-1 btn-list">
+              <li><button className="jets-button" type="button">
+                <a href="#coachesOnly">Coaches Only</a></button></li>
+              <li><button className="jets-button" type="button">
+                <a href="#results">Event Results Entry</a></button></li>
+              <li><button className="jets-button" type="button"><
+                a href="#jetspage">Jets Homepage</a></button></li>
+              <li><button className="jets-button" onClick={this.handleSignout}
+                type="button">Log Out</button></li>
+            </ul>
+      </div>
 
     );
 
@@ -116,7 +118,7 @@ var SelectAthlete = React.createClass({
 
 });
 
-var ResultsAverages = React.createClass({
+var ResultsList = React.createClass({
   getInitialState: function(){
     return {
       resultscollection: new ResultsCollection()
@@ -127,20 +129,20 @@ var ResultsAverages = React.createClass({
     var resultscollection = this.state.resultscollection;
     resultscollection.fetch().done(function(){
       self.setState({resultscollection: resultscollection});
-  console.log('Results:',resultscollection.length);
+      console.log('Results:',resultscollection.length);
 
     });
   },
   render: function(){
-
+    var user = JSON.parse(localStorage.getItem('user'));
     var results = this.state.resultscollection.map(function(result){
       return <li key={result.get('objectId')} value={result.get('objectId')}>
-        {result.get('event'),'   ', result.get('minutes'), ':',result.get('seconds')}</li>
+        {result.get(user.name),result.get('event'),'   ', result.get('minutes'), ':',result.get('seconds')}</li>
     });
     return (
       <div className="col-md-6">
         <h3 className="coach-headings">Results:</h3>
-        <ul className="results-list ">
+        <ul className="results-list">
           {results}
         </ul>
       </div>
@@ -152,7 +154,7 @@ var ResultsView = React.createClass({
     return (
       <div className="bkg-pages">
         <ResultsForm />
-        <ResultsAverages />
+        <ResultsList />
       </div>
     );
   }

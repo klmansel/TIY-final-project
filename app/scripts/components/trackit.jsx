@@ -4,14 +4,14 @@ var TrackItView = React.createClass({
   render: function(){
     return (
       <div className="container-fluid hero-banner">
-        <h1 className="hero-headings">Track It!</h1>
+        <h1 className="hero-headings"><i>Track It!</i></h1>
         <h3 className="hero-info">An athlete tracking system</h3>
-        <p className="hero-desc">Track It! is the easy to use athlete personal
+        <p className="hero-desc"><span className="trackit-logo">Track It!</span> is the easy to use athlete personal
           record and progress management system for the busy youth track coach.</p>
         <button className="hero-btn" type="btn btn-secondary"><a href="#signup"
-          title="coaches page">Sign Up for Track It!</a></button>
+          title="coaches page">Sign Up for <span className="trackit-logo2">Track It!</span> </a></button>
         <button className="hero-btn" type="btn btn-secondary"> <a href="#jetspage" title="jets page">
-          See Track It! in Use</a></button>
+          See<span className="trackit-logo2">Track It!</span> in Action</a></button>
       </div>
     )
   }

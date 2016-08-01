@@ -1,6 +1,39 @@
     var savePhoto = this.setState({'profilePic'});
+    var filter910 = athletes.where({'ageGroup': '9-10'});
 
-    
+
+    var file;
+    var files = e.target.files || e.dataTransfer.files;
+     file = files[0];
+
+
+   $('#uploadbutton').click(function() {
+     var serverUrl = 'https://kmcakes.herokuapp.com/files' +'/'+ file.name;
+
+   $.ajax({
+     type: "POST",
+     beforeSend: function(request) {
+       request.setRequestHeader("X-Parse-Application-Id", 'kmcakes');
+       request.setRequestHeader("X-Parse-REST-API-Key", 'greenvillejets');
+       request.setRequestHeader("Content-Type", file.type);
+     },
+     url: serverUrl,
+     data: file,
+     processData: false,
+     contentType: false,
+     success: function(data) {
+       alert("File available at: " + data.url);
+       var profilePic= data.url;
+       console.log(profilePic);
+          //  newAthlete.set('profilepic', profilePic);
+     },
+     error: function(data) {
+       var obj = jQuery.parseJSON(data);
+       alert(obj.error);
+     }
+
+   });
+ });
    var timeInSeconds = this.state.resultscollection.map(function(result){
      result.get('minutes')/60 + result.get('seconds')
      return <li key={result.get('objectId')} value={result.get('objectId')}>

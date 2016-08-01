@@ -8,17 +8,17 @@ var Homepage = React.createClass({
   render: function(){
     return (
       <div className="container homepage-links bkg-pages">
-        <div className="row col-xs-6 coaches-menu">
+        <div className="row col-md-6 col-md-offset-3 coaches-menu">
           <h1 className="homepage-title">Coaches Area</h1>
-
-            <button className="btn jets-button" type="button"><a href="#signup">SignUp Here</a></button>
-            <button className="jets-button" type="button"><a href="#signin">Sign In</a></button>
-            <button className="jets-button" type="button"><a href="#athleteEntry">Athlete Entry</a></button>
-            <button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button>
-            <button className="jets-button" type="button"><a href="#jetspage">Jets Homepage</a></button>
-            <button className="jets-button" type="button"><a href="#">Track It! Homepage</a></button>
-            <button className="jets-button" onClick={this.handleSignout} type="button">Log Out</button>
-
+          <ul className="btn-list">
+            <li><button className="jets-button" type="button"><a href="#signup">SignUp Here</a></button></li>
+            <li><button className="jets-button" type="button"><a href="#signin">Sign In</a></button></li>
+            <li><button className="jets-button" type="button"><a href="#athleteEntry">Athlete Entry</a></button></li>
+            <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
+            <li><button className="jets-button" type="button"><a href="#jetspage">Jets Homepage</a></button></li>
+            <li><button className="jets-button" type="button"><a href="#"><span className="trackit-logo2">Track It!</span> Homepage</a></button></li>
+            <li><button className="jets-button" onClick={this.handleSignout} type="button">Log Out</button></li>
+          </ul>
         </div>
       </div>
 

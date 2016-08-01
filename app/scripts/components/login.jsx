@@ -18,7 +18,7 @@ var SignUpComponent = React.createClass({
     signup.set('username', this.state.email );
     signup.set('password', this.state.password );
     signup.save().done(function(){
-      alert('Added New Coach');
+      console.log('Added New Coach');
       router.navigate('signin', {trigger: true});
     });
   },
@@ -63,9 +63,12 @@ var SignUpComponent = React.createClass({
                 <input onChange={this.handlePasswordChange} type="password" className="form-control" id="password"
                 placeholder="Create Password"/>
               </fieldset>
-              <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
-              <button className="jets-button" type="button"><a href="#signin">Sign In</a></button>
-              <button className="jets-button" type="button"><a href="#">Home</a></button>
+              <ul className="btn-list">
+                <li><button type="submit" className="submit jets-button">Submit</button></li>
+                <li><button className="jets-button" type="button"><a href="#signin">Sign In</a></button></li>
+                <li><button className="jets-button" type="button"><a href="#jetspage">Jets Page</a></button></li>
+                <li><button className="jets-button" type="button"><a href="#">Back to <span className="trackit-logo2">Track It!</span></a></button></li>
+              </ul>
           </form>
         </div>
       </div>
@@ -95,8 +98,8 @@ var SignInComponent = React.createClass({
 
   render: function(){
     return (
-      <div className="col-md-6 col-md-offset-4 bkg-pages">
-        <form onSubmit={this.handleSubmit} className="col-md-6">
+      <div className="col-md-4 col-md-offset-4 bkg-pages">
+        <form onSubmit={this.handleSubmit}>
           <h1 className="coach-headings">Coach Login</h1>
             <fieldset className="form-group">
               <label htmlFor="inputUsername" className="sr-only">Username</label>
@@ -108,8 +111,10 @@ var SignInComponent = React.createClass({
               <input name="password" type="password" className="form-control" id="password"
               placeholder="Password"/>
             </fieldset>
-            <button type="submit" className="btn btn-primary submit jets-button">Sign In</button>
-            <button className="jets-button" type="button"><a href="#">Home</a></button>
+            <ul className="btn-list">
+              <li> <button type="submit" className="submit jets-button">Sign In</button></li>
+              <li> <button className="jets-button" type="button"><a href="#">Home</a></button></li>
+            </ul>
         </form>
 
       </div>

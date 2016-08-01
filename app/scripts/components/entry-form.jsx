@@ -100,7 +100,7 @@ var AthleteEntry = React.createClass({
                </select>
              </fieldset>
 
-             <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
+             <button type="submit" className="submit jets-button">Submit</button>
              <button className="jets-button" type="button"><a href="#">Home</a></button>
              <button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button>
              <button className="jets-button" onClick={this.editProfile} type="button">Edit Profile</button>
@@ -139,12 +139,14 @@ var AthletePhoto = React.createClass({
        alert("File available at: " + data.url);
        var profilePic= data.url;
        console.log(profilePic);
-           newAthlete.set('profilepic', profilePic);
+          //  newAthlete.set('profilepic', profilePic);
+
      },
      error: function(data) {
        var obj = jQuery.parseJSON(data);
        alert(obj.error);
      }
+
 
    });
  });
@@ -164,6 +166,64 @@ var AthletePhoto = React.createClass({
   }
 });
 
+var ProfileView = React.createClass({
+  getInitialState: function(){
+    return {
+      athleteCollection: new AthleteCollection(),
+      'selectedAge': ''
+    }
+  },
+  componentWillMount: function(){
+    var self = this;
+    var athleteCollection = this.state.athleteCollection;
+    athleteCollection.fetch().done(function(){
+      self.setState({athleteCollection: athleteCollection});
+    });
+
+  },
+  selectAge: function(e){
+    var selectedAge = $('#filteredAgeGroup option:selected').val();
+    console.log(selectedAge);
+      this.setState({'selectedAge': e.target.value});
+  },
+  render: function(e){
+    var user = JSON.parse(localStorage.getItem('user'));
+    var selectedAge = $('#filteredAgeGroup option:selected').val();
+    var filterByAge= this.state.athleteCollection.where({
+     'ageGroup': '9-10 Years Old'
+   }).map(function(model){
+     return (
+     <li className="athlete-list" key={model.get('objectId')}>{model.get('athleteName')}</li>
+     );
+
+    });
+
+    return (
+      <div className="row">
+        <div className="col-md-6">
+          <h1 className="coach-headings">{user.team}</h1>
+            <fieldset className="form-group">
+              <label htmlFor="age-group">Age Group</label>
+              <select onChange={this.selectAge} className="form-control" id="filteredAgeGroup">
+                <option>--SELECT--</option>
+                <option>8 and Under</option>
+                <option>9-10 Years Old</option>
+                <option>11-12 Years Old</option>
+                <option>13-14 Years Old</option>
+                <option>15-16 Years Old</option>
+                <option>17-19 Years Old</option>
+              </select>
+            </fieldset>
+        </div>
+        <div className="col-md-6">
+          <p>Age Group {}</p>
+            <ul>{filterByAge}</ul>
+        </div>
+      </div>
+
+    )
+  }
+});
 var AthleteView = React.createClass({
   getInitialState: function(){
     return {
@@ -173,7 +233,7 @@ var AthleteView = React.createClass({
       'event': '100',
       'ageGroup': '8 and Under',
       'athleteCollection': [],
-      'profilepic': ''
+      'profilepic': {}
     };
   },
   componentWillMount: function(){
@@ -194,6 +254,7 @@ render: function(){
       <AthleteEntry />
       <AthleteList athleteCollection={this.state.athleteCollection}/>
       <AthletePhoto />
+      <ProfileView />
     </div>
   );
 }
