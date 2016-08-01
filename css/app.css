@@ -5781,35 +5781,90 @@ img {
 .jets-button {
   color: #cf4b4b;
   font-family: 'Reem Kufi', sans-serif;
-  font-size: 50px;
+  font-size: 70px;
   font-weight: bold; }
   .hero-headings h1, .hero-desc h1, .hero-btn h1,
   .new-navlist h1,
   .jets-button h1 {
     padding-top: 50px; }
 
+.hero-info {
+  color: #000; }
+
 .hero-desc, .hero-btn,
 .new-navlist,
 .jets-button {
-  font-size: 20px;
-  padding-top: 0; }
+  color: #fff;
+  font-size: 40px;
+  padding-top: 0px; }
+
+.trackit-logo {
+  color: #000;
+  font-style: italic; }
+
+.trackit-logo2 {
+  color: #cccdc7;
+  font-style: italic; }
+  .trackit-logo2:hover {
+    color: #cf4b4b;
+    list-style-type: none;
+    text-decoration: none;
+    text-overflow: none;
+    -webkit-transition: .5s;
+    transition: .5s; }
+  .trackit-logo2:click {
+    color: #777;
+    text-decoration: none; }
+
+.hero-btn {
+  font-size: 30px;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle; }
 
 .hero-btn,
 .new-navlist,
 .jets-button {
   background-color: #000;
+  border: 1px solid #cf4b4b;
+  color: #cf4b4b;
+  font-size: 20px;
   width: 200px; }
+  .hero-btn:hover,
+  .new-navlist:hover,
+  .jets-button:hover {
+    color: #cccdc7;
+    list-style-type: none;
+    text-decoration: none;
+    text-overflow: none;
+    -webkit-transition: .5s;
+    transition: .5s; }
   .hero-btn a,
   .new-navlist a,
   .jets-button a {
     color: #cf4b4b;
     font-size: 20px;
-    padding: 6px;
-    text-decoration: none; }
-  .hero-btn span,
-  .new-navlist span,
-  .jets-button span {
-    color: #fff; }
+    text-decoration: none;
+    vertical-align: middle; }
+    .hero-btn a:hover,
+    .new-navlist a:hover,
+    .jets-button a:hover {
+      color: #cccdc7;
+      list-style-type: none;
+      text-decoration: none;
+      text-overflow: none;
+      -webkit-transition: .5s;
+      transition: .5s; }
+    .hero-btn a:click,
+    .new-navlist a:click,
+    .jets-button a:click {
+      color: #777;
+      text-decoration: none; }
+
+.btn-list li {
+  display: inline;
+  float: left;
+  list-style-type: none; }
 
 .new-nav {
   background-color: #fff44a;
@@ -5927,7 +5982,9 @@ img {
     padding-top: 50px;
     text-align: left; }
   .bkg-pages label {
-    color: #fff; }
+    color: #fff;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 16px; }
   .bkg-pages button {
     margin: auto; }
 
@@ -5937,7 +5994,7 @@ img {
 
 .coaches-menu h1 {
   margin-bottom: 20px;
-  text-align: left; }
+  text-align: center; }
 .coaches-menu button {
   text-align: center; }
 
@@ -5950,18 +6007,10 @@ img {
 .glyphicon-plane {
   color: #00a954; }
 
-.homepage-links a {
-  color: #cf4b4b;
-  font-family: 'Ubuntu', cursive;
-  text-decoration: none; }
-  .homepage-links a:hover {
-    color: #fff; }
-
 .homepage-title {
   color: #cf4b4b;
-  font-family: 'Reem Kufi', cursive;
-  text-align: center;
-  text-decoration: none; }
+  font-family: 'Reem Kufi', sans-serif;
+  text-align: center; }
 
 .coach-headings {
   color: #cf4b4b;
@@ -5994,6 +6043,8 @@ img {
 .athlete-list li,
 .results-list li {
   color: #fff;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 16px;
   list-style: none;
   text-align: center; }
 
@@ -6011,4 +6062,8 @@ img {
   .footer-text:hover {
     color: currentColor; }
 
+.upload-photo {
+  color: #fff;
+  margin-left: 15px;
+  padding-top: 20px; }
 /*# sourceMappingURL=app.css.map */
