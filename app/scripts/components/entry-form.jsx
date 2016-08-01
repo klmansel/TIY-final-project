@@ -102,10 +102,11 @@ var AthleteEntry = React.createClass({
 
              <button type="submit" className="submit jets-button">Submit</button>
              <button className="jets-button" type="button"><a href="#">Home</a></button>
+             <button className="jets-button" type="button"><a href="#athleteProfile">Athlete Profiles</a></button>
              <button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button>
-             <button className="jets-button" onClick={this.editProfile} type="button">Edit Profile</button>
-            <button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
-          </form>
+             <button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button>
+
+        </form>
 
 
     </div>

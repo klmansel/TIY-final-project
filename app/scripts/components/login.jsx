@@ -38,8 +38,8 @@ var SignUpComponent = React.createClass({
   render: function(){
     return (
       <div className="container bkg-pages">
-        <div className="row col-md-12 col-md-offset-3">
-          <form onSubmit={this.handleSubmit} className="col-md-6">
+        <div className="row col-md-6 col-md-offset-3">
+          <form onSubmit={this.handleSubmit}>
             <h1 className="coach-headings">Coach Sign Up</h1>
               <fieldset className="form-group">
                 <label htmlFor="name">Coach Name</label>
@@ -63,7 +63,7 @@ var SignUpComponent = React.createClass({
                 <input onChange={this.handlePasswordChange} type="password" className="form-control" id="password"
                 placeholder="Create Password"/>
               </fieldset>
-              <ul className="btn-list">
+              <ul className="row col-xs-12 col-md-3 col-md-offset-3 btn-list">
                 <li><button type="submit" className="submit jets-button">Submit</button></li>
                 <li><button className="jets-button" type="button"><a href="#signin">Sign In</a></button></li>
                 <li><button className="jets-button" type="button"><a href="#jetspage">Jets Page</a></button></li>

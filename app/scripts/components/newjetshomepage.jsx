@@ -4,7 +4,7 @@ var NavbarComponent = React.createClass({
   render: function(){
     return (
       <div className="container-fluid new-jets-page">
-        <div className="row new-nav col-xs-4">
+        <div className="row new-nav col-xs-4 col-md-12">
           <h1>
             <span className="glyphicon glyphicon-plane" ></span>
             Greenville Jets Track Club
@@ -17,16 +17,16 @@ var NavbarComponent = React.createClass({
           through mentoring, self discipline and educational support in a non violent,
           drug free environment.</p>
 
-        <div className="nav-icons col-md-8">
-            <div className="icon-wrap"><a href="#schedule"><img src="images/running.png"
-              alt="running-icon"></img><p className="on-hover">Meet Schedule</p></a></div>
-            <div className="icon-wrap"><a href="#coachesOnly"><img src="images/whistle.png"
-              alt="whistle"></img><p className="on-hover">Coaches Area</p></a></div>
-            <div className="icon-wrap"><a href="#photos"><img src="images/camera.png"
-              alt="camera"></img><p className="on-hover">Photos</p></a></div>
-            <div className="icon-wrap"><a href="#contactInfo"><img src="images/iphone.png"
-              alt="iphone"></img><p className="on-hover">Contact Us</p></a></div>
-          </div>
+          <ul className="nav-icons col-md-8">
+            <li className="icon-wrap"><a href="#schedule"><img src="images/running.png"
+              alt="running-icon"></img><p className="on-hover">Meet Schedule</p></a></li>
+            <li className="icon-wrap"><a href="#coachesOnly"><img src="images/whistle.png"
+              alt="whistle"></img><p className="on-hover">Coaches Area</p></a></li>
+            <li className="icon-wrap"><a href="#photos"><img src="images/camera.png"
+              alt="camera"></img><p className="on-hover">Photos</p></a></li>
+            <li className="icon-wrap"><a href="#contactInfo"><img src="images/iphone.png"
+              alt="iphone"></img><p className="on-hover">Contact Us</p></a></li>
+          </ul>
         </div>
       </div>
     )

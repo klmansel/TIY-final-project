@@ -18,10 +18,8 @@ var Schedule = React.createClass({
             <li className="schedule-event">July 7-10 USATF Regional Championship<a href="#"> Results</a></li>
             <li className="schedule-event">July 30-Aug 6 AAU Junior Olympics (National Championships Houston, TX<a href="#"> Results</a></li>
           </ul>
-          <iframe width="600" height="450" frameBorder="0"
-            src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJBRH6YmaPV4gRlnYlv3edqtg&destination=place_id:ChIJLwkGX_crWIgR-KTPJBCNYBE&key=AIzaSyC1lJUsF_8rqOo5qc0IIlqspDyrvlUca4g"
-            allowFullScreenullscreen></iframe>
-          <p><a className="jets-button" href="#">Jets Homepage</a></p>
+
+          <p><a className="jets-button" href="#jetspage">Jets Homepage</a></p>
       </div>
     );
   }
