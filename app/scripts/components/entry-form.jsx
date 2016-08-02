@@ -124,11 +124,15 @@ var AthleteEntry = React.createClass({
   render: function(){
     console.log(this.state);
     return (
-      <div className="col-md-6">
+      <div className="container-fluid col-md-6">
         <form name="fileupload" encType="multipart/form-data" method="post" id="enter-athlete" onSubmit={this.handleSubmit} className="col-md-12">
           <h1 className="coach-headings">Add New Athlete</h1>
             <h3 className="coach-headings">Enter New Athlete Information</h3>
               <fieldset className="form-group">
+                <fieldset>
+                  <label htmlFor="profilepic">Profile Photo</label>
+                  <input onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
+                </fieldset>
                 <label htmlFor="name">Name</label>
                 <input value={this.state.athleteName} onChange={this.addAthlete} type="text" className="form-control" id="athleteName"
                 placeholder="Enter Athlete's Name"/>
@@ -160,10 +164,6 @@ var AthleteEntry = React.createClass({
                <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
                <li><button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button></li>
              </ul>
-             <fieldset>
-               <input onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
-             </fieldset>
-
         </form>
 
 

@@ -98,8 +98,8 @@ var SignInComponent = React.createClass({
 
   render: function(){
     return (
-      <div className="col-md-4 col-md-offset-4 bkg-pages">
-        <form onSubmit={this.handleSubmit}>
+      <div className="container-fluid bkg-pages">
+        <form className="col-xs-12 col-md-3 col-md-offset-4" onSubmit={this.handleSubmit}>
           <h1 className="coach-headings">Coach Login</h1>
             <fieldset className="form-group">
               <label htmlFor="inputUsername" className="sr-only">Username</label>
