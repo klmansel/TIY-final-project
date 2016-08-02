@@ -7,15 +7,14 @@ var SignUpComponent = require('./components/login.jsx').SignUpComponent;
 var SignInComponent = require('./components/login.jsx').SignInComponent;
 var AthleteView = require('./components/entry-form.jsx').AthleteView;
 var Homepage = require('./components/homepage.jsx').Homepage;
-var JetsPageView = require('./components/jets-site.jsx').JetsPageView;
-var ResultsForm = require('./components/results.jsx').ResultsForm;
 var ResultsView = require('./components/results.jsx').ResultsView;
 var ContactInfo = require('./components/contactus.jsx');
 var Schedule = require('./components/schedule.jsx');
 var SlideshowView = require('./components/photos.jsx');
 var JetsHomepage = require('./components/newjetshomepage.jsx').JetsHomepage;
 var TrackItView = require('./components/trackit.jsx');
-var AthleteProfileView = require('./components/profile.jsx');
+var AthleteProfileView = require('./components/profile.jsx').AthleteProfileView;
+var SingleAthlete = require('./components/profile.jsx').SingleAthlete;
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -29,7 +28,8 @@ var Router = Backbone.Router.extend({
   'schedule' : 'schedule',
   'photos' : 'photos',
   'jetspage' : 'jetspage',
-  'athleteProfile' : 'athleteProfile'
+  'athleteProfile' : 'athleteProfile',
+  'athletes/:id' : 'singleAthlete'
 },
 initialize: function(){
   User.setHeaders();
@@ -121,6 +121,13 @@ jetspage: function(){
         document.getElementById('container')
       );
     },
+    singleAthlete: function(profile){
+      var self=this;
+      ReactDOM.render(
+      React.createElement(SingleAthlete, {router: self, profile: profile}),
+      document.getElementById('container')
+    );
+  }
 });
 
 

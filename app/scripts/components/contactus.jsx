@@ -1,5 +1,5 @@
 var React = require('react');
-var JetsPage = require('../components/jets-site.jsx').JetsPage;
+
 
 var ContactInfo = React.createClass({
   render: function(){
@@ -29,14 +29,5 @@ var ContactInfo = React.createClass({
 
 });
 
-var ContactInfoView = React.createClass({
-  render: function(){
-    return (
-      <div>
-        <JetsPage />
-        <ContactInfo />
-     </div>
-   );
- }
-});
+
 module.exports = ContactInfo;

@@ -1,8 +1,54 @@
 var React = require('react');
+var Backbone = require('backbone');
 var $ = require('jquery');
+var Athlete = require('../models/athlete').Athlete;
 var AthleteCollection = require('../models/athlete').AthleteCollection;
 var ResultsCollection = require('../models/results').ResultsCollection;
-var SelectAthlete = require('./results.jsx').SelectAthlete;
+
+var SingleAthlete = React.createClass({
+  getInitialState: function(){
+     return {
+       profile: new Athlete()
+     }
+  },
+
+  componentWillMount: function(){
+    var self = this;
+    var profile = this.state.profile;
+
+    if(this.props.profile){
+       profile.set('objectId', this.props.profile);
+       profile.fetch().done(function(){
+         self.setState({
+           profile: profile
+     });
+   });
+ }
+  },
+  handleRemoveAthlete: function(profile){
+    this.props.athlete.remove(profile);
+    this.forceUpdate();
+  },
+  render: function(profile){
+    var profile = this.state.profile;
+    return (
+      <div key={profile.get('objectId')} className="col-md-6">
+        <li className="thumbnail" onClick={function(){self.handleClick(profile)}}>
+          <a href="#singleAthlete">
+              <img className="thumbnail-pic" src={profile.get('profilePic')} />
+              <div className="caption">
+                <h3>Name: {profile.get('athleteName')}</h3>
+                <p>Gender: {profile.get('gender')}</p>
+                <p>Age: {profile.get('ageGroup')}</p>
+              </div>
+          </a>
+          <button className="jetspage" onClick={this.handleRemoveAthlete}>Delete</button>
+        </li>
+      </div>
+
+    );
+  }
+  });
 
 var FullTeamList = React.createClass({
   getInitialState: function(){
@@ -18,6 +64,11 @@ var FullTeamList = React.createClass({
       self.setState({athleteList: athleteList});
     });
   },
+  handleClick: function(profile){
+    var router= this.props.router;
+    Backbone.history.navigate("#athletes/" + profile.get('objectId'), {trigger:true});
+
+  },
   render: function(){
     var user =JSON.parse(localStorage.getItem('user'));
     var athleteList = this.state.athleteList;
@@ -28,15 +79,13 @@ var FullTeamList = React.createClass({
 
       return (
         <div key={profile.get('objectId')} className="col-md-6">
-          <li className="thumbnail"  >
-            <a href="#">
+          <li onClick={function(){self.handleClick(profile)}} className="thumbnail athleteprofile">
                 <img className="thumbnail-pic" src={profile.get('profilePic')} />
                 <div className="caption">
                   <h3>Name: {profile.get('athleteName')}</h3>
                   <p>Gender: {profile.get('gender')}</p>
                   <p>Age: {profile.get('ageGroup')}</p>
                 </div>
-            </a>
           </li>
         </div>
         )
@@ -54,7 +103,7 @@ var FullTeamList = React.createClass({
 
 });
 
-var ProfileView = React.createClass({
+var FilterView = React.createClass({
   getInitialState: function(){
     return {
       athleteCollection: new AthleteCollection(),
@@ -67,7 +116,6 @@ var ProfileView = React.createClass({
     athleteCollection.fetch().done(function(){
       self.setState({athleteCollection: athleteCollection});
     });
-
   },
   selectAge: function(e){
       this.setState({'selectedAge': e.target.value});
@@ -116,19 +164,20 @@ var ProfileView = React.createClass({
           <h1 className="coach-headings">Filtered {user.team}</h1>
             <ul className="athlete-list">{filterBy}</ul>
         </div>
-
       </div>
-
-    )
+    );
   }
 });
+
+
 var AthleteProfileView = React.createClass({
   render: function(){
     return (
       <div className="container-fluid bkg-pages">
-        <ProfileView />
-
+        <FilterView />
         <FullTeamList />
+
+
           <ul className="btn-list">
             <li><button type="submit" className="submit jets-button">Submit</button></li>
             <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
@@ -142,4 +191,7 @@ var AthleteProfileView = React.createClass({
   }
 });
 
-module.exports = AthleteProfileView;
+module.exports = {
+  'SingleAthlete' : SingleAthlete,
+  'AthleteProfileView' : AthleteProfileView
+}

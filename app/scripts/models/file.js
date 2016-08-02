@@ -16,11 +16,11 @@ var File = Backbone.Model.extend({
 
 module.exports = File;
 
-handleImageChange: function(e){
-  var profilePic = e.target.files[0]
-  var file = new File();
-  file.set('name', profilePic.name);
-  file.save().done(function(){
-    self.setState({'picUrl': file.get('url')});
-  });
-}
+// handleImageChange: function(e){
+//   var profilePic = e.target.files[0]
+//   var file = new File();
+//   file.set('name', profilePic.name);
+//   file.save().done(function(){
+//     self.setState({'picUrl': file.get('url')});
+//   });
+// }

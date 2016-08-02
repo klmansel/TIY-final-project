@@ -1,6 +1,7 @@
 
 var React = require('react');
 var _ = require('underscore');
+var Backbone = require('backbone');
 var Results = require('../models/results').Results;
 var AthleteCollection = require('../models/athlete').AthleteCollection;
 var ResultsCollection = require('../models/results').ResultsCollection;
@@ -41,7 +42,7 @@ var ResultsForm = React.createClass({
   },
   handleSignout: function(){
     window.localStorage.removeItem("user");
-    this.router.navigate('coachesOnly', {trigger: true});
+    Backbone.history.navigate('coachesOnly', {trigger: true});
   },
   enterMinutes: function(e){
     this.setState({'minutes': e.target.value})
