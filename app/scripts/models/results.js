@@ -8,11 +8,22 @@ var Results = PointerFieldModel.extend({
 
 var ResultsCollection = Backbone.Collection.extend({
   model: Results,
-  url: 'https://kmcakes.herokuapp.com/classes/results',
   parse: function(serverResponse){
    return serverResponse.results;
  },
+ url: function(){
+   var url = 'https://kmcakes.herokuapp.com/classes/results';
 
+   if(this.whereClause){
+     url += this.whereClause;
+   }
+
+   return url;
+ },
+ query: function(objectId){
+   this.whereClause = '?where={"athlete": {"__type": "Pointer", "className": "athletes", "objectId": "' + objectId + '"}}';
+   return this;
+ }
 });
 
 module.exports = {

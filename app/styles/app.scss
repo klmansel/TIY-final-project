@@ -423,7 +423,7 @@ img {
 }
 
 .coach-headings {
-  color: $machinered;
+  color: $white;
   // font-family: 'Permanent Marker', cursive;
   font-family: 'Reem Kufi', sans-serif;
   text-align: center;
@@ -510,7 +510,7 @@ img {
     color: currentColor;
   }
 }
-
+//Profiles
 .upload-photo {
   color: $white;
   margin-left: 15px;
@@ -520,4 +520,35 @@ img {
 
 .athleteprofile {
   cursor: pointer;
+}
+
+.singleathletecaption {
+  color: $machinered;
+  text-align: center;
+}
+
+.thumbnail {
+  background-color: $white;
+  border: 0;
+  box-shadow: 10px 5px 5px $machinered;
+  font-family: 'Reem Kufi', sans-serif;
+  margin-top: 15px;
+  opacity: .8;
+
+  button {
+    height: 60px;
+    word-wrap: none;
+
+    a {
+      padding: 10px;
+    }
+  }
+}
+
+.athlete-results {
+  background-color: $black;
+  box-shadow: 10px 5px 3px $machinered;
+  color: $white;
+  margin-top: 15px;
+  opacity: .8;
 }

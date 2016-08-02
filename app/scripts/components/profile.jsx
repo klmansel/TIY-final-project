@@ -5,6 +5,38 @@ var Athlete = require('../models/athlete').Athlete;
 var AthleteCollection = require('../models/athlete').AthleteCollection;
 var ResultsCollection = require('../models/results').ResultsCollection;
 
+var SingleAthleteResults = React.createClass({
+  getInitialState: function(){
+    return {
+      resultsCollection : new ResultsCollection()
+    };
+  },
+  componentWillMount: function(){
+    var self = this;
+    var athlete = this.props.profile;
+    var resultsCollection = this.state.resultsCollection;
+    var results = resultsCollection.query(athlete.get('objectId')).fetch().done(function(){
+      self.setState({resultsCollection: resultsCollection});
+    });
+  },
+  render: function(){
+    var results = this.state.resultsCollection;
+    var resultList = results.map(function(result){
+      return <li key={result.get('objectId')}>{result.get('meetName')} {result.get('event')} {result.get('minutes')}:{result.get('seconds')}</li>
+    });
+
+    return (
+      <div>
+        <h1 className="coach-headings">Results</h1>
+          <ul>
+            {resultList}
+          </ul>
+      </div>
+    )
+  }
+});
+
+
 var SingleAthlete = React.createClass({
   getInitialState: function(){
      return {
@@ -25,25 +57,49 @@ var SingleAthlete = React.createClass({
    });
  }
   },
-  handleRemoveAthlete: function(profile){
-    this.props.athlete.remove(profile);
+  handleRemoveAthlete: function(e){
+    console.log(this.state);
+    this.state.profile.destroy();
     this.forceUpdate();
+    Backbone.history.navigate('#athleteList'), {trigger:true};
   },
   render: function(profile){
+    var coach = JSON.parse(localStorage.getItem('user'));
     var profile = this.state.profile;
+
     return (
-      <div key={profile.get('objectId')} className="col-md-6">
-        <li className="thumbnail" onClick={function(){self.handleClick(profile)}}>
-          <a href="#singleAthlete">
-              <img className="thumbnail-pic" src={profile.get('profilePic')} />
-              <div className="caption">
-                <h3>Name: {profile.get('athleteName')}</h3>
-                <p>Gender: {profile.get('gender')}</p>
-                <p>Age: {profile.get('ageGroup')}</p>
-              </div>
-          </a>
-          <button className="jetspage" onClick={this.handleRemoveAthlete}>Delete</button>
-        </li>
+      <div className="container-fluid">
+        <div key={profile.get('objectId')} className="bkg-pages col-md-6">
+          <li className="thumbnail">
+                <img className="thumbnail-pic" src={profile.get('profilePic')} />
+                <div className="singleathletecaption caption">
+                  <h3>Name: {profile.get('athleteName')}</h3>
+                  <p>Gender: {profile.get('gender')}</p>
+                  <p>Age: {profile.get('ageGroup')}</p>
+                </div>
+          </li>
+        </div>
+
+        <div className="athlete-results col-md-6">
+          <SingleAthleteResults profile={profile}/>
+        </div>
+
+        <div className="col-md-12">
+          <ul className="row col-md-1 profile-btn-list btn-list">
+            <li><button className="jets-button" type="button">
+              <a href="#coachesOnly">Coaches Only</a></button></li>
+            <li><button className="jets-button" type="button">
+              <a href="#results">Event Results Entry</a></button></li>
+            <li><button className="jets-button" type="button"><
+              a href="#jetspage">Jets Homepage</a></button></li>
+            <li><button className="jets-button" onClick={this.handleSignout}
+              type="button">Log Out</button></li>
+            <li><button type="button" className="jets-button"><a href="#athleteProfile">
+                Back to {coach.team} List</a></button></li>
+            <li><button type="button" className="jets-button" onClick={this.handleRemoveAthlete}>
+                Delete Athlete from {coach.team}</button></li>
+          </ul>
+        </div>
       </div>
 
     );
@@ -179,7 +235,6 @@ var AthleteProfileView = React.createClass({
 
 
           <ul className="btn-list">
-            <li><button type="submit" className="submit jets-button">Submit</button></li>
             <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
             <li><button className="jets-button" type="button"><a href="#athleteProfile">Athlete Profiles</a></button></li>
             <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
