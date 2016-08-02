@@ -6058,6 +6058,10 @@ img {
   list-style: none;
   text-align: center; }
 
+.thumbnail-pic {
+  height: 300px;
+  width: 300px; }
+
 .footer {
   background-color: #fff77d;
   border: 0;
@@ -6076,5 +6080,4 @@ img {
   color: #fff;
   margin-left: 15px;
   padding-top: 20px; }
-
 /*# sourceMappingURL=app.css.map */
