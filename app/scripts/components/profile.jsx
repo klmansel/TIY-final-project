@@ -184,9 +184,21 @@ var FilterView = React.createClass({
   selectedGender: function(e){
       this.setState({'selectedGender': e.target.value});
   },
+  selectedEvent: function(e){
+      this.setState({'selectedEvent': e.target.value});
+  },
   render: function(e){
+    console.log(this.state);
     var user = JSON.parse(localStorage.getItem('user'));
-
+    var eventFilter = this.state.filteredCollection.where({
+      'event': this.state.selectedEvent
+    }).map(function(model){
+      return (
+        <li key={model.get('objectId')}>
+          {model.get('athleteName')}
+        </li>
+      );
+    });
     var filterBy = this.state.filteredCollection.where({
       'ageGroup': this.state.selectedAge,
       'gender': this.state.selectedGender
@@ -219,11 +231,22 @@ var FilterView = React.createClass({
                 <option>Male</option>
                 <option>Female</option>
               </select>
+              <label htmlFor="event">Event</label>
+              <select onChange={this.selectedEvent} className="form-control" id="event">
+                <option>-- Select --</option>
+                <option>100</option>
+                <option>200</option>
+                <option>400</option>
+                <option>800</option>
+                <option>1500</option>
+              </select>
+
             </fieldset>
         </div>
         <div className="col-md-6">
           <h1 className="coach-headings">Filtered {user.team}</h1>
-            <ul className="athlete-list">{filterBy}</ul>
+            // <ul className="athlete-list">{filterBy}</ul>
+            <ul className="athlete-list">{eventFilter}</ul>
         </div>
       </div>
     );

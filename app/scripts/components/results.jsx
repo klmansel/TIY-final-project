@@ -104,9 +104,7 @@ var ResultsForm = React.createClass({
                         type="button">Log Out</button></li>
                     </ul>
             </fieldset>
-
             </form>
-
       </div>
 
     );

@@ -523,15 +523,10 @@ img {
   }
 }
 
-.thumbnail-pic {
-  display: block;
-  max-height: 100%;
-}
-
 .entry-btn {
   display: block;
   margin: 0 auto;
-  
+
   li{
     float: left;
     margin-top: 15px;
@@ -600,7 +595,7 @@ img {
 }
 
 .thumbnail {
-  background-color: $black;
+  background-color: lighten($black, 10%);
   border: 0;
   box-shadow: 10px 10px 30px $profilegray;
   font-family: 'Reem Kufi', sans-serif;
@@ -611,8 +606,18 @@ img {
   }
 }
 
+.thumbnail-pic {
+  display: block;
+  height: 300px;
+  margin: 0 auto;
+  width: 300px;
+}
+
 .thumbnail-pic-wrap {
   height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 10px;
   width: 300px;
 }
 
@@ -627,4 +632,28 @@ img {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 14px;
   }
+}
+//Profile Pic
+.profile-pic-field {
+  cursor: pointer;
+  font-size: 25px;
+
+  img {
+    color: $black;
+    height: 75px;
+  }
+}
+
+.pic-input {
+  height: .01 px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: .01 px;
+  z-index: -1;
+}
+
+.profile-icon {
+  color: $white;
+  font-size: 40px;
 }

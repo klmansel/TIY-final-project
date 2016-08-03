@@ -128,10 +128,11 @@ var AthleteEntry = React.createClass({
         <form name="fileupload" encType="multipart/form-data" method="post" id="enter-athlete" onSubmit={this.handleSubmit} className="col-md-12">
           <h1 className="coach-headings">Add New Athlete</h1>
             <h3 className="coach-headings">Enter New Athlete Information</h3>
-              <fieldset className="form-group">
+              <fieldset className="profile-pic-field form-group">
                 <fieldset>
-                  <label htmlFor="profilepic">Profile Photo</label>
-                  <input  onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
+                  <img src={this.state.profilePic} />
+                  <label className="profile-pic-field" htmlFor="fileselect">Upload Profile Photo</label>  <i className="fa fa-camera profile-icon" aria-hidden="true"></i>
+                  <input className="pic-input" onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
                 </fieldset>
                 <label htmlFor="name">Name</label>
                 <input value={this.state.athleteName} onChange={this.addAthlete} type="text" className="form-control" id="athleteName"
