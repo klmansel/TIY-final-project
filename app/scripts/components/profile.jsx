@@ -63,6 +63,10 @@ var SingleAthlete = React.createClass({
     this.forceUpdate();
     Backbone.history.navigate('#athleteList'), {trigger:true};
   },
+  handleSignout: function(){
+    window.localStorage.removeItem("user");
+    Backbone.history.navigate('#', {trigger: true});
+  },
   render: function(profile){
     var coach = JSON.parse(localStorage.getItem('user'));
     var profile = this.state.profile;
@@ -70,8 +74,8 @@ var SingleAthlete = React.createClass({
     return (
       <div className="container-fluid">
         <div key={profile.get('objectId')} className="bkg-pages col-md-6">
-          <li className="thumbnail">
-                <img className="thumbnail-pic" src={profile.get('profilePic')} />
+          <li className="thumbnail fulllistprofileview">
+                <div className="thumbnail-pic-wrap"><img className="thumbnail-pic" src={profile.get('profilePic')} /></div>
                 <div className="singleathletecaption caption">
                   <h3>Name: {profile.get('athleteName')}</h3>
                   <p>Gender: {profile.get('gender')}</p>
@@ -85,7 +89,7 @@ var SingleAthlete = React.createClass({
         </div>
 
         <div className="col-md-12">
-          <ul className="row col-md-1 profile-btn-list btn-list">
+          <ul className="row col-xs-12 col-md-4 profile-btns btn-list">
             <li><button className="jets-button" type="button">
               <a href="#coachesOnly">Coaches Only</a></button></li>
             <li><button className="jets-button" type="button">
@@ -135,7 +139,8 @@ var FullTeamList = React.createClass({
 
       return (
         <div key={profile.get('objectId')} className="col-md-6">
-          <li onClick={function(){self.handleClick(profile)}} className="thumbnail athleteprofile">
+          <li onClick={function(){self.handleClick(profile)}}
+            className="fulllistprofileview thumbnail athleteprofile">
                 <img className="thumbnail-pic" src={profile.get('profilePic')} />
                 <div className="caption">
                   <h3>Name: {profile.get('athleteName')}</h3>
@@ -162,15 +167,15 @@ var FullTeamList = React.createClass({
 var FilterView = React.createClass({
   getInitialState: function(){
     return {
-      athleteCollection: new AthleteCollection(),
+      filteredCollection: new AthleteCollection(),
       'selectedAge': ''
     }
   },
   componentWillMount: function(){
     var self = this;
-    var athleteCollection = this.state.athleteCollection;
-    athleteCollection.fetch().done(function(){
-      self.setState({athleteCollection: athleteCollection});
+    var filteredCollection = this.state.filteredCollection;
+    filteredCollection.fetch().done(function(){
+      self.setState({filteredCollection: filteredCollection});
     });
   },
   selectAge: function(e){
@@ -182,7 +187,7 @@ var FilterView = React.createClass({
   render: function(e){
     var user = JSON.parse(localStorage.getItem('user'));
 
-    var filterBy = this.state.athleteCollection.where({
+    var filterBy = this.state.filteredCollection.where({
       'ageGroup': this.state.selectedAge,
       'gender': this.state.selectedGender
     }).map(function(model){
@@ -195,7 +200,7 @@ var FilterView = React.createClass({
 
     return (
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-xs-12 col-md-6">
             <fieldset className="form-group">
               <h1 className="coach-headings">Athlete Profiles</h1>
               <label htmlFor="age-group">Age Group</label>
@@ -230,16 +235,18 @@ var AthleteProfileView = React.createClass({
   render: function(){
     return (
       <div className="container-fluid bkg-pages">
+
+        <ul className="btn-list profile-btns">
+          <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
+          <li><button className="jets-button" type="button"><a href="#athleteProfile">Athlete Profiles</a></button></li>
+          <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
+          <li><button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button></li>
+        </ul>
+
         <FilterView />
         <FullTeamList />
 
 
-          <ul className="btn-list">
-            <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
-            <li><button className="jets-button" type="button"><a href="#athleteProfile">Athlete Profiles</a></button></li>
-            <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
-            <li><button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button></li>
-          </ul>
       </div>
 
     );

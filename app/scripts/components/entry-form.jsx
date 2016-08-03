@@ -131,7 +131,7 @@ var AthleteEntry = React.createClass({
               <fieldset className="form-group">
                 <fieldset>
                   <label htmlFor="profilepic">Profile Photo</label>
-                  <input onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
+                  <input  onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
                 </fieldset>
                 <label htmlFor="name">Name</label>
                 <input value={this.state.athleteName} onChange={this.addAthlete} type="text" className="form-control" id="athleteName"
@@ -157,10 +157,10 @@ var AthleteEntry = React.createClass({
                  <option>17-19 Years Old</option>
                </select>
              </fieldset>
-             <ul className="btn-list">
-               <li><button type="submit" className="submit jets-button">Submit</button></li>
+             <ul className="athlete-entry-btn btn-list col-md-3">
+               <li><button type="submit" className="submit jets-button"><span>Submit</span></button></li>
                <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
-               <li><button className="jets-button" type="button"><a href="#athleteProfile">Athlete Profiles</a></button></li>
+               <li><button className="jets-button" type="button"><a href="#athleteProfile">View Athlete Profiles</a></button></li>
                <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
                <li><button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button></li>
              </ul>

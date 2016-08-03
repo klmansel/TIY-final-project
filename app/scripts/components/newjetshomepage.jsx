@@ -4,7 +4,7 @@ var NavbarComponent = React.createClass({
   render: function(){
     return (
       <div className="container-fluid new-jets-page">
-        <div className="row new-nav col-xs-4 col-md-12">
+        <div className="row new-nav col-xs-12 col-md-8">
           <h1>
             <span className="glyphicon glyphicon-plane" ></span>
             Greenville Jets Track Club

@@ -62,7 +62,7 @@ var ResultsForm = React.createClass({
   render: function(){
     return (
 
-        <div className="col-md-6">
+        <div className="col-md-6 col-md-offset-3">
 
             <form onSubmit={this.handleSubmit}>
               <h1 className="coach-headings">Enter Meet Results</h1>
@@ -86,23 +86,27 @@ var ResultsForm = React.createClass({
                   </select>
 
               <label htmlFor="minutes">Minutes</label>
-                <input value={this.state.minutes} onChange={this.enterMinutes} type="text" className="form-control" id="minutes" placeholder="Enter minutes"/>
+                <input value={this.state.minutes} onChange={this.enterMinutes}
+                   type="text" className="form-control" id="minutes" placeholder="Enter minutes"/>
                   <label htmlFor="seconds">Seconds</label>
-                  <input value={this.state.seconds} onChange={this.enterSeconds} type="text" className="form-control" id="seconds" placeholder="Enter seconds"/>
-                  <button type="submit" className="btn btn-primary submit jets-button">Submit</button>
+                  <input value={this.state.seconds} onChange={this.enterSeconds}
+                     type="text" className="form-control" id="seconds" placeholder="Enter seconds"/>
+
+                   <ul className="row col-md-6 entry-btn btn-list">
+                      <li><button type="submit" className="submit jets-button">Submit</button></li>
+                      <li><button className="jets-button" type="button">
+                        <a href="#coachesOnly">Coaches Only</a></button></li>
+                      <li><button className="jets-button" type="button">
+                        <a href="#results">Event Results Entry</a></button></li>
+                      <li><button className="jets-button" type="button"><
+                        a href="#jetspage">Jets Homepage</a></button></li>
+                      <li><button className="jets-button" onClick={this.handleSignout}
+                        type="button">Log Out</button></li>
+                    </ul>
             </fieldset>
 
             </form>
-            <ul className="row col-md-1 btn-list">
-              <li><button className="jets-button" type="button">
-                <a href="#coachesOnly">Coaches Only</a></button></li>
-              <li><button className="jets-button" type="button">
-                <a href="#results">Event Results Entry</a></button></li>
-              <li><button className="jets-button" type="button"><
-                a href="#jetspage">Jets Homepage</a></button></li>
-              <li><button className="jets-button" onClick={this.handleSignout}
-                type="button">Log Out</button></li>
-            </ul>
+
       </div>
 
     );

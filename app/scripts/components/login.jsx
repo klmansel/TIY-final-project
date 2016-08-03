@@ -39,7 +39,7 @@ var SignUpComponent = React.createClass({
     return (
       <div className="container bkg-pages">
         <div className="row col-md-6 col-md-offset-3">
-          <form onSubmit={this.handleSubmit}>
+          <form className="loginform" onSubmit={this.handleSubmit}>
             <h1 className="coach-headings">Coach Sign Up</h1>
               <fieldset className="form-group">
                 <label htmlFor="name">Coach Name</label>
@@ -63,7 +63,7 @@ var SignUpComponent = React.createClass({
                 <input onChange={this.handlePasswordChange} type="password" className="form-control" id="password"
                 placeholder="Create Password"/>
               </fieldset>
-              <ul className="row col-xs-12 col-md-3 col-md-offset-3 btn-list">
+              <ul className="col-xs-12 col-md-6 col-md-offset-3 btn-list">
                 <li><button type="submit" className="submit jets-button">Submit</button></li>
                 <li><button className="jets-button" type="button"><a href="#signin">Sign In</a></button></li>
                 <li><button className="jets-button" type="button"><a href="#jetspage">Jets Page</a></button></li>
@@ -88,7 +88,7 @@ var SignInComponent = React.createClass({
 
       success: function(user){
         console.log('User logged in!: ', user);
-        router.navigate('athleteEntry', {trigger: true})
+        router.navigate('athleteProfile', {trigger: true})
       },
       error: function(user, error){
         console.log('error: ', error);
@@ -99,7 +99,7 @@ var SignInComponent = React.createClass({
   render: function(){
     return (
       <div className="container-fluid bkg-pages">
-        <form className="col-xs-12 col-md-3 col-md-offset-4" onSubmit={this.handleSubmit}>
+        <form className="loginform col-xs-12 col-md-3 col-md-offset-4" onSubmit={this.handleSubmit}>
           <h1 className="coach-headings">Coach Login</h1>
             <fieldset className="form-group">
               <label htmlFor="inputUsername" className="sr-only">Username</label>

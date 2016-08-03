@@ -1,4 +1,5 @@
-
+var SignInComponent = require('./login.jsx').SignInComponent;
+var SignUpComponent = require('./login.jsx').SignUpComponent;
 
 
 //No longe

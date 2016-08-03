@@ -19,7 +19,7 @@ var Schedule = React.createClass({
             <li className="schedule-event">July 30-Aug 6 AAU Junior Olympics (National Championships Houston, TX<a href="#"> Results</a></li>
           </ul>
 
-          <p><a className="jets-button" href="#jetspage">Jets Homepage</a></p>
+          <button className="jets-button" type="button"><a href="#jetspage">Jets Homepage</a></button>
       </div>
     );
   }
