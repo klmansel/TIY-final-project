@@ -5775,6 +5775,8 @@ img {
   background-size: cover;
   display: block;
   height: 800px; }
+  .hero-banner li {
+    list-style: none; }
 
 .hero-headings, .hero-desc, .hero-btn,
 .new-navlist,
@@ -5817,16 +5819,23 @@ img {
     text-decoration: none; }
 
 .hero-btn {
+  float: right;
   font-size: 30px;
-  margin: auto;
+  margin-left: 15px;
+  margin-top: 15px;
+  padding: 10px;
   text-align: center;
   vertical-align: middle; }
+  @media screen and (max-width: 480px) {
+    .hero-btn {
+      float: left; } }
 
 .hero-btn,
 .new-navlist,
 .jets-button {
-  background-color: #000;
-  border: 1px solid #cf4b4b;
+  background-color: #1a1a1a;
+  box-shadow: 2px 2px 20px #000;
+  border-radius: 5px;
   color: #cf4b4b;
   font-size: 20px;
   width: 200px; }
@@ -5869,12 +5878,17 @@ img {
 .new-nav {
   background-color: #fff44a;
   border-radius: 10%;
+  display: inline-block;
   font-family: 'Coda',sans-serif;
   height: 600px;
+  margin-bottom: 30px;
   margin-left: 15px;
   margin-top: 30px;
   opacity: .5;
   width: 800px; }
+  @media screen and (max-width: 480px) {
+    .new-nav {
+      background-color: transparent; } }
   .new-nav span {
     color: #00a954; }
   .new-nav h1 {
@@ -5895,9 +5909,6 @@ img {
   right: 0;
   top: 0;
   visibility: hidden; }
-  @media screen and (max-width: 480px) {
-    .on-hover {
-      visibility: visible; } }
 
 .icon-wrap {
   position: relative; }
@@ -5905,7 +5916,8 @@ img {
     display: inline-block;
     float: left;
     height: 100px;
-    padding-bottom: 25px; }
+    padding-bottom: 25px;
+    max-width: 100%; }
   .icon-wrap a {
     color: #777;
     display: inline;
@@ -5915,6 +5927,10 @@ img {
     color: #00a954;
     display: inline;
     width: 350px; }
+    @media screen and (max-width: 480px) {
+      .icon-wrap p {
+        color: #fff;
+        visibility: visible; } }
   .icon-wrap:hover .on-hover {
     display: inline;
     visibility: visible; }
@@ -5942,7 +5958,7 @@ img {
 
 .new-jets-page {
   left: 0;
-  position: fixed;
+  position: relative;
   right: 0;
   z-index: 0; }
 
@@ -5994,10 +6010,13 @@ img {
   float: right; }
 
 .coaches-menu h1 {
-  margin-bottom: 20px;
-  text-align: center; }
+  margin-bottom: 20px; }
 .coaches-menu button {
-  text-align: center; }
+  display: block;
+  margin: 0 auto; }
+.coaches-menu li {
+  list-style-type: none;
+  margin-top: 15px; }
 
 .coach-homepage li {
   list-style-type: none;
@@ -6014,7 +6033,7 @@ img {
   text-align: center; }
 
 .coach-headings {
-  color: #cf4b4b;
+  color: #fff;
   font-family: 'Reem Kufi', sans-serif;
   text-align: center; }
 
@@ -6023,6 +6042,23 @@ img {
   font-family: 'Reem Kufi', sans-serif;
   font-size: 20px;
   text-align: left; }
+
+.loginform {
+  background-color: #7b7b7b;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 90px;
+  opacity: .8;
+  padding: 10px; }
+  .loginform ul {
+    margin-top: 10px; }
+  .loginform li {
+    float: left;
+    margin-top: 10px;
+    padding-bottom: 10px; }
+  .loginform button {
+    display: block;
+    margin: 0 auto; }
 
 .jetspics {
   height: 400px;
@@ -6059,8 +6095,15 @@ img {
   text-align: center; }
 
 .thumbnail-pic {
-  height: 300px;
-  width: 300px; }
+  display: block;
+  max-height: 100%; }
+
+.entry-btn {
+  display: block;
+  margin: 0 auto; }
+  .entry-btn li {
+    float: left;
+    margin-top: 15px; }
 
 .footer {
   background-color: #fff77d;
@@ -6080,4 +6123,52 @@ img {
   color: #fff;
   margin-left: 15px;
   padding-top: 20px; }
+
+.fulllistprofileview {
+  cursor: pointer; }
+
+.profile-btns {
+  float: left; }
+  .profile-btns li {
+    margin-left: 15px;
+    margin-top: 15px; }
+
+.athlete-entry-btn li {
+  margin-top: 15px; }
+.athlete-entry-btn span {
+  color: #fff; }
+
+.singleathletecaption,
+.caption {
+  background-color: #fff;
+  color: #cf4b4b;
+  margin: 0;
+  text-align: center; }
+  .singleathletecaption span,
+  .caption span {
+    color: #cf4b4b; }
+
+.thumbnail {
+  background-color: #000;
+  border: 0;
+  box-shadow: 10px 10px 30px #282c34;
+  font-family: 'Reem Kufi', sans-serif;
+  margin-top: 15px; }
+  .thumbnail span {
+    color: #cf4b4b; }
+
+.thumbnail-pic-wrap {
+  height: 300px;
+  width: 300px; }
+
+.athlete-results {
+  background-color: #7b7b7b;
+  box-shadow: 10px 10px 30px #282c34;
+  color: #fff;
+  margin-top: 15px;
+  opacity: .8; }
+  .athlete-results li {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 14px; }
+
 /*# sourceMappingURL=app.css.map */
