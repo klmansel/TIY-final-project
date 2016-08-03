@@ -45,7 +45,7 @@ var AthleteEntry = React.createClass({
     return {
     'athleteName': '',
     'gender': '',
-    'event': '',
+    'events': [],
     'ageGroup' : '',
     'profilePic': ''
     };
@@ -125,17 +125,21 @@ var AthleteEntry = React.createClass({
     console.log(this.state);
     return (
       <div className="container-fluid col-md-6">
-        <form name="fileupload" encType="multipart/form-data" method="post" id="enter-athlete" onSubmit={this.handleSubmit} className="col-md-12">
+        <form name="fileupload" encType="multipart/form-data" method="post"
+          id="enter-athlete" onSubmit={this.handleSubmit} className="new-athlete-formcol-md-12">
           <h1 className="coach-headings">Add New Athlete</h1>
             <h3 className="coach-headings">Enter New Athlete Information</h3>
               <fieldset className="profile-pic-field form-group">
                 <fieldset>
                   <img src={this.state.profilePic} />
-                  <label className="profile-pic-field" htmlFor="fileselect">Upload Profile Photo</label>  <i className="fa fa-camera profile-icon" aria-hidden="true"></i>
-                  <input className="pic-input" onChange={this.handleUpload} type="file" name="profilepic" id="fileselect"></input>
+                  <label className="profile-pic-field" htmlFor="fileselect">Upload Profile Photo</label>
+                    <i className="fa fa-camera profile-icon" aria-hidden="true"></i>
+                  <input className="pic-input" onChange={this.handleUpload} type="file"
+                    name="profilepic" id="fileselect"></input>
                 </fieldset>
                 <label htmlFor="name">Name</label>
-                <input value={this.state.athleteName} onChange={this.addAthlete} type="text" className="form-control" id="athleteName"
+                <input value={this.state.athleteName} onChange={this.addAthlete}
+                  type="text" className="form-control" id="athleteName"
                 placeholder="Enter Athlete's Name"/>
               </fieldset>
               <fieldset className="form-group">
@@ -158,7 +162,8 @@ var AthleteEntry = React.createClass({
                  <option>17-19 Years Old</option>
                </select>
              </fieldset>
-             <ul className="athlete-entry-btn btn-list col-md-3">
+
+             <ul className="athlete-entry-btn btn-list col-md-6 col-md-offset-3">
                <li><button type="submit" className="submit jets-button"><span>Submit</span></button></li>
                <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
                <li><button className="jets-button" type="button"><a href="#athleteProfile">View Athlete Profiles</a></button></li>

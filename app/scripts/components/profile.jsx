@@ -1,6 +1,7 @@
 var React = require('react');
 var Backbone = require('backbone');
 var $ = require('jquery');
+var _ = require('underscore');
 var Athlete = require('../models/athlete').Athlete;
 var AthleteCollection = require('../models/athlete').AthleteCollection;
 var ResultsCollection = require('../models/results').ResultsCollection;
@@ -21,12 +22,15 @@ var SingleAthleteResults = React.createClass({
   },
   render: function(){
     var results = this.state.resultsCollection;
+    // var date = {results.get('createdAt')};
     var resultList = results.map(function(result){
-      return <li key={result.get('objectId')}>{result.get('meetName')} {result.get('event')} {result.get('minutes')}:{result.get('seconds')}</li>
+      return <li key={result.get('objectId')}>
+              {result.get('meetName')} {result.get('createdAt').slice(0,10)}  {result.get('event')} {result.get('minutes:')}{result.get('seconds')}
+            </li>
     });
 
     return (
-      <div>
+      <div className="col-med-6">
         <h1 className="coach-headings">Results</h1>
           <ul>
             {resultList}
@@ -43,7 +47,6 @@ var SingleAthlete = React.createClass({
        profile: new Athlete()
      }
   },
-
   componentWillMount: function(){
     var self = this;
     var profile = this.state.profile;
@@ -61,11 +64,11 @@ var SingleAthlete = React.createClass({
     console.log(this.state);
     this.state.profile.destroy();
     this.forceUpdate();
-    Backbone.history.navigate('#athleteList'), {trigger:true};
+    Backbone.history.navigate('#athleteProfile'), {trigger:true};
   },
   handleSignout: function(){
     window.localStorage.removeItem("user");
-    Backbone.history.navigate('#', {trigger: true});
+    this.router.navigate('#', {trigger: true});
   },
   render: function(profile){
     var coach = JSON.parse(localStorage.getItem('user'));
@@ -74,30 +77,25 @@ var SingleAthlete = React.createClass({
     return (
       <div className="container-fluid">
         <div key={profile.get('objectId')} className="bkg-pages col-md-6">
-          <li className="thumbnail fulllistprofileview">
-                <div className="thumbnail-pic-wrap"><img className="thumbnail-pic" src={profile.get('profilePic')} /></div>
-                <div className="singleathletecaption caption">
-                  <h3>Name: {profile.get('athleteName')}</h3>
-                  <p>Gender: {profile.get('gender')}</p>
-                  <p>Age: {profile.get('ageGroup')}</p>
-                </div>
-          </li>
+          <div className="thumbnail-wrap">
+            <li className="thumbnail fulllistprofileview">
+                  <div className="thumbnail-pic-wrap"><img className="thumbnail-pic" src={profile.get('profilePic')} /></div>
+                  <div className="singleathletecaption caption">
+                    <h3>Name: {profile.get('athleteName')}</h3>
+                    <p>Gender: {profile.get('gender')}</p>
+                    <p>Age: {profile.get('ageGroup')}</p>
+                  </div>
+            </li>
+          </div>
         </div>
 
         <div className="athlete-results col-md-6">
           <SingleAthleteResults profile={profile}/>
-        </div>
+          </div>
+
 
         <div className="col-md-12">
-          <ul className="row col-xs-12 col-md-4 profile-btns btn-list">
-            <li><button className="jets-button" type="button">
-              <a href="#coachesOnly">Coaches Only</a></button></li>
-            <li><button className="jets-button" type="button">
-              <a href="#results">Event Results Entry</a></button></li>
-            <li><button className="jets-button" type="button"><
-              a href="#jetspage">Jets Homepage</a></button></li>
-            <li><button className="jets-button" onClick={this.handleSignout}
-              type="button">Log Out</button></li>
+          <ul className="profile-btns btn-list">
             <li><button type="button" className="jets-button"><a href="#athleteProfile">
                 Back to {coach.team} List</a></button></li>
             <li><button type="button" className="jets-button" onClick={this.handleRemoveAthlete}>
@@ -111,19 +109,6 @@ var SingleAthlete = React.createClass({
   });
 
 var FullTeamList = React.createClass({
-  getInitialState: function(){
-    return {
-      athleteList: []
-    }
-  },
-  componentWillMount: function(){
-    var self = this;
-    var athleteList = new AthleteCollection();
-
-    athleteList.fetch().done(function(){
-      self.setState({athleteList: athleteList});
-    });
-  },
   handleClick: function(profile){
     var router= this.props.router;
     Backbone.history.navigate("#athletes/" + profile.get('objectId'), {trigger:true});
@@ -131,7 +116,7 @@ var FullTeamList = React.createClass({
   },
   render: function(){
     var user =JSON.parse(localStorage.getItem('user'));
-    var athleteList = this.state.athleteList;
+    var athleteList = this.props.athleteList;
 
     var self = this;
 
@@ -167,41 +152,26 @@ var FullTeamList = React.createClass({
 var FilterView = React.createClass({
   getInitialState: function(){
     return {
-      filteredCollection: new AthleteCollection(),
       'selectedAge': ''
     }
   },
-  componentWillMount: function(){
-    var self = this;
-    var filteredCollection = this.state.filteredCollection;
-    filteredCollection.fetch().done(function(){
-      self.setState({filteredCollection: filteredCollection});
-    });
-  },
   selectAge: function(e){
       this.setState({'selectedAge': e.target.value});
+      this.props.filter(_.extend({}, this.state, {'selectedAge': e.target.value}));
   },
   selectedGender: function(e){
       this.setState({'selectedGender': e.target.value});
+      this.props.filter(_.extend({}, this.state, {'selectedGender': e.target.value}));
   },
   selectedEvent: function(e){
       this.setState({'selectedEvent': e.target.value});
+      this.props.filter(_.extend({}, this.state, {'selectedEvent': e.target.value}));
   },
   render: function(e){
     console.log(this.state);
     var user = JSON.parse(localStorage.getItem('user'));
-    var eventFilter = this.state.filteredCollection.where({
+    var eventFilter = this.props.athleteList.where({
       'event': this.state.selectedEvent
-    }).map(function(model){
-      return (
-        <li key={model.get('objectId')}>
-          {model.get('athleteName')}
-        </li>
-      );
-    });
-    var filterBy = this.state.filteredCollection.where({
-      'ageGroup': this.state.selectedAge,
-      'gender': this.state.selectedGender
     }).map(function(model){
       return (
         <li key={model.get('objectId')}>
@@ -243,11 +213,6 @@ var FilterView = React.createClass({
 
             </fieldset>
         </div>
-        <div className="col-md-6">
-          <h1 className="coach-headings">Filtered {user.team}</h1>
-            // <ul className="athlete-list">{filterBy}</ul>
-            <ul className="athlete-list">{eventFilter}</ul>
-        </div>
       </div>
     );
   }
@@ -255,21 +220,66 @@ var FilterView = React.createClass({
 
 
 var AthleteProfileView = React.createClass({
+  getInitialState: function(){
+    return {
+      athleteList: new AthleteCollection()
+    }
+  },
+  componentWillMount: function(){
+    var self = this;
+    var athleteList = this.state.athleteList;
+
+    athleteList.fetch().done(function(data){
+      self.setState({athleteList: athleteList});
+
+      self.athleteList = new AthleteCollection(data.results);
+      var results = new ResultsCollection();
+
+      results.fetch().done(function(data){
+        self.athleteList.each(function(athlete){
+          var athleteEvents = _.filter(results.toJSON(), function(result){
+            return result.athlete.objectId === athlete.get('objectId');
+          });
+
+          athlete.set('event', _.uniq(_.pluck(athleteEvents, 'event')));
+        });
+        console.log(self.athleteList);
+      });
+    });
+
+
+  },
+  filter: function(filters){
+    var filterObject = {};
+    if(filters.selectedGender){filterObject.gender = filters.selectedGender};
+    if(filters.selectedAge){filterObject.ageGroup = filters.selectedAge};
+
+    var filteredAthletes = this.athleteList.where(filterObject);
+
+    if (filters.selectedEvent){
+      filteredAthletes =  _.filter(filteredAthletes, function(athlete){
+        console.log(athlete);
+        return athlete.get('event').indexOf(filters.selectedEvent) != -1;
+      });
+    }
+
+    this.setState({athleteList: new AthleteCollection(filteredAthletes)});
+  },
   render: function(){
     return (
       <div className="container-fluid bkg-pages">
+        <nav className="new-profile-nav">
+          <ul className="col-md-12 btn-list profile-btns">
+            <li><a href="#">Home</a></li>
+            <li><a href="#athleteEntry">Athlete Entry</a></li>
+            <li><a href="#athleteProfile">Athlete Profiles</a></li>
+            <li><a href="#results">Event Results Entry</a></li>
+            <li><a onClick={this.handleSignout} href="#">Log Out</a></li>
+          </ul>
+        </nav>
 
-        <ul className="btn-list profile-btns">
-          <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
-          <li><button className="jets-button" type="button"><a href="#athleteProfile">Athlete Profiles</a></button></li>
-          <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
-          <li><button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button></li>
-        </ul>
-
-        <FilterView />
-        <FullTeamList />
-
-
+        <FilterView filter={this.filter} athleteList={this.state.athleteList}/>
+        <FullTeamList athleteList={this.state.athleteList}/>
       </div>
 
     );

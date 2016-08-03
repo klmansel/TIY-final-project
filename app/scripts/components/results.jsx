@@ -60,6 +60,7 @@ var ResultsForm = React.createClass({
     this.setState({'meetName': e.target.value})
   },
   render: function(){
+    var coach = JSON.parse(localStorage.getItem('user'));
     return (
 
         <div className="col-md-6 col-md-offset-3">
@@ -92,12 +93,14 @@ var ResultsForm = React.createClass({
                   <input value={this.state.seconds} onChange={this.enterSeconds}
                      type="text" className="form-control" id="seconds" placeholder="Enter seconds"/>
 
-                   <ul className="row col-md-6 entry-btn btn-list">
+                   <ul className="row col-md-12 entry-btn btn-list">
                       <li><button type="submit" className="submit jets-button">Submit</button></li>
                       <li><button className="jets-button" type="button">
                         <a href="#coachesOnly">Coaches Only</a></button></li>
                       <li><button className="jets-button" type="button">
                         <a href="#results">Event Results Entry</a></button></li>
+                      <li><button type="button" className="jets-button"><a href="#athleteProfile">
+                           {coach.team} List</a></button></li>
                       <li><button className="jets-button" type="button"><
                         a href="#jetspage">Jets Homepage</a></button></li>
                       <li><button className="jets-button" onClick={this.handleSignout}

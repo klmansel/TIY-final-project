@@ -20,6 +20,7 @@ var SignUpComponent = React.createClass({
     signup.save().done(function(){
       console.log('Added New Coach');
       router.navigate('signin', {trigger: true});
+      $('.submit').text('Signing In');
     });
   },
   handleNameChange: function(e){
@@ -33,6 +34,10 @@ var SignUpComponent = React.createClass({
   },
   handlePasswordChange: function(e){
     this.setState({'password': e.target.value})
+  },
+  loadingClickAction: function(e){
+    button.text('Signing In');
+
   },
 
   render: function(){
@@ -64,7 +69,7 @@ var SignUpComponent = React.createClass({
                 placeholder="Create Password"/>
               </fieldset>
               <ul className="col-xs-12 col-md-6 col-md-offset-3 btn-list">
-                <li><button type="submit" className="submit jets-button">Submit</button></li>
+                <li><button onClick="loadingClickAction" type="submit" className="submit jets-button">Submit</button></li>
                 <li><button className="jets-button" type="button"><a href="#signin">Sign In</a></button></li>
                 <li><button className="jets-button" type="button"><a href="#jetspage">Jets Page</a></button></li>
                 <li><button className="jets-button" type="button"><a href="#">Back to <span className="trackit-logo2">Track It!</span></a></button></li>
@@ -99,8 +104,8 @@ var SignInComponent = React.createClass({
   render: function(){
     return (
       <div className="container-fluid bkg-pages">
-        <form className="loginform col-xs-12 col-md-3 col-md-offset-4" onSubmit={this.handleSubmit}>
-          <h1 className="coach-headings">Coach Login</h1>
+        <form className="loginform col-xs-12 col-md-4 col-md-offset-4" onSubmit={this.handleSubmit}>
+          <h1 className="login-heading">Coach Login</h1>
             <fieldset className="form-group">
               <label htmlFor="inputUsername" className="sr-only">Username</label>
               <input name="username" type="text" className="form-control" id="username"

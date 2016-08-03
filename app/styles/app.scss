@@ -11,6 +11,7 @@ $machinered: #cf4b4b;
 $trackitgray: #cccdc7;
 $profilegray: #282c34;
 $profilegray2: #7b7b7b;
+$gray: #808080;
 
 
 // Bootstrap Variables
@@ -130,25 +131,27 @@ img {
     vertical-align: middle;
 
     &:hover {
-       color: $trackitgray;
-       list-style-type: none;
-       text-decoration: none;
-       text-overflow: none;
-       transition: .5s;
+     color: $trackitgray;
+     list-style-type: none;
+     text-decoration: none;
+     text-overflow: none;
+     transition: .5s;
     }
 
-       &:click {
-         color: $backgroundgray;
-         text-decoration: none;
+     &:click {
+       color: $backgroundgray;
+       text-decoration: none;
     }
   }
 }
 //Used to line up buttons on pages
 .btn-list {
+
   li {
     display: inline;
     float: left;
     list-style-type: none;
+    margin: 0 auto;
   }
 }
 //Jets Page Nav and Hero
@@ -434,6 +437,12 @@ img {
   text-align: center;
 }
 
+.login-heading {
+  color: $black;
+  font-family: 'Reem Kufi', sans-serif;
+  text-align: center;
+}
+
 .coach-headings {
   color: $white;
   // font-family: 'Permanent Marker', cursive;
@@ -527,10 +536,15 @@ img {
   display: block;
   margin: 0 auto;
 
-  li{
+  li {
     float: left;
     margin-top: 15px;
   }
+}
+
+.new-athlete-form {
+  background-color: $white;
+  opacity: .8;
 }
 //Footer
 
@@ -564,11 +578,27 @@ img {
 }
 
 .profile-btns {
+  background-color: $white;
   float: left;
+  margin-left: 0;
+  margin-right: 0;
 
   li {
     margin-left: 15px;
     margin-top: 15px;
+  }
+}
+
+.new-profile-nav {
+  color: $machinered;
+  font-family: 'Reem Kufi', sans-serif;
+
+  ul {
+    background-color: $black;
+  }
+
+  li {
+    text-decoration: none;
   }
 }
 
@@ -587,6 +617,7 @@ img {
   background-color: $white;
   color: $machinered;
   margin: 0;
+  opacity: .8;
   text-align: center;
 
   span {
@@ -595,9 +626,9 @@ img {
 }
 
 .thumbnail {
-  background-color: lighten($black, 10%);
+  background-color: rgba(0, 0, 0, 0.6);
   border: 0;
-  box-shadow: 10px 10px 30px $profilegray;
+  box-shadow: 5px 5px 50px $gray;
   font-family: 'Reem Kufi', sans-serif;
   margin-top: 15px;
 
@@ -607,26 +638,30 @@ img {
 }
 
 .thumbnail-pic {
+  border-radius: 50%;
+  box-shadow: 0 0 12px $machinered;
   display: block;
-  height: 300px;
+  height: 260px;
   margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
   width: 300px;
 }
 
 .thumbnail-pic-wrap {
-  height: 300px;
   margin: 0 auto;
   overflow: hidden;
-  margin-bottom: 10px;
-  width: 300px;
 }
 
 .athlete-results {
   background-color: $profilegray2;
-  box-shadow: 10px 10px 30px $profilegray;
+  border: 3px solid $black;
+  box-shadow: 10px 10px 30px $gray;
   color: $white;
+  height: 450px;
   margin-top: 15px;
   opacity: .8;
+  width: 450px;
 
   li {
     font-family: 'Reem Kufi', sans-serif;
