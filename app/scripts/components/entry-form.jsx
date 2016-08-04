@@ -127,13 +127,13 @@ var AthleteEntry = React.createClass({
       <div className="container-fluid col-md-6">
         <form name="fileupload" encType="multipart/form-data" method="post"
           id="enter-athlete" onSubmit={this.handleSubmit} className="new-athlete-formcol-md-12">
-          <h1 className="coach-headings">Add New Athlete</h1>
-            <h3 className="coach-headings">Enter New Athlete Information</h3>
+          <h1 className="login-heading">Add New Athlete</h1>
+            <h3 className="login-heading">Enter New Athlete Information</h3>
               <fieldset className="profile-pic-field form-group">
                 <fieldset>
                   <img src={this.state.profilePic} />
-                  <label className="profile-pic-field" htmlFor="fileselect">Upload Profile Photo</label>
-                    <i className="fa fa-camera profile-icon" aria-hidden="true"></i>
+                  <label className="profile-pic-field" htmlFor="fileselect">Upload Profile Photo<i className="fa fa-camera profile-icon" aria-hidden="true"></i></label>
+
                   <input className="pic-input" onChange={this.handleUpload} type="file"
                     name="profilepic" id="fileselect"></input>
                 </fieldset>
@@ -162,14 +162,7 @@ var AthleteEntry = React.createClass({
                  <option>17-19 Years Old</option>
                </select>
              </fieldset>
-
-             <ul className="athlete-entry-btn btn-list col-md-6 col-md-offset-3">
-               <li><button type="submit" className="submit jets-button"><span>Submit</span></button></li>
-               <li><button className="jets-button" type="button"><a href="#">Home</a></button></li>
-               <li><button className="jets-button" type="button"><a href="#athleteProfile">View Athlete Profiles</a></button></li>
-               <li><button className="jets-button" type="button"><a href="#results">Event Results Entry</a></button></li>
-               <li><button className="jets-button" onClick={this.handleSignout} type="button"><a href="#">Log Out</a></button></li>
-             </ul>
+               <button type="submit" className="submit jets-button"><span>Submit</span></button>
         </form>
 
 
@@ -253,6 +246,14 @@ var AthleteView = React.createClass({
 render: function(){
   return (
     <div className="bkg-pages">
+      <nav>
+        <ul className="row profile-btns">
+          <li className="nav-button"><a href="#">Home</a></li>
+          <li className="nav-button"><a href="#athleteProfile">View Athlete Profiles</a></li>
+          <li className="nav-button"><a href="#results">Event Results Entry</a></li>
+          <li className="nav-button" onClick={this.handleSignout} ><a href="#">Log Out</a></li>
+        </ul>
+      </nav>
       <AthleteEntry  />
       <AthleteList athleteCollection={this.state.athleteCollection}/>
     </div>

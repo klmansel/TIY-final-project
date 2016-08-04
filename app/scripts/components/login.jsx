@@ -35,17 +35,23 @@ var SignUpComponent = React.createClass({
   handlePasswordChange: function(e){
     this.setState({'password': e.target.value})
   },
-  loadingClickAction: function(e){
-    button.text('Signing In');
-
-  },
 
   render: function(){
     return (
       <div className="container bkg-pages">
+        <nav className="col-md-12">
+          <ul className="profile-btns">
+            <li className="nav-button">
+              <a href="#signin">Sign In</a></li>
+            <li className="nav-button">
+              <a href="#jetspage">Jets Page</a></li>
+            <li className="nav-button">
+              <a href="#">Back to <span className="trackit-logo2">Track It!</span></a></li>
+          </ul>
+        </nav>
         <div className="row col-md-6 col-md-offset-3">
           <form className="loginform" onSubmit={this.handleSubmit}>
-            <h1 className="coach-headings">Coach Sign Up</h1>
+            <h1 className="login-heading">Coach Sign Up</h1>
               <fieldset className="form-group">
                 <label htmlFor="name">Coach Name</label>
                 <input onChange={this.handleNameChange} type="text"
@@ -68,12 +74,7 @@ var SignUpComponent = React.createClass({
                 <input onChange={this.handlePasswordChange} type="password" className="form-control" id="password"
                 placeholder="Create Password"/>
               </fieldset>
-              <ul className="col-xs-12 col-md-6 col-md-offset-3 btn-list">
-                <li><button onClick="loadingClickAction" type="submit" className="submit jets-button">Submit</button></li>
-                <li><button className="jets-button" type="button"><a href="#signin">Sign In</a></button></li>
-                <li><button className="jets-button" type="button"><a href="#jetspage">Jets Page</a></button></li>
-                <li><button className="jets-button" type="button"><a href="#">Back to <span className="trackit-logo2">Track It!</span></a></button></li>
-              </ul>
+              <button type="submit" className="submit jets-button">Submit</button>
           </form>
         </div>
       </div>
@@ -88,7 +89,7 @@ var SignInComponent = React.createClass({
     var username = $('#username').val();
     var password = $('#password').val();
     var router = this.props.router;
-    console.log(this.props);
+    console.log('logged in');
     User.login(username, password, {
 
       success: function(user){
@@ -104,22 +105,26 @@ var SignInComponent = React.createClass({
   render: function(){
     return (
       <div className="container-fluid bkg-pages">
-        <form className="loginform col-xs-12 col-md-4 col-md-offset-4" onSubmit={this.handleSubmit}>
+        <nav className="col-md-12">
+          <ul className="profile-btns">
+            <li className="nav-button"><a href="#">Home</a></li>
+          </ul>
+        </nav>
+        <form className="loginform col-xs-12 col-md-4 col-md-offset-4"
+          onSubmit={this.handleSubmit}>
           <h1 className="login-heading">Coach Login</h1>
             <fieldset className="form-group">
               <label htmlFor="inputUsername" className="sr-only">Username</label>
               <input name="username" type="text" className="form-control" id="username"
-              placeholder="Username"/>
+              placeholder="Enter Username"/>
             </fieldset>
             <fieldset className="form-group">
               <label htmlFor="inputPassword" className="sr-only">Password</label>
               <input name="password" type="password" className="form-control" id="password"
-              placeholder="Password"/>
+              placeholder="Enter Password"/>
             </fieldset>
-            <ul className="btn-list">
-              <li> <button type="submit" className="submit jets-button">Sign In</button></li>
-              <li> <button className="jets-button" type="button"><a href="#">Home</a></button></li>
-            </ul>
+            <button type="submit" className="submit jets-button">Sign In</button>
+
         </form>
 
       </div>

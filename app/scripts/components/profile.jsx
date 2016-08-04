@@ -22,10 +22,10 @@ var SingleAthleteResults = React.createClass({
   },
   render: function(){
     var results = this.state.resultsCollection;
-    // var date = {results.get('createdAt')};
     var resultList = results.map(function(result){
-      return <li key={result.get('objectId')}>
-              {result.get('meetName')} {result.get('createdAt').slice(0,10)}  {result.get('event')} {result.get('minutes:')}{result.get('seconds')}
+      return <li className="each-result" key={result.get('objectId')}>
+              {result.get('meetName')} {result.get('createdAt').slice(0,10)}
+               {result.get('event')} {result.get('minutes:')}{result.get('seconds')}
             </li>
     });
 
@@ -75,11 +75,19 @@ var SingleAthlete = React.createClass({
     var profile = this.state.profile;
 
     return (
-      <div className="container-fluid">
-        <div key={profile.get('objectId')} className="bkg-pages col-md-6">
+      <div className="bkg-pages">
+        <nav>
+          <ul className="profile-btns">
+            <li className="nav-button"><a href="#athleteProfile">
+                Back to {coach.team} List</a></li>
+              <li className="nav-button" onClick={this.handleRemoveAthlete}><a href="#athleteProfile">
+                Delete Athlete from {coach.team}</a></li>
+          </ul>
+        </nav>
+        <div key={profile.get('objectId')} className="row">
           <div className="thumbnail-wrap">
-            <li className="thumbnail fulllistprofileview">
-                  <div className="thumbnail-pic-wrap"><img className="thumbnail-pic" src={profile.get('profilePic')} /></div>
+            <li className="thumbnail fulllistprofileview col-md-6">
+                <img className="thumbnail-pic" src={profile.get('profilePic')} />
                   <div className="singleathletecaption caption">
                     <h3>Name: {profile.get('athleteName')}</h3>
                     <p>Gender: {profile.get('gender')}</p>
@@ -92,18 +100,7 @@ var SingleAthlete = React.createClass({
         <div className="athlete-results col-md-6">
           <SingleAthleteResults profile={profile}/>
           </div>
-
-
-        <div className="col-md-12">
-          <ul className="profile-btns btn-list">
-            <li><button type="button" className="jets-button"><a href="#athleteProfile">
-                Back to {coach.team} List</a></button></li>
-            <li><button type="button" className="jets-button" onClick={this.handleRemoveAthlete}>
-                Delete Athlete from {coach.team}</button></li>
-          </ul>
-        </div>
       </div>
-
     );
   }
   });
@@ -139,7 +136,7 @@ var FullTeamList = React.createClass({
 
     return (
       <div>
-        <h1 className="coach-headings">{user.team}</h1>
+        <h1 className="login-heading">{user.team}</h1>
         <ul className="results-list">
           {athleteProfile}
         </ul>
@@ -182,9 +179,9 @@ var FilterView = React.createClass({
 
     return (
       <div className="row">
-        <div className="col-xs-12 col-md-6">
+        <div className="col-xs-12 col-md-6 col-md-offset-3">
             <fieldset className="form-group">
-              <h1 className="coach-headings">Athlete Profiles</h1>
+              <h1 className="login-heading">Athlete Profiles</h1>
               <label htmlFor="age-group">Age Group</label>
               <select onChange={this.selectAge} className="form-control" id="ageGroup">
                 <option>--SELECT--</option>
@@ -258,7 +255,6 @@ var AthleteProfileView = React.createClass({
 
     if (filters.selectedEvent){
       filteredAthletes =  _.filter(filteredAthletes, function(athlete){
-        console.log(athlete);
         return athlete.get('event').indexOf(filters.selectedEvent) != -1;
       });
     }
@@ -268,18 +264,19 @@ var AthleteProfileView = React.createClass({
   render: function(){
     return (
       <div className="container-fluid bkg-pages">
-        <nav className="new-profile-nav">
-          <ul className="col-md-12 btn-list profile-btns">
-            <li><a href="#">Home</a></li>
-            <li><a href="#athleteEntry">Athlete Entry</a></li>
-            <li><a href="#athleteProfile">Athlete Profiles</a></li>
-            <li><a href="#results">Event Results Entry</a></li>
-            <li><a onClick={this.handleSignout} href="#">Log Out</a></li>
+        <nav>
+          <ul className="row col-md-12 profile-btns">
+            <li className="nav-button"><a href="#">Home</a></li>
+            <li className="nav-button"><a href="#athleteEntry">Athlete Entry</a></li>
+            <li className="nav-button"><a href="#athleteProfile">Athlete Profiles</a></li>
+            <li className="nav-button"><a href="#results">Event Results Entry</a></li>
+            <li className="nav-button"><a onClick={this.handleSignout} href="#">Log Out</a></li>
           </ul>
         </nav>
-
-        <FilterView filter={this.filter} athleteList={this.state.athleteList}/>
-        <FullTeamList athleteList={this.state.athleteList}/>
+        <div>
+          <FilterView filter={this.filter} athleteList={this.state.athleteList}/>
+          <FullTeamList athleteList={this.state.athleteList}/>
+        </div>
       </div>
 
     );

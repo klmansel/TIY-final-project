@@ -6,6 +6,4 @@ var ReactDOM = require('react-dom');
 require('bootstrap-sass');
 
 
-
-
 Backbone.history.start();

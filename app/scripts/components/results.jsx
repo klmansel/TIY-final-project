@@ -62,11 +62,23 @@ var ResultsForm = React.createClass({
   render: function(){
     var coach = JSON.parse(localStorage.getItem('user'));
     return (
+      <div>
+        <ul className="row col-md-12 profile-btns">
+          <li className="nav-button">
+            <a href="#coachesOnly">Coaches Only</a></li>
+          <li className="nav-button">
+            <a href="#results">Event Results Entry</a></li>
+          <li className="nav-button"><a href="#athleteProfile">
+               {coach.team} List</a></li>
+             <li className="nav-button"><a href="#jetspage">Jets Homepage</a></li>
+          <li className="nav-button" onClick={this.handleSignout}><a href="#">
+            Log Out</a></li>
+        </ul>
 
         <div className="col-md-6 col-md-offset-3">
 
-            <form onSubmit={this.handleSubmit}>
-              <h1 className="coach-headings">Enter Meet Results</h1>
+            <form className="loginform" onSubmit={this.handleSubmit}>
+              <h1 className="login-heading">Enter Meet Results</h1>
 
               <fieldset className="form-group">
 
@@ -92,22 +104,11 @@ var ResultsForm = React.createClass({
                   <label htmlFor="seconds">Seconds</label>
                   <input value={this.state.seconds} onChange={this.enterSeconds}
                      type="text" className="form-control" id="seconds" placeholder="Enter seconds"/>
-
-                   <ul className="row col-md-12 entry-btn btn-list">
-                      <li><button type="submit" className="submit jets-button">Submit</button></li>
-                      <li><button className="jets-button" type="button">
-                        <a href="#coachesOnly">Coaches Only</a></button></li>
-                      <li><button className="jets-button" type="button">
-                        <a href="#results">Event Results Entry</a></button></li>
-                      <li><button type="button" className="jets-button"><a href="#athleteProfile">
-                           {coach.team} List</a></button></li>
-                      <li><button className="jets-button" type="button"><
-                        a href="#jetspage">Jets Homepage</a></button></li>
-                      <li><button className="jets-button" onClick={this.handleSignout}
-                        type="button">Log Out</button></li>
-                    </ul>
             </fieldset>
+            <button type="submit" className="submit jets-button">Submit</button>
+
             </form>
+          </div>
       </div>
 
     );
@@ -139,7 +140,8 @@ var SelectAthlete = React.createClass({
     return (
       <div>
       <label htmlFor="athlete">Athlete Name</label>
-      <select value={this.state.athlete} onChange={this.props.chooseAthlete} type="text" className="form-control" id="athlete" placeholder="Choose Athlete">
+      <select value={this.state.athlete} onChange={this.props.chooseAthlete}
+        type="text" className="form-control" id="athlete" placeholder="Choose Athlete">
         <option value="">-- Select Athlete --</option>
         {athletes}
       </select>
