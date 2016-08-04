@@ -5835,8 +5835,9 @@ img {
   border-radius: 5px;
   box-shadow: 2px 2px 75px #000;
   color: #cf4b4b;
+  float: left;
   font-family: 'Reem Kufi', sans-serif;
-  margin-left: 400px;
+  margin-left: 40px;
   margin-top: 30px;
   opacity: .8;
   padding: 10px;
@@ -5860,7 +5861,8 @@ img {
       text-decoration: none; }
   @media screen and (max-width: 480px) {
     .hero-btn {
-      float: left; } }
+      float: left;
+      margin-left: 0; } }
 
 .new-navlist,
 .jets-button {
@@ -6031,14 +6033,38 @@ img {
   display: inline-block;
   float: right; }
 
-.coaches-menu h1 {
-  margin-bottom: 20px; }
-.coaches-menu button {
+.coaches-menu {
+  margin-top: 50px;
+  font-family: 'Reem Kufi', sans-serif;
   display: block;
-  margin: 0 auto; }
-.coaches-menu li {
-  list-style-type: none;
-  margin-top: 15px; }
+  height: 50px;
+  margin-left: 25%;
+  text-align: center;
+  width: 50%; }
+  .coaches-menu a {
+    color: #cf4b4b;
+    font-size: 20px;
+    text-decoration: none; }
+    .coaches-menu a:hover {
+      color: #cccdc7;
+      list-style-type: none;
+      text-decoration: none;
+      text-overflow: none;
+      -webkit-transition: .5s;
+      transition: .5s; }
+    .coaches-menu a:click {
+      color: #777;
+      text-decoration: none; }
+  .coaches-menu li {
+    background-color: #000;
+    border-radius: 5px;
+    border-top: 3px solid #7b7b7b;
+    list-style-type: none;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    opacity: .8;
+    padding: 3px 7px;
+    text-decoration: none; }
 
 .coach-homepage li {
   list-style-type: none;
@@ -6083,7 +6109,11 @@ img {
     margin-top: 10px;
     padding-bottom: 10px; }
   .loginform button {
+    background-color: #1a1a1a;
+    color: #cf4b4b;
     display: block;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 30px;
     margin: 0 auto; }
 
 .jetspics {
@@ -6154,6 +6184,7 @@ img {
   cursor: pointer; }
 
 .profile-btns {
+  background-color: #000;
   font-family: 'Reem Kufi', sans-serif;
   display: block;
   height: 50px;
@@ -6180,8 +6211,8 @@ img {
     float: left;
     list-style-type: none;
     margin-bottom: 30px;
-    margin-left: 30px;
-    margin-top: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
     opacity: .8;
     padding: 3px 7px;
     text-decoration: none; }
@@ -6236,11 +6267,11 @@ img {
   background-color: #7b7b7b;
   border: 3px solid #000;
   box-shadow: 10px 10px 30px #808080;
-  color: #fff;
-  height: 450px;
+  color: #cf4b4b;
+  height: 460px;
   margin-top: 15px;
   opacity: .8;
-  width: 450px; }
+  width: 550px; }
   .athlete-results li {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 14px; }

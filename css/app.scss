@@ -111,8 +111,9 @@ img {
   border-radius: 5px;
   box-shadow: 2px 2px 75px $black;
   color: $machinered;
+  float: left;
   font-family: 'Reem Kufi', sans-serif;
-  margin-left: 400px;
+  margin-left: 40px;
   margin-top: 30px;
   opacity: .8;
   padding: 10px;
@@ -143,6 +144,7 @@ img {
 
   @media screen and (max-width: 480px) {
     float: left;
+    margin-left: 0;
   }
 }
 
@@ -367,19 +369,44 @@ img {
 
 //Coaches Page
 .coaches-menu {
-  h1 {
-    margin-bottom: 20px;
-    // text-align: center;
+  margin-top: 50px;
+  font-family: 'Reem Kufi', sans-serif;
+  display: block;
+  height: 50px;
+  margin-left: 25%;
+  text-align: center;
+  width: 50%;
+
+
+  a {
+    color: $machinered;
+    font-size: 20px;
+    text-decoration: none;
+
+  &:hover {
+    color: $trackitgray;
+    list-style-type: none;
+    text-decoration: none;
+    text-overflow: none;
+    transition: .5s;
   }
 
-  button {
-    display: block;
-    margin: 0 auto;
+    &:click {
+      color: $backgroundgray;
+      text-decoration: none;
+    }
   }
 
   li {
+    background-color: $black;
+    border-radius: 5px;
+    border-top: 3px solid $profilegray2;
     list-style-type: none;
+    margin-bottom: 30px;
     margin-top: 15px;
+    opacity: .8;
+    padding: 3px 7px;
+    text-decoration: none;
   }
 }
 
@@ -443,7 +470,11 @@ img {
   }
 
   button {
+    background-color: lighten($black, 10%);
+    color: $machinered;
     display: block;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 30px;
     margin: 0 auto;
   }
 }
@@ -545,6 +576,7 @@ img {
 }
 
 .profile-btns {
+  background-color: $black;
   font-family: 'Reem Kufi', sans-serif;
   display: block;
   height: 50px;
@@ -578,8 +610,8 @@ img {
     float: left;
     list-style-type: none;
     margin-bottom: 30px;
-    margin-left: 30px;
-    margin-top: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
     opacity: .8;
     padding: 3px 7px;
     text-decoration: none;
@@ -654,10 +686,10 @@ img {
   border: 3px solid $black;
   box-shadow: 10px 10px 30px $gray;
   color: $white;
-  height: 450px;
+  height: 460px;
   margin-top: 15px;
   opacity: .8;
-  width: 450px;
+  width: 550px;
 
   li {
     font-family: 'Reem Kufi', sans-serif;
