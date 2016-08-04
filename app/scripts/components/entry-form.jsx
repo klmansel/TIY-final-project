@@ -124,7 +124,7 @@ var AthleteEntry = React.createClass({
   render: function(){
     console.log(this.state);
     return (
-      <div className="container-fluid col-md-6">
+      <div className="row col-md-6">
         <form name="fileupload" encType="multipart/form-data" method="post"
           id="enter-athlete" onSubmit={this.handleSubmit} className="new-athlete-formcol-md-12">
           <h1 className="login-heading">Add New Athlete</h1>
@@ -152,7 +152,8 @@ var AthleteEntry = React.createClass({
              </fieldset>
              <fieldset className="form-group">
                <label htmlFor="age-group">Age Group</label>
-               <select value={this.state.ageGroup} onChange={this.addAge} className="form-control" id="ageGroup">
+               <select value={this.state.ageGroup} onChange={this.addAge}
+                 className="form-control" id="ageGroup">
                  <option>--SELECT--</option>
                  <option>8 and Under</option>
                  <option>9-10 Years Old</option>
@@ -162,7 +163,8 @@ var AthleteEntry = React.createClass({
                  <option>17-19 Years Old</option>
                </select>
              </fieldset>
-               <button type="submit" className="submit jets-button"><span>Submit</span></button>
+               <button type="submit" className="login-btns profile-btns nav-button">
+                <a> Submit</a></button>
         </form>
 
 
@@ -172,7 +174,7 @@ var AthleteEntry = React.createClass({
   }
 });
 
-var AthletePhoto = React.createClass({
+/*var AthletePhoto = React.createClass({
   handleUpload: function(e){
     var file;
     var files = e.target.files || e.dataTransfer.files;
@@ -217,7 +219,7 @@ var AthletePhoto = React.createClass({
       </div>
     );
   }
-});
+});*/
 
 var AthleteView = React.createClass({
   getInitialState: function(){
@@ -245,9 +247,9 @@ var AthleteView = React.createClass({
  },
 render: function(){
   return (
-    <div className="bkg-pages">
-      <nav>
-        <ul className="row profile-btns">
+    <div className="bkg-pages container-fluid">
+      <nav className="row">
+        <ul className="profile-btns">
           <li className="nav-button"><a href="#">Home</a></li>
           <li className="nav-button"><a href="#athleteProfile">View Athlete Profiles</a></li>
           <li className="nav-button"><a href="#results">Event Results Entry</a></li>

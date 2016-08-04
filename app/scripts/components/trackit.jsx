@@ -12,7 +12,7 @@ var TrackItView = React.createClass({
             record and progress management system for the busy youth track coach.</p>
       </div>
         <div>
-          <ul className="container hero-ul">
+          <ul className="row hero-ul">
             <li className="hero-btn" type="btn btn-secondary"><a href="#signup"
                 title="coaches page">Sign Up for <span className="trackit-logo2">
                 Track It!</span> </a></li>

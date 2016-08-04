@@ -9,11 +9,12 @@ var ResultsCollection = require('../models/results').ResultsCollection;
 var ResultsForm = React.createClass({
   getInitialState: function(){
     return {
-    'minutes': '',
-    'seconds': '',
-    'event': '',
-    'meetName' : ''
-    };
+      'athlete': '',
+      'minutes': '',
+      'seconds': '',
+      'event': '',
+      'meetName' : ''
+      };
   },
   handleSubmit: function(e){
     e.preventDefault();
@@ -63,7 +64,7 @@ var ResultsForm = React.createClass({
     var coach = JSON.parse(localStorage.getItem('user'));
     return (
       <div>
-        <ul className="row col-md-12 profile-btns">
+        <ul className="row profile-btns">
           <li className="nav-button">
             <a href="#coachesOnly">Coaches Only</a></li>
           <li className="nav-button">
@@ -132,19 +133,21 @@ var SelectAthlete = React.createClass({
   },
   render: function(){
     var athletes = this.state.athleteCollection.map(function(athlete){
-      return <option key={athlete.get('objectId')} value={athlete.get('objectId')}>{athlete.get('athleteName')}</option>
+      return (
+        <option key={athlete.get('objectId')} value={athlete.get('objectId')}>
+          {athlete.get('athleteName')}</option>
+      )
     });
 
-    console.warn('Athletes:',this.state.athleteCollection);
 
     return (
       <div>
-      <label htmlFor="athlete">Athlete Name</label>
-      <select value={this.state.athlete} onChange={this.props.chooseAthlete}
-        type="text" className="form-control" id="athlete" placeholder="Choose Athlete">
-        <option value="">-- Select Athlete --</option>
-        {athletes}
-      </select>
+        <label htmlFor="athlete">Athlete Name</label>
+        <select value={this.state.athlete} onChange={this.props.chooseAthlete}
+          className="form-control" id="athlete">
+            <option>-- Select Athlete --</option>
+            {athletes}
+          </select>
       </div>
     );
   }
@@ -154,6 +157,7 @@ var SelectAthlete = React.createClass({
 
 var ResultsView = React.createClass({
   render: function(){
+    console.log(this.props);
     return (
       <div className="bkg-pages">
         <ResultsForm />

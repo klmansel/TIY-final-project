@@ -74,7 +74,8 @@ var SignUpComponent = React.createClass({
                 <input onChange={this.handlePasswordChange} type="password" className="form-control" id="password"
                 placeholder="Create Password"/>
               </fieldset>
-              <button type="submit" className="submit jets-button">Submit</button>
+              <button type="submit" className="submit login-btns nav-button profile-btns">
+                Sign Up for<span className="trackit-logo2"> TrackIt!</span></button>
           </form>
         </div>
       </div>
@@ -108,6 +109,9 @@ var SignInComponent = React.createClass({
         <nav className="col-md-12">
           <ul className="profile-btns">
             <li className="nav-button"><a href="#">Home</a></li>
+              <li className="nav-button">
+                <a href="#signup">Sign Up for
+                  <span className="trackit-logo2"> Track It! </span></a></li>
           </ul>
         </nav>
         <form className="loginform col-xs-12 col-md-4 col-md-offset-4"
@@ -123,15 +127,11 @@ var SignInComponent = React.createClass({
               <input name="password" type="password" className="form-control" id="password"
               placeholder="Enter Password"/>
             </fieldset>
-            <button type="submit" className="submit jets-button">Sign In</button>
-
+            <button type="submit" className="submit login-btns nav-button profile-btns">Sign in to <span className="trackit-logo2">Track It!</span></button>
         </form>
-
       </div>
-
     );
   }
-
 });
 
 module.exports = {

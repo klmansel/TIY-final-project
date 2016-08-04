@@ -51,20 +51,18 @@ var SingleAthlete = React.createClass({
     var self = this;
     var profile = this.state.profile;
 
-    if(this.props.profile){
-       profile.set('objectId', this.props.profile);
-       profile.fetch().done(function(){
-         self.setState({
-           profile: profile
+      if(this.props.profile){
+         profile.set('objectId', this.props.profile);
+         profile.fetch().done(function(){
+           self.setState({
+             profile: profile
+       });
      });
-   });
- }
+   }
   },
   handleRemoveAthlete: function(e){
     console.log(this.state);
     this.state.profile.destroy();
-    this.forceUpdate();
-    Backbone.history.navigate('#athleteProfile'), {trigger:true};
   },
   handleSignout: function(){
     window.localStorage.removeItem("user");
@@ -76,29 +74,30 @@ var SingleAthlete = React.createClass({
 
     return (
       <div className="bkg-pages">
-        <nav>
+        <nav className="row">
           <ul className="profile-btns">
             <li className="nav-button"><a href="#athleteProfile">
                 Back to {coach.team} List</a></li>
-              <li className="nav-button" onClick={this.handleRemoveAthlete}><a href="#athleteProfile">
-                Delete Athlete from {coach.team}</a></li>
+              <li className="nav-button" onClick={this.handleRemoveAthlete}>
+                <a href="#athleteProfile">Delete Athlete from {coach.team}</a></li>
           </ul>
         </nav>
-        <div key={profile.get('objectId')} className="row">
-          <div className="thumbnail-wrap">
-            <li className="thumbnail fulllistprofileview col-md-6">
-                <img className="thumbnail-pic" src={profile.get('profilePic')} />
-                  <div className="singleathletecaption caption">
-                    <h3>Name: {profile.get('athleteName')}</h3>
-                    <p>Gender: {profile.get('gender')}</p>
-                    <p>Age: {profile.get('ageGroup')}</p>
-                  </div>
-            </li>
-          </div>
-        </div>
 
-        <div className="athlete-results col-md-6">
-          <SingleAthleteResults profile={profile}/>
+            <div key={profile.get('objectId')}>
+              <div className="thumbnail-wrap col-md-6">
+                <li className="thumbnail fulllistprofileview">
+                    <img className="thumbnail-pic" src={profile.get('profilePic')} />
+                      <div className="singleathletecaption caption">
+                        <h3>Name: {profile.get('athleteName')}</h3>
+                        <p>Gender: {profile.get('gender')}</p>
+                        <p>Age: {profile.get('ageGroup')}</p>
+                      </div>
+                </li>
+              </div>
+
+        </div>
+          <div className="athlete-results col-md-6">
+            <SingleAthleteResults profile={profile}/>
           </div>
       </div>
     );
@@ -164,6 +163,17 @@ var FilterView = React.createClass({
       this.setState({'selectedEvent': e.target.value});
       this.props.filter(_.extend({}, this.state, {'selectedEvent': e.target.value}));
   },
+  handleClear: function(){
+    $("#ageGroup").val('');
+    $("#gender").val('');
+    $("#event").val('');
+
+    this.setState({
+      'selectedEvent': '',
+      'selectedGender': '',
+      'selectedAge': ''
+    });
+  },
   render: function(e){
     console.log(this.state);
     var user = JSON.parse(localStorage.getItem('user'));
@@ -179,7 +189,7 @@ var FilterView = React.createClass({
 
     return (
       <div className="row">
-        <div className="col-xs-12 col-md-6 col-md-offset-3">
+        <form className="col-xs-12 col-md-6 col-md-offset-3">
             <fieldset className="form-group">
               <h1 className="login-heading">Athlete Profiles</h1>
               <label htmlFor="age-group">Age Group</label>
@@ -207,9 +217,10 @@ var FilterView = React.createClass({
                 <option>800</option>
                 <option>1500</option>
               </select>
-
             </fieldset>
-        </div>
+            <button onClick={this.handleClear} className="login-btns nav-button profile-btns"
+              type="submit"><a>Clear Filters</a></button>
+          </form>
       </div>
     );
   }
