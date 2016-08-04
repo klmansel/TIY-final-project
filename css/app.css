@@ -2430,7 +2430,7 @@ output {
   padding-top: 7px;
   font-size: 14px;
   line-height: 1.42857;
-  color: #555555; }
+  color: #808080; }
 
 .form-control {
   display: block;
@@ -2439,7 +2439,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857;
-  color: #555555;
+  color: #808080;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
@@ -3471,7 +3471,7 @@ tbody.collapse.in {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
-  color: #555555;
+  color: #808080;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #ccc;
@@ -3586,7 +3586,7 @@ tbody.collapse.in {
       .nav-tabs > li > a:hover {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-      color: #555555;
+      color: #808080;
       background-color: #fff;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
@@ -5770,7 +5770,7 @@ img {
   max-width: 100%; }
 
 .hero-banner {
-  background-image: url("../images/trackpic3.jpeg");
+  background-image: url("../images/trackpic2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
@@ -5778,30 +5778,39 @@ img {
   .hero-banner li {
     list-style: none; }
 
-.hero-headings, .hero-desc, .hero-btn,
-.new-navlist,
+.hero-header {
+  background-color: #1a1a1a;
+  background-size: cover;
+  display: table;
+  margin: 0;
+  opacity: .8;
+  padding: 0;
+  width: 100%; }
+
+.hero-headings, .hero-desc, .new-navlist,
 .jets-button {
-  color: #cf4b4b;
+  border-radius: 5px;
+  color: #fff;
   font-family: 'Reem Kufi', sans-serif;
   font-size: 70px;
   font-weight: bold; }
-  .hero-headings h1, .hero-desc h1, .hero-btn h1,
-  .new-navlist h1,
+  .hero-headings h1, .hero-desc h1, .new-navlist h1,
   .jets-button h1 {
     padding-top: 50px; }
 
 .hero-info {
-  color: #000; }
+  color: #cf4b4b;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 30px; }
 
-.hero-desc, .hero-btn,
-.new-navlist,
+.hero-desc, .new-navlist,
 .jets-button {
   color: #fff;
   font-size: 40px;
   padding-top: 0px; }
 
 .trackit-logo {
-  color: #000;
+  color: #cf4b4b;
   font-style: italic; }
 
 .trackit-logo2 {
@@ -5818,19 +5827,41 @@ img {
     color: #777;
     text-decoration: none; }
 
+.hero-ul {
+  margin: 0 auto; }
+
 .hero-btn {
-  float: right;
-  font-size: 30px;
-  margin-left: 15px;
-  margin-top: 15px;
+  background-color: #1a1a1a;
+  border-radius: 5px;
+  box-shadow: 2px 2px 75px #000;
+  color: #cf4b4b;
+  font-family: 'Reem Kufi', sans-serif;
+  margin-left: 400px;
+  margin-top: 30px;
+  opacity: .8;
   padding: 10px;
   text-align: center;
-  vertical-align: middle; }
+  vertical-align: middle;
+  width: 400px; }
+  .hero-btn a {
+    color: #cf4b4b;
+    font-size: 30px;
+    text-decoration: none;
+    vertical-align: middle; }
+    .hero-btn a:hover {
+      color: #cccdc7;
+      list-style-type: none;
+      text-decoration: none;
+      text-overflow: none;
+      -webkit-transition: .5s;
+      transition: .5s; }
+    .hero-btn a:click {
+      color: #777;
+      text-decoration: none; }
   @media screen and (max-width: 480px) {
     .hero-btn {
       float: left; } }
 
-.hero-btn,
 .new-navlist,
 .jets-button {
   background-color: #1a1a1a;
@@ -5839,7 +5870,6 @@ img {
   color: #cf4b4b;
   font-size: 20px;
   width: 200px; }
-  .hero-btn:hover,
   .new-navlist:hover,
   .jets-button:hover {
     color: #cccdc7;
@@ -5848,14 +5878,12 @@ img {
     text-overflow: none;
     -webkit-transition: .5s;
     transition: .5s; }
-  .hero-btn a,
   .new-navlist a,
   .jets-button a {
     color: #cf4b4b;
     font-size: 20px;
     text-decoration: none;
     vertical-align: middle; }
-    .hero-btn a:hover,
     .new-navlist a:hover,
     .jets-button a:hover {
       color: #cccdc7;
@@ -5864,16 +5892,10 @@ img {
       text-overflow: none;
       -webkit-transition: .5s;
       transition: .5s; }
-    .hero-btn a:click,
     .new-navlist a:click,
     .jets-button a:click {
       color: #777;
       text-decoration: none; }
-
-.btn-list li {
-  display: inline;
-  float: left;
-  list-style-type: none; }
 
 .new-nav {
   background-color: #fff44a;
@@ -5982,7 +6004,7 @@ img {
   position: fixed;
   right: 0;
   z-index: -1;
-  background-image: url("../images/trackpic.jpg");
+  background-image: url("../images/bwtrack.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
@@ -5999,7 +6021,7 @@ img {
   right: 0;
   z-index: 0; }
   .bkg-pages label {
-    color: #fff;
+    color: #cccdc7;
     font-family: 'Reem Kufi', sans-serif;
     font-size: 16px; }
   .bkg-pages button {
@@ -6032,6 +6054,11 @@ img {
   font-family: 'Reem Kufi', sans-serif;
   text-align: center; }
 
+.login-heading {
+  color: #cccdc7;
+  font-family: 'Reem Kufi', sans-serif;
+  text-align: center; }
+
 .coach-headings {
   color: #fff;
   font-family: 'Reem Kufi', sans-serif;
@@ -6044,12 +6071,11 @@ img {
   text-align: left; }
 
 .loginform {
-  background-color: #7b7b7b;
+  background-color: #1a1a1a;
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 90px;
-  opacity: .8;
-  padding: 10px; }
+  padding: 15px; }
   .loginform ul {
     margin-top: 10px; }
   .loginform li {
@@ -6094,16 +6120,16 @@ img {
   list-style: none;
   text-align: center; }
 
-.thumbnail-pic {
-  display: block;
-  max-height: 100%; }
-
 .entry-btn {
   display: block;
   margin: 0 auto; }
   .entry-btn li {
     float: left;
     margin-top: 15px; }
+
+.new-athlete-form {
+  background-color: #fff;
+  opacity: .8; }
 
 .footer {
   background-color: #fff77d;
@@ -6128,10 +6154,45 @@ img {
   cursor: pointer; }
 
 .profile-btns {
-  float: left; }
+  font-family: 'Reem Kufi', sans-serif;
+  display: block;
+  height: 50px;
+  margin: 0 auto;
+  width: 100%; }
+  .profile-btns a {
+    color: #cf4b4b;
+    font-size: 20px;
+    text-decoration: none; }
+    .profile-btns a:hover {
+      color: #cccdc7;
+      list-style-type: none;
+      text-decoration: none;
+      text-overflow: none;
+      -webkit-transition: .5s;
+      transition: .5s; }
+    .profile-btns a:click {
+      color: #777;
+      text-decoration: none; }
   .profile-btns li {
-    margin-left: 15px;
-    margin-top: 15px; }
+    background-color: #000;
+    border-radius: 5px;
+    border-top: 3px solid #7b7b7b;
+    float: left;
+    list-style-type: none;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-top: 15px;
+    opacity: .8;
+    padding: 3px 7px;
+    text-decoration: none; }
+
+.new-profile-nav {
+  color: #cf4b4b;
+  font-family: 'Reem Kufi', sans-serif; }
+  .new-profile-nav ul {
+    background-color: #000; }
+  .new-profile-nav li {
+    text-decoration: none; }
 
 .athlete-entry-btn li {
   margin-top: 15px; }
@@ -6143,32 +6204,64 @@ img {
   background-color: #fff;
   color: #cf4b4b;
   margin: 0;
+  opacity: .8;
   text-align: center; }
   .singleathletecaption span,
   .caption span {
     color: #cf4b4b; }
 
 .thumbnail {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.6);
   border: 0;
-  box-shadow: 10px 10px 30px #282c34;
+  box-shadow: 5px 5px 70px #808080;
   font-family: 'Reem Kufi', sans-serif;
   margin-top: 15px; }
   .thumbnail span {
     color: #cf4b4b; }
 
-.thumbnail-pic-wrap {
-  height: 300px;
+.thumbnail-pic {
+  border-radius: 10%;
+  display: block;
+  height: 260px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
   width: 300px; }
+
+.thumbnail-pic-wrap {
+  margin: 0 auto;
+  overflow: hidden; }
 
 .athlete-results {
   background-color: #7b7b7b;
-  box-shadow: 10px 10px 30px #282c34;
+  border: 3px solid #000;
+  box-shadow: 10px 10px 30px #808080;
   color: #fff;
+  height: 450px;
   margin-top: 15px;
-  opacity: .8; }
+  opacity: .8;
+  width: 450px; }
   .athlete-results li {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 14px; }
+
+.profile-pic-field {
+  cursor: pointer;
+  font-size: 25px; }
+  .profile-pic-field img {
+    color: #000;
+    height: 75px; }
+
+.pic-input {
+  height: .01 px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: .01 px;
+  z-index: -1; }
+
+.profile-icon {
+  color: #fff;
+  font-size: 40px; }
 
 /*# sourceMappingURL=app.css.map */

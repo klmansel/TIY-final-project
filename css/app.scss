@@ -11,6 +11,7 @@ $machinered: #cf4b4b;
 $trackitgray: #cccdc7;
 $profilegray: #282c34;
 $profilegray2: #7b7b7b;
+$gray: #808080;
 
 
 // Bootstrap Variables
@@ -32,7 +33,7 @@ img {
 
 //Hero Banner
 .hero-banner {
-  background-image: url('../images/trackpic3.jpeg');
+  background-image: url('../images/trackpic2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
@@ -43,8 +44,19 @@ img {
   }
 }
 
+.hero-header {
+  background-color: lighten($black, 10%);
+  background-size: cover;
+  display: table;
+  margin: 0;
+  opacity: .8;
+  padding: 0;
+  width: 100%;
+}
+
 .hero-headings {
-  color: $machinered;
+  border-radius: 5px;
+  color: $white;
   font-family: 'Reem Kufi', sans-serif;
   font-size: 70px;
   font-weight: bold;
@@ -55,7 +67,9 @@ img {
 }
 
 .hero-info {
-  color: $black;
+  color: $machinered;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 30px;
 }
 
 .hero-desc {
@@ -66,7 +80,7 @@ img {
 }
 
 .trackit-logo {
-  color: $black;
+  color: $machinered;
   font-style: italic;
 }
 
@@ -75,43 +89,71 @@ img {
   font-style: italic;
 
   &:hover {
-   color: $machinered;
-   list-style-type: none;
-   text-decoration: none;
-   text-overflow: none;
-   transition: .5s;
+    color: $machinered;
+    list-style-type: none;
+    text-decoration: none;
+    text-overflow: none;
+    transition: .5s;
   }
+
+  &:click {
+    color: $backgroundgray;
+    text-decoration: none;
+  }
+}
+
+.hero-ul {
+  margin: 0 auto;
+}
+
+.hero-btn {
+  background-color: lighten($black, 10%);
+  border-radius: 5px;
+  box-shadow: 2px 2px 75px $black;
+  color: $machinered;
+  font-family: 'Reem Kufi', sans-serif;
+  margin-left: 400px;
+  margin-top: 30px;
+  opacity: .8;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  width: 400px;
+
+
+  a {
+    color: $machinered;
+    font-size: 30px;
+    text-decoration: none;
+    vertical-align: middle;
+
+    &:hover {
+      color: $trackitgray;
+      list-style-type: none;
+      text-decoration: none;
+      text-overflow: none;
+      transition: .5s;
+    }
 
      &:click {
        color: $backgroundgray;
        text-decoration: none;
-  }
+    }
 }
-
-.hero-btn {
-  float: right;
-  font-size: 30px;
-  margin-left: 15px;
-  margin-top: 15px;
-  padding: 10px;
-  text-align: center;
-  vertical-align: middle;
 
   @media screen and (max-width: 480px) {
-    float: left;;
+    float: left;
   }
 }
 
-.hero-btn,
+
 .new-navlist,
 .jets-button {
   @extend .hero-desc;
   background-color: lighten($black, 10%);
-  // border: 1px solid $machinered;
   box-shadow: 2px 2px 20px $black;
   border-radius: 5px;
   color: $machinered;
-  // box-shadow: 10px 5px 5px $black;
   font-size: 20px;
   width: 200px;
 
@@ -130,27 +172,20 @@ img {
     vertical-align: middle;
 
     &:hover {
-       color: $trackitgray;
-       list-style-type: none;
-       text-decoration: none;
-       text-overflow: none;
-       transition: .5s;
+     color: $trackitgray;
+     list-style-type: none;
+     text-decoration: none;
+     text-overflow: none;
+     transition: .5s;
     }
 
-       &:click {
-         color: $backgroundgray;
-         text-decoration: none;
+     &:click {
+       color: $backgroundgray;
+       text-decoration: none;
     }
   }
 }
-//Used to line up buttons on pages
-.btn-list {
-  li {
-    display: inline;
-    float: left;
-    list-style-type: none;
-  }
-}
+
 //Jets Page Nav and Hero
 .new-nav {
   background-color: darken($jetsyellow, 10%);
@@ -265,12 +300,6 @@ img {
   right: 0;
   z-index: 0;
 }
-// .wrapper {
-//   background-image: linear-gradient($backgroundgray, $black);
-//   background-size: cover;
-//   height: 1500px;
-//   width: 100%;
-// }
 
 .navbar {
   background-color: $jetsyellow;
@@ -298,7 +327,7 @@ img {
   right: 0;
   z-index: -1;
 
-  background-image: url('../images/trackpic.jpg');
+  background-image: url('../images/bwtrack.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
@@ -319,7 +348,7 @@ img {
   z-index: 0;
 
   label {
-    color: $white;
+    color: $trackitgray;
     font-family: 'Reem Kufi', sans-serif;
     font-size: 16px;
   }
@@ -335,64 +364,6 @@ img {
     float: right;
   }
 }
-
-//old jets buttons code
-// .new-navlist,
-// .jets-button {
-//   background-image: linear-gradient($newlightgreen, $newdarkgreen);
-//   border: 1px solid $jetsgreen;
-//   border-radius: 1px;
-//   color: $jetsyellow;
-//   display: inline-block;
-//   float: left;
-//   font-family: 'Ubuntu', cursive;
-//   font-size: 20px;
-//   font-weight: bold;
-//   height: 45px;
-//   line-height: 18px;
-//   list-style: none;
-//   margin-left: 25px;
-//   padding-left: 10px;
-//   padding-right: 10px;
-//   padding-top: 12px;
-//   text-align: center;
-//   text-decoration: none;
-//   width: 250px;
-//
-//   a {
-//     color: $jetsyellow;
-//     text-decoration: none;
-//
-//     &:hover {
-//       color: $backgroundgray;
-//       list-style-type: none;
-//       text-decoration: none;
-//       text-overflow: none;
-//     }
-//
-//     &:click {
-//       color: $backgroundgray;
-//       text-decoration: none;
-//     }
-//   }
-//
-//   li {
-//     list-style: none;
-//   }
-//
-//   &:hover {
-//     color: $backgroundgray;
-//     list-style-type: none;
-//     text-decoration: none;
-//     text-overflow: none;
-//   }
-//
-//   &:click {
-//     color: $backgroundgray;
-//     text-decoration: none;
-//   }
-//
-// }
 
 //Coaches Page
 .coaches-menu {
@@ -434,6 +405,12 @@ img {
   text-align: center;
 }
 
+.login-heading {
+  color: $trackitgray;
+  font-family: 'Reem Kufi', sans-serif;
+  text-align: center;
+}
+
 .coach-headings {
   color: $white;
   // font-family: 'Permanent Marker', cursive;
@@ -449,12 +426,11 @@ img {
 }
 //Sign up and sign in
 .loginform {
-  background-color: $profilegray2;
+  background-color: lighten($black, 10%);
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 90px;
-  opacity: .8;
-  padding: 10px;
+  padding: 15px;
 
   ul {
     margin-top: 10px;
@@ -523,19 +499,19 @@ img {
   }
 }
 
-.thumbnail-pic {
-  display: block;
-  max-height: 100%;
-}
-
 .entry-btn {
   display: block;
   margin: 0 auto;
-  
-  li{
+
+  li {
     float: left;
     margin-top: 15px;
   }
+}
+
+.new-athlete-form {
+  background-color: $white;
+  opacity: .8;
 }
 //Footer
 
@@ -569,11 +545,57 @@ img {
 }
 
 .profile-btns {
-  float: left;
+  font-family: 'Reem Kufi', sans-serif;
+  display: block;
+  height: 50px;
+  margin: 0 auto;
+  width: 100%;
+
+
+  a {
+    color: $machinered;
+    font-size: 20px;
+    text-decoration: none;
+
+  &:hover {
+    color: $trackitgray;
+    list-style-type: none;
+    text-decoration: none;
+    text-overflow: none;
+    transition: .5s;
+  }
+
+    &:click {
+      color: $backgroundgray;
+      text-decoration: none;
+    }
+  }
 
   li {
-    margin-left: 15px;
+    background-color: $black;
+    border-radius: 5px;
+    border-top: 3px solid $profilegray2;
+    float: left;
+    list-style-type: none;
+    margin-bottom: 30px;
+    margin-left: 30px;
     margin-top: 15px;
+    opacity: .8;
+    padding: 3px 7px;
+    text-decoration: none;
+  }
+}
+
+.new-profile-nav {
+  color: $machinered;
+  font-family: 'Reem Kufi', sans-serif;
+
+  ul {
+    background-color: $black;
+  }
+
+  li {
+    text-decoration: none;
   }
 }
 
@@ -592,6 +614,7 @@ img {
   background-color: $white;
   color: $machinered;
   margin: 0;
+  opacity: .8;
   text-align: center;
 
   span {
@@ -600,9 +623,9 @@ img {
 }
 
 .thumbnail {
-  background-color: $black;
+  background-color: rgba(0, 0, 0, 0.6);
   border: 0;
-  box-shadow: 10px 10px 30px $profilegray;
+  box-shadow: 5px 5px 70px $gray;
   font-family: 'Reem Kufi', sans-serif;
   margin-top: 15px;
 
@@ -611,20 +634,58 @@ img {
   }
 }
 
-.thumbnail-pic-wrap {
-  height: 300px;
+.thumbnail-pic {
+  border-radius: 10%;
+  display: block;
+  height: 260px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
   width: 300px;
+}
+
+.thumbnail-pic-wrap {
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .athlete-results {
   background-color: $profilegray2;
-  box-shadow: 10px 10px 30px $profilegray;
+  border: 3px solid $black;
+  box-shadow: 10px 10px 30px $gray;
   color: $white;
+  height: 450px;
   margin-top: 15px;
   opacity: .8;
+  width: 450px;
 
   li {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 14px;
   }
+}
+//Profile Pic
+.profile-pic-field {
+
+  cursor: pointer;
+  font-size: 25px;
+
+  img {
+    color: $black;
+    height: 75px;
+  }
+}
+
+.pic-input {
+  height: .01 px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: .01 px;
+  z-index: -1;
+}
+
+.profile-icon {
+  color: $white;
+  font-size: 40px;
 }
