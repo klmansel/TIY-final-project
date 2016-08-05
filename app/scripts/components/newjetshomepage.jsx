@@ -23,7 +23,7 @@ var NavbarComponent = React.createClass({
             <li className="icon-wrap"><a href="#schedule"><img className="hidden-xs" src="images/running.png"
               alt="running-icon"></img><p className="on-hover">Meet Schedule</p></a></li>
             <li className="icon-wrap"><a href="#coachesOnly"><img className="hidden-xs" src="images/whistle.png"
-              alt="whistle"></img><p className="on-hover">Coaches Area</p></a></li>
+              alt="whistle"></img><p className="on-hover">Team Management</p></a></li>
             <li className="icon-wrap"><a href="#photos"><img className="hidden-xs" src="images/camera.png"
               alt="camera"></img><p className="on-hover">Photos</p></a></li>
             <li className="icon-wrap"><a href="#contactInfo"><img className="hidden-xs" src="images/iphone.png"
