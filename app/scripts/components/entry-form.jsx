@@ -23,9 +23,13 @@ var AthleteList = React.createClass({
     var user = JSON.parse(localStorage.getItem('user'));
     var athletes = this.state.athleteCollection.map(function(athlete){
       return (
-          <li className="col-md-6" key={athlete.get('objectId')}>
-            {athlete.get('athleteName')}</li>
-      )
+        <a className="col-md-6" key={athlete.get('objectId')}
+          href={'#athletes/' + athlete.get('objectId')}>
+          <li>
+         {athlete.get('athleteName')}
+         </li>
+     </a>
+        );
     });
 
     return (

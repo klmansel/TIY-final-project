@@ -24,14 +24,16 @@ var SingleAthleteResults = React.createClass({
     var results = this.state.resultsCollection;
     var resultList = results.map(function(result){
       return <li className="each-result" key={result.get('objectId')}>
-              {result.get('meetName')} {result.get('createdAt').slice(0,10)}
-               {result.get('event')} {result.get('minutes:')}{result.get('seconds')}
+              <h5>{result.get('meetName')} {result.get('createdAt').slice(0,10)}</h5>
+                <p>Event: {result.get('event')} </p>
+                <p>Time: {result.get('minutes')}:{result.get('seconds')}</p>
+
             </li>
     });
 
     return (
       <div className="col-med-6">
-        <h1 className="coach-headings">Results</h1>
+        <h1 className="results-headings">Results</h1>
           <ul>
             {resultList}
           </ul>
@@ -78,8 +80,10 @@ var SingleAthlete = React.createClass({
           <ul className="profile-btns">
             <li className="nav-button"><a href="#athleteProfile">
                 Back to {coach.team} List</a></li>
+              <li className="nav-button"><a href="#results">Event Results Entry</a></li>
               <li className="nav-button" onClick={this.handleRemoveAthlete}>
                 <a href="#athleteProfile">Delete Athlete from {coach.team}</a></li>
+
           </ul>
         </nav>
 
@@ -194,7 +198,7 @@ var FilterView = React.createClass({
               <h1 className="login-heading">Athlete Profiles</h1>
               <label htmlFor="age-group">Age Group</label>
               <select onChange={this.selectAge} className="form-control" id="ageGroup">
-                <option>--SELECT--</option>
+                <option>--Select--</option>
                 <option>8 and Under</option>
                 <option>9-10 Years Old</option>
                 <option>11-12 Years Old</option>
@@ -204,7 +208,7 @@ var FilterView = React.createClass({
               </select>
               <label htmlFor="age-group">Gender</label>
               <select onChange={this.selectedGender} className="form-control" id="gender">
-                <option>--SELECT--</option>
+                <option>--Select--</option>
                 <option>Male</option>
                 <option>Female</option>
               </select>

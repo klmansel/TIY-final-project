@@ -20,7 +20,6 @@ var SignUpComponent = React.createClass({
     signup.save().done(function(){
       console.log('Added New Coach');
       router.navigate('signin', {trigger: true});
-      $('.submit').text('Signing In');
     });
   },
   handleNameChange: function(e){

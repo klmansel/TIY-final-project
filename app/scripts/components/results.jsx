@@ -1,6 +1,7 @@
 
 var React = require('react');
 var _ = require('underscore');
+var $ = require('jquery');
 var Backbone = require('backbone');
 var Results = require('../models/results').Results;
 var AthleteCollection = require('../models/athlete').AthleteCollection;
@@ -31,7 +32,6 @@ var ResultsForm = React.createClass({
     newResult.setPointer('coach', coach, '_User');
 
     newResult.save().done(function(){
-      console.log('Entry Created');
       self.setState({
         'minutes': '',
         'seconds': '',
@@ -61,12 +61,11 @@ var ResultsForm = React.createClass({
     this.setState({'meetName': e.target.value})
   },
   render: function(){
+    console.log(this.state);
     var coach = JSON.parse(localStorage.getItem('user'));
     return (
       <div>
         <ul className="row profile-btns">
-          <li className="nav-button">
-            <a href="#coachesOnly">Coaches Only</a></li>
           <li className="nav-button">
             <a href="#results">Event Results Entry</a></li>
           <li className="nav-button"><a href="#athleteProfile">
