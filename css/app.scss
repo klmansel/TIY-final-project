@@ -575,7 +575,8 @@ img {
   cursor: pointer;
 }
 
-.profile-btns {
+.profile-btns,
+.entry-btn {
   background-color: $black;
   font-family: 'Reem Kufi', sans-serif;
   display: block;
@@ -682,10 +683,10 @@ img {
 }
 
 .athlete-results {
-  background-color: $profilegray2;
+  background-color: $white;
   border: 3px solid $black;
   box-shadow: 10px 10px 30px $gray;
-  color: $white;
+  color: $machinered;
   height: 460px;
   margin-top: 15px;
   opacity: .8;
@@ -693,9 +694,26 @@ img {
 
   li {
     font-family: 'Reem Kufi', sans-serif;
-    font-size: 14px;
+    list-style-type: none;
   }
 }
+
+.results-headings {
+  color: $black;
+  font-family: 'Reem Kufi', sans-serif;
+  text-align: center;
+}
+
+.each-result {
+  h5 {
+    font-size: 20px;
+  }
+
+  p {
+    color: $black;
+  }
+}
+
 //Profile Pic
 .profile-pic-field {
 

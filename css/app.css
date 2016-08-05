@@ -6183,28 +6183,33 @@ img {
 .fulllistprofileview {
   cursor: pointer; }
 
-.profile-btns {
+.profile-btns,
+.entry-btn {
   background-color: #000;
   font-family: 'Reem Kufi', sans-serif;
   display: block;
   height: 50px;
   margin: 0 auto;
   width: 100%; }
-  .profile-btns a {
+  .profile-btns a,
+  .entry-btn a {
     color: #cf4b4b;
     font-size: 20px;
     text-decoration: none; }
-    .profile-btns a:hover {
+    .profile-btns a:hover,
+    .entry-btn a:hover {
       color: #cccdc7;
       list-style-type: none;
       text-decoration: none;
       text-overflow: none;
       -webkit-transition: .5s;
       transition: .5s; }
-    .profile-btns a:click {
+    .profile-btns a:click,
+    .entry-btn a:click {
       color: #777;
       text-decoration: none; }
-  .profile-btns li {
+  .profile-btns li,
+  .entry-btn li {
     background-color: #000;
     border-radius: 5px;
     border-top: 3px solid #7b7b7b;
@@ -6264,7 +6269,7 @@ img {
   overflow: hidden; }
 
 .athlete-results {
-  background-color: #7b7b7b;
+  background-color: #fff;
   border: 3px solid #000;
   box-shadow: 10px 10px 30px #808080;
   color: #cf4b4b;
@@ -6274,7 +6279,17 @@ img {
   width: 550px; }
   .athlete-results li {
     font-family: 'Reem Kufi', sans-serif;
-    font-size: 14px; }
+    list-style-type: none; }
+
+.results-headings {
+  color: #000;
+  font-family: 'Reem Kufi', sans-serif;
+  text-align: center; }
+
+.each-result h5 {
+  font-size: 20px; }
+.each-result p {
+  color: #000; }
 
 .profile-pic-field {
   cursor: pointer;
