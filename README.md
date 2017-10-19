@@ -1,5 +1,5 @@
-## final project
-# TIY-final-project
+## TRACKIT!
+# The Iron Yard: final-project
 
  Track It! 
  An athlete tracking system
@@ -33,3 +33,6 @@ Can edit athletes' ages
 Can delete athletes
 
 Built using React+Backbone.js, SASS and Bootstrap elements for responsive web design, and using a Parse server.
+
+To test Team Management: See TrackIt! in Action > Team Management 
+Can create a new account using Sign Up or Sign In (Username: tiy Password: final)
